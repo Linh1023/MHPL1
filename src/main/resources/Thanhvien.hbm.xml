@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name = "com.mycompany.qlthanhvien.Thanhvien" table = "thanhvien">
+   <class name = "com.mycompany.qlthanhvien.BLL.ThanhVien" table = "thanhvien">
       
       <meta attribute = "class-description">
          This class contains the department detail. 

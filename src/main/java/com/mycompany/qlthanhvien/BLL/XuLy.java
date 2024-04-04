@@ -2,20 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.qlthanhvien;
+package com.mycompany.qlthanhvien.BLL;
 
 /**
  *
  * @author Admin
  */
-public class Thanhvien {
+public class XuLy {
     private int maTV;
     private String hoten;
     private String khoa;
     private String nganh;
     private int sdt;
     
-    public Thanhvien() {}
+    public XuLy() {}
 
     public int getMaTV() {
         return maTV;

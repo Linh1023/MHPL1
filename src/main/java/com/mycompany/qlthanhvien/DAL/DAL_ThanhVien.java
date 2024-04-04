@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.qlthanhvien;
+package com.mycompany.qlthanhvien.DAL;
 
+import com.mycompany.qlthanhvien.BLL.ThanhVien;
 import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -16,10 +17,10 @@ import org.hibernate.cfg.Configuration;
  *
  * @author Admin
  */
-public class HibernateQLTV {
+public class DAL_ThanhVien {
     private static SessionFactory factory;
 
-    public HibernateQLTV(SessionFactory factory) {
+    public DAL_ThanhVien(SessionFactory factory) {
         this.factory = factory;
     }
 
@@ -31,7 +32,7 @@ public class HibernateQLTV {
             ex.printStackTrace();
         }
         if (factory != null) {
-            HibernateQLTV hb = new HibernateQLTV(factory);
+            DAL_ThanhVien hb = new DAL_ThanhVien(factory);
             hb.listThanhvien();
         } else {
             System.out.println("Failed to initialize SessionFactory.");
@@ -43,10 +44,10 @@ public class HibernateQLTV {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String queryString = "FROM Thanhvien"; // Đảm bảo sử dụng tên entity chính xác (chữ hoa/chữ thường)
+            String queryString = "FROM ThanhVien"; // Đảm bảo sử dụng tên entity chính xác (chữ hoa/chữ thường)
             List departments = session.createQuery(queryString).list();
             for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
-                Thanhvien tv = (Thanhvien) iterator.next();
+                ThanhVien tv = (ThanhVien) iterator.next();
                 System.out.println("MaTV:" + tv.getMaTV());
                 System.out.println("HoTen:" + tv.getHoten());
                 System.out.println("Khoa:" + tv.getKhoa());

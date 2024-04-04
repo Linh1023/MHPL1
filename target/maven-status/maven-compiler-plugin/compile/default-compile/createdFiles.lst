@@ -1,3 +1,10 @@
-com\mycompany\qlthanhvien\HibernateQLTV.class
-com\mycompany\qlthanhvien\Qlthanhvien.class
-com\mycompany\qlthanhvien\Thanhvien.class
+com\mycompany\qlthanhvien\UI\UI_QLThietBi.class
+com\mycompany\qlthanhvien\BLL\ThietBi.class
+com\mycompany\qlthanhvien\BLL\XuLy.class
+com\mycompany\qlthanhvien\DAL\DAL_ThongTinSuDung.class
+com\mycompany\qlthanhvien\BLL\ThongTinSuDung.class
+com\mycompany\qlthanhvien\DAL\DAL_XuLy.class
+com\mycompany\qlthanhvien\DAL\DAL_ThanhVien.class
+com\mycompany\qlthanhvien\BLL\BLL_ThongKe.class
+com\mycompany\qlthanhvien\BLL\ThanhVien.class
+com\mycompany\qlthanhvien\DAL\DAL_ThietBi.class

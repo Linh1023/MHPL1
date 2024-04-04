@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/qlthanhvien ?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/qlthanhvien?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
       <!-- JDBC connection pool (use the built-in) -->
@@ -22,9 +22,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> 
         <!-- Show all executed SQL to console -->
         <property name="show_sql">true</property>
+
         <!-- Entity mapping -->
-        <!-- <mapping class="demopl.DAL.Course" /> -->
         <mapping resource = "Thanhvien.hbm.xml"/>
+        <!--<mapping resource = "Xuly.hbm.xml"/>-->
+        <!--<mapping resource = "Thietbi.hbm.xml"/>-->
+        <mapping resource = "Thongtinsudung.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>
 

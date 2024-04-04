@@ -8,19 +8,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name = "com.mycompany.qlthanhvien.BLL.ThanhVien" table = "thanhvien">
+   <class name = "com.mycompany.qlthanhvien.BLL.ThongTinSuDung" table = "thongtinsd">
       
       <meta attribute = "class-description">
          This class contains the department detail. 
       </meta>
-      <id name = "maTV" type = "int" column = "MaTV">
+      <id name = "matt" type = "int" column = "MaTT">
          <generator class="native"/>
       </id>
       
-      <property name = "hoten" column = "HoTen" type = "string"/>
-      <property name = "khoa" column = "Khoa" type = "string"/>
-      <property name = "nganh" column = "Nganh" type = "string"/>
-      <property name = "sdt" column = "SDT" type = "int"/>
+      <property name = "matv" column = "MaTV" type = "int"/>
+      <property name = "matb" column = "MaTB" type = "int"/>
+      <property name = "tgvao" column = "TGVao" type = "timestamp"/>
+      <property name = "tgmuon" column = "TGMuon" type = "timestamp"/>
+      <property name = "tgtra" column = "TGTra" type = "timestamp"/>
    </class>
 </hibernate-mapping>
 
