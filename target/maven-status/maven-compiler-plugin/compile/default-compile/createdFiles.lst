@@ -1,4 +1,3 @@
-com\mycompany\qlthanhvien\UI\UI_QLThietBi.class
 com\mycompany\qlthanhvien\BLL\ThietBi.class
 com\mycompany\qlthanhvien\BLL\XuLy.class
 com\mycompany\qlthanhvien\DAL\DAL_ThongTinSuDung.class

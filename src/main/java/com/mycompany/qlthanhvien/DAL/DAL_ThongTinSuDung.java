@@ -35,6 +35,12 @@ public class DAL_ThongTinSuDung {
         }
         if (factory != null) {
             DAL_ThongTinSuDung hb = new DAL_ThongTinSuDung(factory);
+            Date date=new Date();
+            hb.listThongTinSuDung();
+            hb.addThongTinSuDung(1120150184, 1000002, date,  date,  date);
+            hb.updateThongTinSuDung(3, 1000001);
+            hb.listThongTinSuDung();
+            hb.deleteThongTinSuDung(3);
             hb.listThongTinSuDung();
         } else {
             System.out.println("Failed to initialize SessionFactory.");
@@ -50,12 +56,12 @@ public class DAL_ThongTinSuDung {
             List departments = session.createQuery(queryString).list();
             for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
                 ThongTinSuDung tv = (ThongTinSuDung) iterator.next();
-                System.out.print(" MaTT:" + tv.getMaTT());
-                System.out.print("MaTV:" + tv.getMaTV());
-                System.out.print(" MaTB:" + tv.getMaTB());
-                System.out.print(" TGM:"+ tv.getTGMuon());
-                System.out.println(" TGT:" + tv.getTGTra());
-                System.out.println(" TGV:" + tv.getTGVao());
+                System.out.print(" MaTT:" + tv.getMatt());
+                System.out.print("MaTV:" + tv.getMatv());
+                System.out.print(" MaTB:" + tv.getMatb());
+                System.out.print(" TGM:"+ tv.getTgmuon());
+                System.out.print(" TGT:" + tv.getTgtra());
+                System.out.println(" TGV:" + tv.getTgvao());
             }
             tx.commit();
             return true;
@@ -72,12 +78,12 @@ public class DAL_ThongTinSuDung {
     
     public Integer addThongTinSuDung(int matv, int matb, Date tgvao, Date tgmuon, Date tgtra) {
         Session session = factory.openSession();
-        Integer maTT = null;
+        Integer matt = null;
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             ThongTinSuDung d = new ThongTinSuDung(matv,matb,tgvao,tgmuon,tgtra);
-            maTT = (Integer) session.save(d);
+            matt = (Integer) session.save(d);
             tx.commit();
         } catch (Exception e) {
             if (tx != null) {
@@ -87,16 +93,16 @@ public class DAL_ThongTinSuDung {
         } finally {
             session.close();
         }
-        return maTT;
+        return matt;
     }
 
-    public boolean updateThongTinSuDung(int maTT, int matv, int matb, Date tgvao, Date tgmuon, Date tgtra) {
+    public boolean updateThongTinSuDung(int maTT ,int matb) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             ThongTinSuDung d = (ThongTinSuDung) session.get(ThongTinSuDung.class, maTT);
-            d.setTGMuon(tgmuon);
+            d.setMatb(matb);
             session.update(d);
             tx.commit();
             return true;
