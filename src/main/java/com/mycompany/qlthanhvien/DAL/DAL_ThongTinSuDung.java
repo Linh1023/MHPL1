@@ -36,11 +36,11 @@ public class DAL_ThongTinSuDung {
         if (factory != null) {
             DAL_ThongTinSuDung hb = new DAL_ThongTinSuDung(factory);
             Date date=new Date();
-            hb.listThongTinSuDung();
+//            hb.listThongTinSuDung();
             hb.addThongTinSuDung(1120150184, 1000002, date,  date,  date);
-            hb.updateThongTinSuDung(3, 1000001);
-            hb.listThongTinSuDung();
-            hb.deleteThongTinSuDung(3);
+//            hb.updateThongTinSuDung(3, 1000001);
+//            hb.listThongTinSuDung();
+//            hb.deleteThongTinSuDung(3);
             hb.listThongTinSuDung();
         } else {
             System.out.println("Failed to initialize SessionFactory.");
