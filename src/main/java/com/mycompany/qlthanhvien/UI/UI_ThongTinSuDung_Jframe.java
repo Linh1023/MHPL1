@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 public class UI_ThongTinSuDung_Jframe extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form UI_ThongTinSuDung_Jframe
      */
     public UI_ThongTinSuDung_Jframe() {
         setTitle("Mượn trả");
@@ -40,7 +40,7 @@ public class UI_ThongTinSuDung_Jframe extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 368, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,15 +76,11 @@ public class UI_ThongTinSuDung_Jframe extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(UI_ThongTinSuDung_Jframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UI_ThongTinSuDung_Jframe().setVisible(true);
-               
-               
-                
             }
         });
     }
