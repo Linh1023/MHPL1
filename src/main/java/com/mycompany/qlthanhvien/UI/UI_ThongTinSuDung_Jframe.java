@@ -17,7 +17,7 @@ public class UI_ThongTinSuDung_Jframe extends javax.swing.JFrame {
      */
     public UI_ThongTinSuDung_Jframe() {
         setTitle("Mượn trả");
-        setSize(820,750);
+        setSize(1000,750);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         UI_ThongTinSuDung uI_ThongTinSuDung = new UI_ThongTinSuDung();

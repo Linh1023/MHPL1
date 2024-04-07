@@ -5,6 +5,7 @@
 package com.mycompany.qlthanhvien.DAL;
 
 import com.mycompany.qlthanhvien.BLL.ThongTinSuDung;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -35,9 +36,9 @@ public class DAL_ThongTinSuDung {
         }
         if (factory != null) {
             DAL_ThongTinSuDung hb = new DAL_ThongTinSuDung(factory);
-            Date date=new Date();
+//            Date date=new Date();
 //            hb.listThongTinSuDung();
-            hb.addThongTinSuDung(1120150184, 1000002, date,  date,  date);
+//            hb.addThongTinSuDung(1120150184, 1000002, date,  date,  date);
 //            hb.updateThongTinSuDung(3, 1000001);
 //            hb.listThongTinSuDung();
 //            hb.deleteThongTinSuDung(3);
@@ -47,15 +48,46 @@ public class DAL_ThongTinSuDung {
         }
     }
 
-    public boolean listThongTinSuDung() {
+//    public boolean listThongTinSuDung() {
+//        Session session = factory.openSession();
+//        Transaction tx = null;
+//        try {
+//            tx = session.beginTransaction();
+//            String queryString = "FROM ThongTinSuDung"; // Đảm bảo sử dụng tên entity chính xác (chữ hoa/chữ thường)
+//            List departments = session.createQuery(queryString).list();
+//            for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
+//                ThongTinSuDung tv = (ThongTinSuDung) iterator.next();
+//                System.out.print(" MaTT:" + tv.getMatt());
+//                System.out.print("MaTV:" + tv.getMatv());
+//                System.out.print(" MaTB:" + tv.getMatb());
+//                System.out.print(" TGM:"+ tv.getTgmuon());
+//                System.out.print(" TGT:" + tv.getTgtra());
+//                System.out.println(" TGV:" + tv.getTgvao());
+//            }
+//            tx.commit();
+//            return true;
+//        } catch (HibernateException e) {
+//            if (tx != null) {
+//                tx.rollback();
+//            }
+//            e.printStackTrace();
+//            return false;
+//        } finally {
+//            session.close();
+//        }
+//    }
+    
+     public ArrayList<ThongTinSuDung> listThongTinSuDung() {
         Session session = factory.openSession();
         Transaction tx = null;
+        ArrayList<ThongTinSuDung> arrayListTTSD = new ArrayList<ThongTinSuDung>();
         try {
             tx = session.beginTransaction();
             String queryString = "FROM ThongTinSuDung"; // Đảm bảo sử dụng tên entity chính xác (chữ hoa/chữ thường)
             List departments = session.createQuery(queryString).list();
             for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
                 ThongTinSuDung tv = (ThongTinSuDung) iterator.next();
+                
                 System.out.print(" MaTT:" + tv.getMatt());
                 System.out.print("MaTV:" + tv.getMatv());
                 System.out.print(" MaTB:" + tv.getMatb());
@@ -64,13 +96,13 @@ public class DAL_ThongTinSuDung {
                 System.out.println(" TGV:" + tv.getTgvao());
             }
             tx.commit();
-            return true;
+            return arrayListTTSD;
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-            return false;
+            return arrayListTTSD;
         } finally {
             session.close();
         }
