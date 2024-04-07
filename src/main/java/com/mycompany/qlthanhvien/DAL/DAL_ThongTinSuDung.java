@@ -86,14 +86,15 @@ public class DAL_ThongTinSuDung {
             String queryString = "FROM ThongTinSuDung"; // Đảm bảo sử dụng tên entity chính xác (chữ hoa/chữ thường)
             List departments = session.createQuery(queryString).list();
             for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
-                ThongTinSuDung tv = (ThongTinSuDung) iterator.next();
+                ThongTinSuDung thongTinSuDung = (ThongTinSuDung) iterator.next();
+                arrayListTTSD.add(thongTinSuDung);
                 
-                System.out.print(" MaTT:" + tv.getMatt());
-                System.out.print("MaTV:" + tv.getMatv());
-                System.out.print(" MaTB:" + tv.getMatb());
-                System.out.print(" TGM:"+ tv.getTgmuon());
-                System.out.print(" TGT:" + tv.getTgtra());
-                System.out.println(" TGV:" + tv.getTgvao());
+//                System.out.print(" MaTT:" + tv.getMatt());
+//                System.out.print("MaTV:" + tv.getMatv());
+//                System.out.print(" MaTB:" + tv.getMatb());
+//                System.out.print(" TGM:"+ tv.getTgmuon());
+//                System.out.print(" TGT:" + tv.getTgtra());
+//                System.out.println(" TGV:" + tv.getTgvao());
             }
             tx.commit();
             return arrayListTTSD;
