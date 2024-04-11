@@ -4,6 +4,15 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+
 /**
  *
  * @author quang
@@ -15,6 +24,34 @@ public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
      */
     public UI_JPN_ThongKeTV() {
         initComponents();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(15, "số lượng", "1970");
+        dataset.addValue(30, "số lượng", "1980");
+        dataset.addValue(60, "số lượng", "1990");
+        dataset.addValue(120, "số lượng", "2000");
+        dataset.addValue(240, "số lượng", "2010");
+        dataset.addValue(300, "số lượng", "2014");
+        JFreeChart chart = ChartFactory.createBarChart("Thống kê", "Năm", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
+        ChartPanel chartpanel1 = new ChartPanel(chart);
+        chartpanel1.setBounds(40, 40, 900, 300);
+
+//        pie
+        DefaultPieDataset dataset1 = new DefaultPieDataset();
+        dataset1.setValue("GDTH", Integer.valueOf(20));
+        dataset1.setValue("CNTT", Integer.valueOf(30));
+        dataset1.setValue("QTKD", Integer.valueOf(20));
+        dataset1.setValue("TLH", Integer.valueOf(10));
+        JFreeChart chart1 = ChartFactory.createPieChart("Thống kê theo khoa", dataset1);
+        ChartPanel chartPanel2 = new ChartPanel(chart1);
+        chartPanel2.setBounds(40, 350, 460, 275);
+//        
+        JFreeChart chart2 = ChartFactory.createPieChart("Thống kê theo ngành", dataset1);
+        ChartPanel chartPanel3 = new ChartPanel(chart2);
+        chartPanel3.setBounds(500, 350, 460, 275);
+
+        this.add(chartpanel1);
+        this.add(chartPanel2);
+        this.add(chartPanel3);
     }
 
     /**
@@ -26,32 +63,32 @@ public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1000, 700));
 
-        jLabel1.setText("jpanel thông kê");
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(637, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(922, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1)
-                .addContainerGap(494, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(672, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jComboBox2;
     // End of variables declaration//GEN-END:variables
 }
