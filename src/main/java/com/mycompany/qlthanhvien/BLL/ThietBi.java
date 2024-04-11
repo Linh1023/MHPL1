@@ -4,60 +4,33 @@
  */
 package com.mycompany.qlthanhvien.BLL;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
+
 /**
  *
  * @author Admin
  */
+@Entity
+@Data
+@Table(name ="thietbi")
 public class ThietBi {
-    private int maTV;
-    private String hoten;
-    private String khoa;
-    private String nganh;
-    private int sdt;
+
+    @Id
+    int MaTB;
     
-    public ThietBi() {}
-
-    public int getMaTV() {
-        return maTV;
-    }
-
-    public void setMaTV(int maTV) {
-        this.maTV = maTV;
-    }
-
-    public String getHoten() {
-        return hoten;
-    }
-
-    public void setHoten(String hoten) {
-        this.hoten = hoten;
-    }
-
-    public String getKhoa() {
-        return khoa;
-    }
-
-    public void setKhoa(String khoa) {
-        this.khoa = khoa;
-    }
-
-    public String getNganh() {
-        return nganh;
-    }
-
-    public void setNganh(String nganh) {
-        this.nganh = nganh;
-    }
-
-    public int getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(int sdt) {
-        this.sdt = sdt;
-    }
-
+    String tenTB;
     
-    
-    
+    String moTaTB;
+
+    public ThietBi() {
+    }
+
+    public ThietBi( int MaTB,String tenTB, String moTaTB) {
+        this.tenTB = tenTB;
+        this.MaTB = MaTB;
+        this.moTaTB = moTaTB;
+    }
 }

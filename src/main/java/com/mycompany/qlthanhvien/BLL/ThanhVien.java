@@ -11,12 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
 
 /**
  *
  * @author Admin
  */
-@Entity
+@Data
+//@Entity
 @Table(name = "Thanhvien")
 public class ThanhVien implements Serializable{
     
@@ -38,46 +40,6 @@ public class ThanhVien implements Serializable{
     private int sdt;
     
     public ThanhVien() {}
-
-    public int getMaTV() {
-        return maTV;
-    }
-
-    public void setMaTV(int maTV) {
-        this.maTV = maTV;
-    }
-
-    public String getHoten() {
-        return hoten;
-    }
-
-    public void setHoten(String hoten) {
-        this.hoten = hoten;
-    }
-
-    public String getKhoa() {
-        return khoa;
-    }
-
-    public void setKhoa(String khoa) {
-        this.khoa = khoa;
-    }
-
-    public String getNganh() {
-        return nganh;
-    }
-
-    public void setNganh(String nganh) {
-        this.nganh = nganh;
-    }
-
-    public int getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(int sdt) {
-        this.sdt = sdt;
-    }
 
     public ThanhVien(String hoten, String khoa, String nganh, int sdt) {
         this.hoten = hoten;

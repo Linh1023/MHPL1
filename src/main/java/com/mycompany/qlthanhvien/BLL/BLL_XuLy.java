@@ -4,12 +4,10 @@
  */
 package com.mycompany.qlthanhvien.BLL;
 
-import lombok.Data;
-
 /**
  *
- * @author Admin
+ * @author quang
  */
-@Data
-public class XuLy {
+public class BLL_XuLy {
+    
 }

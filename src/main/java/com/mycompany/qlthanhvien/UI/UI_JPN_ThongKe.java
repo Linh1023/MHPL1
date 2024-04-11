@@ -4,6 +4,9 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import java.awt.FontMetrics;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
+
 /**
  *
  * @author quang
@@ -15,6 +18,24 @@ public class UI_JPN_ThongKe extends javax.swing.JPanel {
      */
     public UI_JPN_ThongKe() {
         initComponents();
+        UI_JPN_ThanhVien jPN_ThanhVien = new UI_JPN_ThanhVien();
+        UI_JPN_ThongKeTB jPN_ThongKeTB = new UI_JPN_ThongKeTB();
+        UI_JPN_ThongKeTV jPN_ThongKeTV = new UI_JPN_ThongKeTV();
+        UI_JPN_ThongKeVP jPN_ThongKeVP = new UI_JPN_ThongKeVP();
+        jTabbedPane1.addTab("Thống Kê Thiết Bị", jPN_ThongKeTB);
+        jTabbedPane1.addTab("Thống Kê Thành Viên", jPN_ThongKeTV);
+        jTabbedPane1.addTab("Thống Kê Vi Phạm", jPN_ThongKeVP);
+        jTabbedPane1.setUI(new BasicTabbedPaneUI() {
+            @Override
+            protected int calculateTabHeight(int tabPlacement, int tabIndex, int fontHeight) {
+                return 30;
+            }
+
+            @Override
+            protected int calculateTabWidth(int tabPlacement, int tabIndex, FontMetrics metrics) {
+                return 150;
+            }
+        });
     }
 
     /**
@@ -26,32 +47,24 @@ public class UI_JPN_ThongKe extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setMinimumSize(new java.awt.Dimension(1000, 700));
-
-        jLabel1.setText("jpanel thông kê");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(637, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1)
-                .addContainerGap(494, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

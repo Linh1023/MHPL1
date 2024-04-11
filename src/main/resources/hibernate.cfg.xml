@@ -21,13 +21,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <!-- Disable the second-level cache -->
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> 
         <!-- Show all executed SQL to console -->
-        <property name="show_sql">true</property>
+        <!--<property name="show_sql">true</property>-->
+        <!--<property name="hibernate.format_sql">true</property>-->
 
-        <!-- Entity mapping -->
-        <mapping resource = "Thanhvien.hbm.xml"/>
-        <!--<mapping resource = "Xuly.hbm.xml"/>-->
-        <!--<mapping resource = "Thietbi.hbm.xml"/>-->
-        <mapping resource = "Thongtinsudung.hbm.xml"/>
+
+<!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThanhVien" />-->
+        <mapping class="com.mycompany.qlthanhvien.BLL.ThietBi" />
+<!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThongKe" />
+        <mapping class="com.mycompany.qlthanhvien.BLL.XuLy" />-->
 
     </session-factory>
 </hibernate-configuration>

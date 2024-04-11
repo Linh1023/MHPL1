@@ -47,7 +47,7 @@ public class UI_Main extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -56,6 +56,7 @@ public class UI_Main extends javax.swing.JFrame {
 
         jPanel2.setPreferredSize(new java.awt.Dimension(7, 700));
 
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setToolTipText("");
         jTabbedPane1.setAutoscrolls(true);
@@ -132,14 +133,15 @@ public class UI_Main extends javax.swing.JFrame {
                 UI_JPN_ThongKe jPN_ThongKe = new UI_JPN_ThongKe();
                 UI_JPN_XuLyViPham jPN_XuLyViPham = new UI_JPN_XuLyViPham();
                 jTabbedPane1.addTab("Quản Lý Thành Viên", jPN_ThanhVien);
-                jTabbedPane1.add("Quản Lý Thiết Bị", jPN_ThietBi);
-                jTabbedPane1.add("Xử Lý Vi Phạm", jPN_ThongKe);
-                jTabbedPane1.add("Thống Kê", jPN_XuLyViPham);
+                jTabbedPane1.addTab("Quản Lý Thiết Bị", jPN_ThietBi);
+                jTabbedPane1.addTab("Thống Kê", jPN_ThongKe);
+                jTabbedPane1.addTab("Xử Lý Vi Phạm", jPN_XuLyViPham);
                 jTabbedPane1.setUI(new BasicTabbedPaneUI() {
                     @Override
                     protected int calculateTabHeight(int tabPlacement, int tabIndex, int fontHeight) {
                         return 50;
                     }
+                    @Override
                     protected int calculateTabWidth(int tabPlacement, int tabIndex, FontMetrics metrics) {
                         return 200;
                     }
