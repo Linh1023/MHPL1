@@ -20,56 +20,62 @@ import org.hibernate.cfg.Configuration;
  */
 public class DAL_XuLy {
 
-    private static SessionFactory factory;
+    Session session;
 
-    public DAL_XuLy(SessionFactory factory) {
-        this.factory = factory;
+    public DAL_XuLy() {
+        session = HibernateUtil.getSessionFactory().openSession();
 
     }
 
     public static void main(String[] args) {
-        SessionFactory factory = null;
-        try {
-            factory = new Configuration().configure().buildSessionFactory();
-        } catch (HibernateException ex) {
-            ex.printStackTrace();
-        }
-        if (factory != null) {
-            DAL_XuLy xl = new DAL_XuLy(factory);
-            xl.listXuly();;
-        } else {
-            System.out.println("Failed to initialize SessionFactory.");
-        }
+        DAL_XuLy dal = new DAL_XuLy();
+        List list  = dal.loadXuLy();
+            for (Iterator iterator = list.iterator(); iterator.hasNext();){
+             XuLy v = (XuLy) iterator.next(); 
+             System.out.print("ID: " + v.getMaXL()); 
 
+             
+          }
+        
     }
 
-    public void listXuly() {
-        Session session = factory.openSession();
-        Transaction tx = null;
+    public List<XuLy> loadXuLy() {
+        List<XuLy> list = null;
+        Transaction transaction = null;
         try {
-            tx = session.beginTransaction();
-            String queryString = "FROM XuLy"; // Đảm bảo sử dụng tên entity chính xác (chữ hoa/chữ thường)
-            List departments = session.createQuery(queryString).list();
-            for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
-                XuLy tv = (XuLy) iterator.next();
-                System.out.print(" MaXL:" + tv.getMaXL());
-                System.out.print("MaTV:" + tv.getMaTV());
-                System.out.print(" Hinh THUC XU LY:" + tv.getHinhThucSX());
-                System.out.print(" SoTien:" + tv.getSoTien());
-                System.out.print(" NGAY XU LY:" + tv.getNgayXL());
-                System.out.println(" Trang THAI:" + tv.getTrangThaiXL());
+            transaction = session.beginTransaction();
+            list = session.createQuery("From XuLy", XuLy.class).list();
+            transaction.commit();
+}
+            catch(HibernateException e)
+                  {
+                  
+                  if (transaction != null) {
+                transaction.rollback();
             }
-            tx.commit();
-
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-
-        } finally {
+                  
+                  }
+            finally {
             session.close();
         }
-    }
+            return list;
 
-}
+        }
+    
+
+    public void addXulY(XuLy obj) {
+        
+        session.save(obj );
+        
+        
+
+    }
+    public void updateXuLy(XuLy obj)
+    {
+        session.update(obj);
+    }
+    public void deleteXuly (XuLy obj)
+    {
+        session.delete(obj);
+    }
+}obj
