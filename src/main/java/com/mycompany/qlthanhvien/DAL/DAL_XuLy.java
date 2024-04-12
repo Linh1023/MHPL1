@@ -30,12 +30,7 @@ public class DAL_XuLy {
     public static void main(String[] args) {
         DAL_XuLy dal = new DAL_XuLy();
         List list  = dal.loadXuLy();
-            for (Iterator iterator = list.iterator(); iterator.hasNext();){
-             XuLy v = (XuLy) iterator.next(); 
-             System.out.print("ID: " + v.getMaXL()); 
-
-             
-          }
+          list.forEach(System.out::println);
         
     }
 
@@ -44,7 +39,7 @@ public class DAL_XuLy {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            list = session.createQuery("From XuLy", XuLy.class).list();
+           list = session.createQuery("From XuLy",XuLy.class).list();
             transaction.commit();
 }
             catch(HibernateException e)
@@ -78,4 +73,4 @@ public class DAL_XuLy {
     {
         session.delete(obj);
     }
-}obj
+}

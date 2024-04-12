@@ -12,32 +12,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
 
 /**
  *
  * @author Admin
  */
+@Data
 @Entity
-@Table(name = "XuLy")
+@Table(name = "xuly")
 public class XuLy implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MaXL")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="MaTV")
     private int maTV;
-
-    @Column(name = "MaTV")
+    @Id
     private int maXL;
 
-    @Column(name = "HinhThucXL")
+    @Column(name="HinhThucXL")
     private String hinhThucSX;
 
-    @Column(name = "SoTien")
+    @Column(name  ="SoTien")
     private int soTien;
-    @Column(name = "NgayXL")
+    @Column(name="NgayXL")
     private Date NgayXL;
-    @Column(name = "TrangThaiXL")
+    @Column(name="TrangThaiXL")
     private int TrangThaiXL;
+
+    public XuLy() {
+    }
 
     public XuLy(int maTV, int maXL, String hinhThucSX, int soTien, Date NgayXL, int TrangThaiXL) {
         this.maTV = maTV;
