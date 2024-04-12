@@ -35,10 +35,7 @@ public class DAL_ThietBi {
                 transaction.rollback();
             }
             e.printStackTrace();
-        } finally {
-            session.close();
         }
-
         return list;
     }
 
@@ -52,7 +49,7 @@ public class DAL_ThietBi {
     }
 
     public void updateThietBi(ThietBi tb) {
-        session.update(tb);
+        session.saveOrUpdate(tb);
     }
 
     public void deleteThietBi(ThietBi tb) {

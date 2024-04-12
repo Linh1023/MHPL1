@@ -1,4 +1,5 @@
 com\mycompany\qlthanhvien\BLL\ThietBi.class
+com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$4.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$2.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeTB.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThanhVien.class
@@ -15,13 +16,17 @@ com\mycompany\qlthanhvien\BLL\XuLy.class
 com\mycompany\qlthanhvien\DAL\DAL_ThongTinSuDung.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKe$1.class
 com\mycompany\qlthanhvien\BLL\ThongTinSuDung.class
+com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$5.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeVP.class
 com\mycompany\qlthanhvien\BLL\BLL_XuLy.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$1.class
 com\mycompany\qlthanhvien\BLL\BLL_ThietBi.class
 com\mycompany\qlthanhvien\BLL\BLL_ThanhVien.class
 com\mycompany\qlthanhvien\DAL\DAL_XuLy.class
+com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$6.class
 com\mycompany\qlthanhvien\BLL\ThanhVien.class
+com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$8.class
 com\mycompany\qlthanhvien\DAL\HibernateUtils.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeTV.class
+com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$3.class
 com\mycompany\qlthanhvien\UI\UI_Main$1$1.class
