@@ -56,12 +56,12 @@ public class DAL_ThongTinSuDung {
             List departments = session.createQuery(queryString).list();
             for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
                 ThongTinSuDung tv = (ThongTinSuDung) iterator.next();
-                System.out.print(" MaTT:" + tv.getMatt());
-                System.out.print("MaTV:" + tv.getMatv());
-                System.out.print(" MaTB:" + tv.getMatb());
-                System.out.print(" TGM:"+ tv.getTgmuon());
-                System.out.print(" TGT:" + tv.getTgtra());
-                System.out.println(" TGV:" + tv.getTgvao());
+                System.out.print(" MaTT:" + tv.getMaTT());
+                System.out.print("MaTV:" + tv.getMaTV());
+                System.out.print(" MaTB:" + tv.getMaTB());
+                System.out.print(" TGM:"+ tv.getTGMuon());
+                System.out.print(" TGT:" + tv.getTGTra());
+                System.out.println(" TGV:" + tv.getTGVao());
             }
             tx.commit();
             return true;
@@ -102,7 +102,7 @@ public class DAL_ThongTinSuDung {
         try {
             tx = session.beginTransaction();
             ThongTinSuDung d = (ThongTinSuDung) session.get(ThongTinSuDung.class, maTT);
-            d.setMatb(matb);
+            d.setMaTB(matb);
             session.update(d);
             tx.commit();
             return true;

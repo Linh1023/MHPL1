@@ -12,11 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
 
 /**
  *
  * @author Admin
  */
+@Data
 @Entity
 @Table(name = "ThongTinSuDung")
 public class ThongTinSuDung implements Serializable {
@@ -24,77 +26,26 @@ public class ThongTinSuDung implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaTT")
-    private int matt;
+    private int maTT;
     
-    private int matv;
+    private int maTV;
 
     private Integer maTB;
 
-    private Date tgvao;
+    private Date tGVao;
 
-    private Date tgmuon;
+    private Date tGMuon;
 
-    private Date tgtra;
+    private Date tGTra;
 
     public ThongTinSuDung() {
     }
 
-    public ThongTinSuDung( int matv, Integer maTB, Date tgvao, Date tgmuon, Date tgtra) {
-        this.matv = matv;
+    public ThongTinSuDung( int maTV, Integer maTB, Date tGVao, Date tGMuon, Date tGTra) {
+        this.maTV = maTV;
         this.maTB = maTB;
-        this.tgvao = tgvao;
-        this.tgmuon = tgmuon;
-        this.tgtra = tgtra;
-    }
-
-    public int getMatt() {
-        return matt;
-    }
-
-    public int getMatv() {
-        return matv;
-    }
-
-    public Integer getMatb() {
-        return maTB;
-    }
-
-    public Date getTgvao() {
-        return tgvao;
-    }
-
-    public Date getTgmuon() {
-        return tgmuon;
-    }
-
-    public Date getTgtra() {
-        return tgtra;
-    }
-
-    public void setMatt(int matt) {
-        this.matt = matt;
-    }
-
-    public void setMatv(int matv) {
-        this.matv = matv;
-    }
-
-    public void setMatb(Integer maTB) {
-        this.maTB = maTB;
-    }
-
-    public void setTgvao(Date tgvao) {
-        this.tgvao = tgvao;
-    }
-
-    public void setTgmuon(Date tgmuon) {
-        this.tgmuon = tgmuon;
-    }
-
-    public void setTgtra(Date tgtra) {
-        this.tgtra = tgtra;
-    }
-
-  
-
+        this.tGVao = tGVao;
+        this.tGMuon = tGMuon;
+        this.tGTra = tGTra;
+    }  
 }
