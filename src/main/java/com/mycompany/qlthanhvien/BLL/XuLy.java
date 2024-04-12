@@ -17,14 +17,36 @@ import javax.persistence.Table;
  *
  * @author Admin
  */
-public class XuLy {
+@Entity
+@Table(name = "XuLy")
+public class XuLy implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MaXL")
     private int maTV;
-    private String hoten;
-    private String khoa;
-    private String nganh;
-    private int sdt;
-    
-    public XuLy() {}
+
+    @Column(name = "MaTV")
+    private int maXL;
+
+    @Column(name = "HinhThucXL")
+    private String hinhThucSX;
+
+    @Column(name = "SoTien")
+    private int soTien;
+    @Column(name = "NgayXL")
+    private Date NgayXL;
+    @Column(name = "TrangThaiXL")
+    private int TrangThaiXL;
+
+    public XuLy(int maTV, int maXL, String hinhThucSX, int soTien, Date NgayXL, int TrangThaiXL) {
+        this.maTV = maTV;
+        this.maXL = maXL;
+        this.hinhThucSX = hinhThucSX;
+        this.soTien = soTien;
+        this.NgayXL = NgayXL;
+        this.TrangThaiXL = TrangThaiXL;
+    }
 
     public int getMaTV() {
         return maTV;
@@ -34,39 +56,44 @@ public class XuLy {
         this.maTV = maTV;
     }
 
-    public String getHoten() {
-        return hoten;
+    public int getMaXL() {
+        return maXL;
     }
 
-    public void setHoten(String hoten) {
-        this.hoten = hoten;
+    public void setMaXL(int maXL) {
+        this.maXL = maXL;
     }
 
-    public String getKhoa() {
-        return khoa;
+    public String getHinhThucSX() {
+        return hinhThucSX;
     }
 
-    public void setKhoa(String khoa) {
-        this.khoa = khoa;
+    public void setHinhThucSX(String hinhThucSX) {
+        this.hinhThucSX = hinhThucSX;
     }
 
-    public String getNganh() {
-        return nganh;
+    public int getSoTien() {
+        return soTien;
     }
 
-    public void setNganh(String nganh) {
-        this.nganh = nganh;
+    public void setSoTien(int soTien) {
+        this.soTien = soTien;
     }
 
-    public int getSdt() {
-        return sdt;
+    public Date getNgayXL() {
+        return NgayXL;
     }
 
-    public void setSdt(int sdt) {
-        this.sdt = sdt;
+    public void setNgayXL(Date NgayXL) {
+        this.NgayXL = NgayXL;
     }
 
-    
-    
-    
+    public int getTrangThaiXL() {
+        return TrangThaiXL;
+    }
+
+    public void setTrangThaiXL(int TrangThaiXL) {
+        this.TrangThaiXL = TrangThaiXL;
+    }
+
 }
