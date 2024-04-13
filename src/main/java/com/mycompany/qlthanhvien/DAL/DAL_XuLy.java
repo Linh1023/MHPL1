@@ -73,4 +73,13 @@ public class DAL_XuLy {
     {
         session.delete(obj);
     }
+    
+    public XuLy getXuLy(int XuLyId)
+            
+    {
+    
+        XuLy c =session.get( XuLy.class,XuLyId);
+        return c;
+    }
+    
 }
