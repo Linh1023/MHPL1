@@ -11,6 +11,7 @@ com\mycompany\qlthanhvien\BLL\BLL_ThongKe.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$7.class
 com\mycompany\qlthanhvien\DAL\DAL_ThietBi.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi.class
+com\mycompany\qlthanhvien\BLL\BLL_ImportExcel.class
 com\mycompany\qlthanhvien\UI\UI_JPN_XuLyViPham.class
 com\mycompany\qlthanhvien\BLL\XuLy.class
 com\mycompany\qlthanhvien\DAL\DAL_ThongTinSuDung.class

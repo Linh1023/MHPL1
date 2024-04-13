@@ -418,7 +418,33 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
         String matb = txtMaTB.getText();
         return blltb.updateThietBi(matb, tentb, mota);
     }
-
+    public static void showMessageDialog(String message, String title) {
+        showMessageDialog(message, title, "INFORMATION");
+    }
+    public static void showMessageDialog(String message, String title, String optionPane) {
+        int optionType;
+        switch (optionPane.toUpperCase()) {
+            case "INFORMATION":
+                optionType = JOptionPane.INFORMATION_MESSAGE;
+                break;
+            case "WARNING":
+                optionType = JOptionPane.WARNING_MESSAGE;
+                break;
+            case "ERROR":
+                optionType = JOptionPane.ERROR_MESSAGE;
+                break;
+            case "QUESTION":
+                optionType = JOptionPane.QUESTION_MESSAGE;
+                break;
+            case "PLAIN":
+                optionType = JOptionPane.PLAIN_MESSAGE;
+                break;
+            default:
+                optionType = JOptionPane.PLAIN_MESSAGE;
+                break;
+        }
+        JOptionPane.showMessageDialog(null, message, title, optionType);
+    }
     private boolean funcUIDelTB() {
         int rowIndex = TableTB.getSelectedRow();
         if (rowIndex >= 0) {

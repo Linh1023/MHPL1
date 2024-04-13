@@ -49,7 +49,17 @@ public class DAL_ThietBi {
     }
 
     public void updateThietBi(ThietBi tb) {
-        session.saveOrUpdate(tb);
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.merge(tb);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     public void deleteThietBi(ThietBi tb) {
