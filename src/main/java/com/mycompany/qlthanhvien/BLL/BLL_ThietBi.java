@@ -5,6 +5,7 @@
 package com.mycompany.qlthanhvien.BLL;
 
 import com.mycompany.qlthanhvien.DAL.DAL_ThietBi;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,9 +47,9 @@ public class BLL_ThietBi {
     public boolean deleteThietBi(String maTB) {
         if (isInteger(maTB)) {
             ThietBi tb = dal_TB.getThietBi(Integer.parseInt(maTB));
+            //đợi Dương làm thông tin sd 
             if (tb != null) {
-                dal_TB.deleteThietBi(tb);
-                return true;
+                return dal_TB.deleteThietBi(tb);
             }
         }
         return false;
@@ -64,5 +65,19 @@ public class BLL_ThietBi {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);
         return matcher.matches();
+    }
+
+    public boolean importExcel(ArrayList<ThietBi> danhsachThietBi) {
+        System.out.println("tới đây rồi");
+        int a = 0;
+        for (ThietBi thietBi : danhsachThietBi) {
+            dal_TB.mergeThietBi(thietBi);
+            System.out.println(a);
+            a++;
+        }
+        return true;
+    }
+    public boolean deletesThietBi(int i) {
+        return dal_TB.deleteThietBiStartingWith(i+"");
     }
 }

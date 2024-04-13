@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *
@@ -40,29 +41,104 @@ public class DAL_ThietBi {
     }
 
     public ThietBi getThietBi(int MaTB) {
-        ThietBi tb = session.get(ThietBi.class, MaTB);
+        ThietBi tb = null;
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            tb = session.get(ThietBi.class, MaTB);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
         return tb;
     }
 
     public void addThietBi(ThietBi tb) {
-        session.save(tb);
-    }
-
-    public void updateThietBi(ThietBi tb) {
-        Transaction tx = null;
+        Transaction transaction = null;
         try {
-            tx = session.beginTransaction();
-            session.merge(tb);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
+            transaction = session.beginTransaction();
+            session.save(tb);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
             }
             e.printStackTrace();
         }
     }
 
-    public void deleteThietBi(ThietBi tb) {
-        session.delete(tb);
+    public void updateThietBi(ThietBi tb) {
+        Transaction transaction = null;
+        try {
+            session.clear();
+            transaction = session.beginTransaction();
+            session.update(tb);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
+
+    public boolean mergeThietBi(ThietBi tb) {
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.merge(tb);
+            transaction.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteThietBi(ThietBi tb) {
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.delete(tb);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (e instanceof ConstraintViolationException) {
+                System.out.println("Không thể xóa ThietBi do có ràng buộc khóa ngoại: " + e.getMessage());
+            } else {
+                System.out.println("Lỗi xóa DAL ThietBi: " + e.getMessage());
+            }
+            if (tx != null ) {
+                tx.rollback();
+            }
+            return false;
+        }
+    }
+
+    public boolean deleteThietBiStartingWith(String prefix) {
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            session.createQuery("DELETE FROM ThietBi WHERE maTB LIKE :prefix")
+                    .setParameter("prefix", prefix + "%")
+                    .executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

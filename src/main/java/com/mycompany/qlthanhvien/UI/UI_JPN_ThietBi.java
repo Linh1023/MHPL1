@@ -7,8 +7,6 @@ package com.mycompany.qlthanhvien.UI;
 import com.mycompany.qlthanhvien.BLL.BLL_ThietBi;
 import com.mycompany.qlthanhvien.BLL.ThietBi;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,12 +15,16 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.persistence.PersistenceException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -74,6 +76,9 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jComBoBoxIdDel = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableTB = new javax.swing.JTable();
 
@@ -101,8 +106,8 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                    .addComponent(btnFind, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE))
+                    .addComponent(jTextField1)
+                    .addComponent(btnFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -218,10 +223,26 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
 
         jLabel1.setText("Thêm Nhiều Thiết Bị từ file excel");
 
-        jButton1.setText("Chọn FIle Excel");
+        jButton1.setText("Chọn File Excel");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Xóa Nhiều Theo Mã");
+
+        jButton2.setText("Xóa Nhiều");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jComBoBoxIdDel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1-Micro", "2-Máy chiếu", "3-Máy ảnh", "4-Cassette", "5-Tivi", "6-Quạt đứng" }));
+        jComBoBoxIdDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComBoBoxIdDelActionPerformed(evt);
             }
         });
 
@@ -231,19 +252,32 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jComBoBoxIdDel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(jComBoBoxIdDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -287,7 +321,7 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -342,16 +376,22 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
     private void btnDel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDel1ActionPerformed
         // TODO add your handling code here:
         funcUIRefreshTB();
-        txtMaTB.setEnabled(true);
-        txtMaTB.setText("");
-        txtTenTB.setText("");
-        txtMoTa.setText("");
     }//GEN-LAST:event_btnDel1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        funcUIAddTBS();
+        if (funcUIAddThietBiExcel())
+            funcUIRefreshTB();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (funcUIDelId())
+            funcUIRefreshTB();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComBoBoxIdDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComBoBoxIdDelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComBoBoxIdDelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -362,10 +402,13 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
     private javax.swing.JButton btnFind;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComBoBoxIdDel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -386,6 +429,10 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
     private void funcUIRefreshTB() {
         List<ThietBi> thietBiList = blltb.loadThietBi();
         loadtable(thietBiList);
+        txtMaTB.setEnabled(true);
+        txtMaTB.setText("");
+        txtTenTB.setText("");
+        txtMoTa.setText("");
     }
 
     private void loadtable(List list) {
@@ -409,19 +456,39 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
         String tentb = txtTenTB.getText();
         String mota = txtMoTa.getText();
         String matb = txtMaTB.getText();
-        return blltb.addThietBi(matb, tentb, mota);
+        try {
+            if (blltb.addThietBi(matb, tentb, mota)) {
+                showMessageDialog("Thêm Thành Công", "Thêm");
+                return true;
+            }
+        } catch (PersistenceException ex) {
+            ex.printStackTrace();
+            showMessageDialog("Không thể thêm hàng", "Lỗi");
+        }
+        return false;
     }
 
     private boolean funcUIUpdateTB() {
         String tentb = txtTenTB.getText();
         String mota = txtMoTa.getText();
         String matb = txtMaTB.getText();
-        return blltb.updateThietBi(matb, tentb, mota);
+        try {
+            if (blltb.updateThietBi(matb, tentb, mota)) {
+                showMessageDialog("Sửa Thành Công", "Thông Báo");
+                return true;
+            }
+        } catch (PersistenceException ex) {
+            ex.printStackTrace();
+            showMessageDialog("Không thể sửa hàng", "Lỗi");
+        }
+        return false;
     }
-    public static void showMessageDialog(String message, String title) {
+
+    public void showMessageDialog(String message, String title) {
         showMessageDialog(message, title, "INFORMATION");
     }
-    public static void showMessageDialog(String message, String title, String optionPane) {
+
+    public void showMessageDialog(String message, String title, String optionPane) {
         int optionType;
         switch (optionPane.toUpperCase()) {
             case "INFORMATION":
@@ -445,12 +512,23 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(null, message, title, optionType);
     }
+
     private boolean funcUIDelTB() {
         int rowIndex = TableTB.getSelectedRow();
         if (rowIndex >= 0) {
             String ma = TableTB.getValueAt(rowIndex, 0).toString();
-            if (blltb.deleteThietBi(ma)) {
-                return true;
+            String ten = TableTB.getValueAt(rowIndex, 1).toString();
+            int reply = JOptionPane.showConfirmDialog(null, "Bạn chắc chắn muốn xóa thiết bị '" + ten + "'", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (reply == JOptionPane.YES_OPTION)
+            try {
+
+                if (blltb.deleteThietBi(ma)) {
+                    showMessageDialog("Xóa Thành Công", "Thông Báo");
+                    return true;
+                }
+            } catch (PersistenceException ex) {
+                ex.printStackTrace();
+                showMessageDialog("Không thể xóa hàng này do có ràng buộc có khóa ngoại", "Lỗi");
             }
         }
         return false;
@@ -466,64 +544,95 @@ public class UI_JPN_ThietBi extends javax.swing.JPanel {
         }
     }
 
-    private void funcUIAddTBS() {
+    private boolean funcUIAddThietBiExcel() {
         JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Files", "xls", "xlsx");
         fileChooser.setFileFilter(filter);
 
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            selectSheet(selectedFile);
+            if (chooseSheet(selectedFile)) {
+                showMessageDialog("Import Thành Công", "Thành Công");
+                return true;
+            }
         }
+        return false;
     }
 
-    private void selectSheet(File file) {
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            Workbook workbook = WorkbookFactory.create(fis);
-
-            // Lấy danh sách các Sheet
-            int numberOfSheets = workbook.getNumberOfSheets();
-            String[] sheetNames = new String[numberOfSheets];
-            for (int i = 0; i < numberOfSheets; i++) {
+    public boolean chooseSheet(File file) {
+        try (
+                FileInputStream fis = new FileInputStream(file); XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
+            int numSheets = workbook.getNumberOfSheets();
+            String[] sheetNames = new String[numSheets];
+            for (int i = 0; i < numSheets; i++) {
                 sheetNames[i] = workbook.getSheetName(i);
             }
-
-            // Hiển thị danh sách Sheet cho người dùng
-            String selectedSheet = (String) JOptionPane.showInputDialog(
-                    this,
-                    "Chọn trang để import:",
-                    "Chọn trang",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    sheetNames,
-                    sheetNames[0]
-            );
-
-            // Import dữ liệu từ Sheet được chọn
+            String selectedSheet = (String) JOptionPane.showInputDialog(null, "Chọn sheet:", "Chọn Sheet",
+                    JOptionPane.QUESTION_MESSAGE, null, sheetNames, sheetNames[0]);
             if (selectedSheet != null) {
-                importExcelData(workbook.getSheet(selectedSheet));
+                if (readExcel(file, selectedSheet)) {
+                    return true;
+                }
             }
-
-            fis.close();
-            workbook.close();
-
-        } catch (IOException | EncryptedDocumentException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-    private void importExcelData(Sheet sheet) {
+    public boolean readExcel(File file, String sheetName) {
+        ArrayList<ThietBi> danhsachThietBi = new ArrayList();
+        try (FileInputStream fis = new FileInputStream(file); Workbook workbook = new XSSFWorkbook(fis)) {
+            Sheet sheet = workbook.getSheet(sheetName);
+            boolean firstRow = true; // Biến đánh dấu dòng đầu tiên
+            for (Row row : sheet) {
+                if (firstRow) {
+                    firstRow = false;
+                    continue; // Bỏ qua dòng đầu tiên
+                }
+                if (isRowEmpty(row)) {
+                    continue; // Bỏ qua dòng rỗng
+                }
+                ThietBi tb = new ThietBi();
+                int cellIndex = 0;
+                for (Cell cell : row) {
 
-        for (Row row : sheet) {
-            if(row.getCell(0)!=null)continue;
-            for (Cell cell : row) {
-                System.out.print(cell.toString() + "\t");
+                    if (cellIndex == 0) {
+                        double textString = cell.getNumericCellValue();
+                        int demo = (int) textString;
+                        tb.setMaTB(demo);
+                    }
+                    if (cellIndex == 1) {
+                        tb.setTenTB(cell.getStringCellValue());
+                    }
+                    if (cellIndex == 2) {
+                        tb.setMoTaTB(cell.getStringCellValue());
+                    }
+                    cellIndex++;
+                }
+                danhsachThietBi.add(tb);
             }
-            System.out.println();
-        }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return blltb.importExcel(danhsachThietBi);
     }
 
+    public boolean isRowEmpty(Row row) {
+        for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
+            Cell cell = row.getCell(cellNum);
+            if (cell != null && cell.getCellType() != CellType.BLANK) {
+                return false; // Dòng không rỗng
+            }
+        }
+        return true;
+    }
+    public boolean funcUIDelId(){
+        int selectedIndex = jComBoBoxIdDel.getSelectedIndex();
+        //các giá trị index bắt đầu từ 0
+        return blltb.deletesThietBi((selectedIndex+1));
+    }
 }
