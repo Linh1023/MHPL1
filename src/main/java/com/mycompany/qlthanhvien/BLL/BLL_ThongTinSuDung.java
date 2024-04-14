@@ -36,20 +36,4 @@ public class BLL_ThongTinSuDung {
      public ArrayList<ThongTinSuDung> listThongTinSuDung() {
          return dAL_ThongTinSuDung.listThongTinSuDung();
      }
-    
-    
-     public static void main(String[] args) {
-        BLL_ThongTinSuDung bLL_ThongTinSuDung = new BLL_ThongTinSuDung();
-        ArrayList<ThongTinSuDung> arrayList =  new ArrayList<ThongTinSuDung>();
-        arrayList = bLL_ThongTinSuDung.listThongTinSuDung();
-        for (int i = 0; i<arrayList.size() ; i++)
-        {
-            System.out.println(arrayList.get(i).getMaTT());
-        }
-    }
-    
-    
-    
-    
-    
 }
