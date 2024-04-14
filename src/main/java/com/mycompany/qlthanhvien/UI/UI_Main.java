@@ -132,10 +132,12 @@ public class UI_Main extends javax.swing.JFrame {
                 UI_JPN_ThietBi jPN_ThietBi = new UI_JPN_ThietBi();
                 UI_JPN_ThongKe jPN_ThongKe = new UI_JPN_ThongKe();
                 UI_JPN_XuLyViPham jPN_XuLyViPham = new UI_JPN_XuLyViPham();
+                UI_JPN_ThongTinSD  jPN_ThongTinSD = new UI_JPN_ThongTinSD();
                 jTabbedPane1.addTab("Quản Lý Thành Viên", jPN_ThanhVien);
                 jTabbedPane1.addTab("Quản Lý Thiết Bị", jPN_ThietBi);
                 jTabbedPane1.addTab("Thống Kê", jPN_ThongKe);
                 jTabbedPane1.addTab("Xử Lý Vi Phạm", jPN_XuLyViPham);
+                jTabbedPane1.addTab("Thông tin sử dụng", jPN_ThongTinSD);
                 jTabbedPane1.setUI(new BasicTabbedPaneUI() {
                     @Override
                     protected int calculateTabHeight(int tabPlacement, int tabIndex, int fontHeight) {
