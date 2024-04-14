@@ -18,7 +18,7 @@ import lombok.Data;
  * @author Admin
  */
 @Data
-//@Entity
+@Entity
 @Table(name = "Thanhvien")
 public class ThanhVien implements Serializable{
     
