@@ -327,6 +327,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_tGMuon">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_choMuon">
           <Properties>
@@ -416,6 +419,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n th&#xe0;nh vi&#xea;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutton_maTVActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_hoTen">
               <Properties>
@@ -495,6 +501,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n thi&#x1ebf;t b&#x1ecb;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -596,6 +605,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_tGTra">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>

@@ -4,6 +4,11 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import com.mycompany.qlthanhvien.BLL.BLL_ThongTinSD;
+import com.mycompany.qlthanhvien.BLL.ThongTinSD;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC
@@ -13,8 +18,22 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     /**
      * Creates new form UI_ThongTinSuDung
      */
+    private BLL_ThongTinSD bLL_ThongTinSD;
+    
     public UI_JPN_ThongTinSD() {
         initComponents();
+        bLL_ThongTinSD = new BLL_ThongTinSD();
+         loadThongtinSDTable();
+    }
+    
+    public void  loadThongtinSDTable () {
+          List<ThongTinSD> thongTinSDs = bLL_ThongTinSD.getThongTinSD();
+          Object[][] objectses;
+          objectses = bLL_ThongTinSD.convertListThongTinSD(thongTinSDs);
+          String[] title = {"MaTT", "Mã thành viên", "Tên thành viên", "Mã thiết bị",
+              "Tên thiết bị", "Thời gian mượn", "Thời gian trả", "Trạng thái"};
+          DefaultTableModel model = new DefaultTableModel(objectses, title);
+          jTable_muonTra.setModel(model);
     }
 
     /**
@@ -109,6 +128,8 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
 
         jLabel7.setText("Thời gian mượn :");
 
+        jTextField_tGMuon.setEditable(false);
+
         jButton_choMuon.setText("Cho mượn");
         jButton_choMuon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +150,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jTextField_maTV.setText("3121410129");
 
         jbutton_maTV.setText("Chọn thành viên");
+        jbutton_maTV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutton_maTVActionPerformed(evt);
+            }
+        });
 
         jTextField_hoTen.setEditable(false);
         jTextField_hoTen.setText("Nguyễn Văn A");
@@ -175,6 +201,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jTextField_maTB.setText("5");
 
         jButton1.setText("Chọn thiết bị");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Tên thiết bị :");
 
@@ -283,6 +314,8 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel8.setText("Cập nhật trạng thái");
 
         jLabel12.setText("Thời gian trả :");
+
+        jTextField_tGTra.setEditable(false);
 
         jLabel13.setText("Trạng thái :");
 
@@ -411,6 +444,25 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     private void jButton_choMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_choMuonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_choMuonActionPerformed
+
+    private void jbutton_maTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_maTVActionPerformed
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UI_JFR_ChonTV().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jbutton_maTVActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UI_JRF_ChonTB().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

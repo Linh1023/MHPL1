@@ -12,50 +12,51 @@ public class DAL_ThongTinSD {
     private Session session;
     
     public DAL_ThongTinSD (){
-         this.session = HibernateUtils.getSessionFactory().openSession();
-         this.session.beginTransaction();
-          
+         session = HibernateUtils.getSessionFactory().openSession();
     }
    
-     public List getThongTinSD() {
+     public List<ThongTinSD> getThongTinSD() {
          
          List<ThongTinSD> thongTinSDs;
-         this.session.beginTransaction();
+         session.beginTransaction();
         thongTinSDs = this.session.createQuery("FROM ThongTinSD WHERE  MaTB is not NULL").list();
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
         return thongTinSDs;
     }
      
     public void addThongTinSD(ThongTinSD thongTinSD)
     {
-        this.session.save(thongTinSD);   
-         this.session.getTransaction().commit();
+        session.beginTransaction();
+        session.save(thongTinSD);   
+        session.getTransaction().commit();
         
     }
     public void updateThongTinSD(ThongTinSD thongTinSD)
     {
-        this.session.update(thongTinSD);
-        this.session.getTransaction().commit();
+       session.beginTransaction();
+       session.update(thongTinSD);
+       session.getTransaction().commit();
     }
     public void deleteThongTinSD(ThongTinSD thongTinSD)
     {
+        session.beginTransaction();
         session.delete(thongTinSD);
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
     }
      
-     public static void main(String[] args) {
-        DAL_ThongTinSD dAL_ThongTinSD = new DAL_ThongTinSD();
-        ThongTinSD thongTinSD = new ThongTinSD();
-//        thongTinSD.setMaTT(2);
-        thongTinSD.setMaTV(1123330257);
-        
-        
-        dAL_ThongTinSD.addThongTinSD(thongTinSD);
-            
-        List<ThongTinSD> thongTinSDs = dAL_ThongTinSD.getThongTinSD();
-        for (int i =  0; i<thongTinSDs.size(); i++) {
-            System.out.println(thongTinSDs.get(i).getThanhVien().getMaTV());
-            System.out.println(thongTinSDs.get(i).getThietBi().getMaTB());
-        }
-    }
+//     public static void main(String[] args) {
+//        DAL_ThongTinSD dAL_ThongTinSD = new DAL_ThongTinSD();
+////        ThongTinSD thongTinSD = new ThongTinSD();
+////        
+////        thongTinSD.setMaTV(1123330257);
+////        
+////        
+////        dAL_ThongTinSD.addThongTinSD(thongTinSD);
+//            
+//        List<ThongTinSD> thongTinSDs = dAL_ThongTinSD.getThongTinSD();
+//        for (int i =  0; i<thongTinSDs.size(); i++) {
+//            System.out.println(thongTinSDs.get(i).getMaTV());
+//            System.out.println(thongTinSDs.get(i).getThietBi().getMaTB());
+//        }
+//    }
 }
