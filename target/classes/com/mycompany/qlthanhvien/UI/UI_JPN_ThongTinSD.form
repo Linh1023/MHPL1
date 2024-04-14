@@ -132,15 +132,31 @@
         <Component class="javax.swing.JTable" name="jTable_muonTra">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="8" rowCount="0">
-                <Column editable="true" title="MaTT" type="java.lang.Object"/>
-                <Column editable="true" title="M&#xe3; Th&#xe0;nh vi&#xea;n" type="java.lang.Object"/>
-                <Column editable="true" title="T&#xea;n th&#xe0;nh vi&#xea;n" type="java.lang.Object"/>
-                <Column editable="true" title="M&#xe3; Thi&#x1ebf;t b&#x1ecb;" type="java.lang.Object"/>
-                <Column editable="true" title="T&#xea;n Thi&#x1ebf;t b&#x1ecb;" type="java.lang.Object"/>
-                <Column editable="true" title="TG M&#x1b0;&#x1ee3;n" type="java.lang.Object"/>
-                <Column editable="true" title="TG Tr&#x1ea3;" type="java.lang.Object"/>
-                <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
+              <Table columnCount="8" rowCount="1">
+                <Column editable="true" title="MaTT" type="java.lang.Object">
+                  <Data value="5"/>
+                </Column>
+                <Column editable="true" title="M&#xe3; Th&#xe0;nh vi&#xea;n" type="java.lang.Object">
+                  <Data value="3121410129"/>
+                </Column>
+                <Column editable="true" title="T&#xea;n th&#xe0;nh vi&#xea;n" type="java.lang.Object">
+                  <Data value="Nguy&#x1ec5;n V&#x103;n C"/>
+                </Column>
+                <Column editable="true" title="M&#xe3; Thi&#x1ebf;t b&#x1ecb;" type="java.lang.Object">
+                  <Data value="55"/>
+                </Column>
+                <Column editable="true" title="T&#xea;n Thi&#x1ebf;t b&#x1ecb;" type="java.lang.Object">
+                  <Data value="M&#xe1;y qu&#x1ea1;t"/>
+                </Column>
+                <Column editable="true" title="TG M&#x1b0;&#x1ee3;n" type="java.lang.Object">
+                  <Data value="3/5/24 8:50"/>
+                </Column>
+                <Column editable="true" title="TG Tr&#x1ea3;" type="java.lang.Object">
+                  <Data value="4/7/24 8:50"/>
+                </Column>
+                <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object">
+                  <Data value="&#x110;&#xe3; tr&#x1ea3;"/>
+                </Column>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -311,9 +327,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_tGMuon">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_choMuon">
           <Properties>
@@ -396,20 +409,18 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_maTV">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="3121410129"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jbutton_maTV">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n th&#xe0;nh vi&#xea;n"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutton_maTVActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_hoTen">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="Nguy&#x1ec5;n V&#x103;n A"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
@@ -477,16 +488,13 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_maTB">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="5"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n thi&#x1ebf;t b&#x1ecb;"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -496,6 +504,7 @@
             <Component class="javax.swing.JTextField" name="jTextField_tenTB">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="M&#xe1;y qu&#x1ea1;t"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -587,9 +596,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_tGTra">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>

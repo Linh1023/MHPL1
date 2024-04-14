@@ -4,8 +4,11 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import com.mycompany.qlthanhvien.BLL.BLL_ThietBi;
+import com.mycompany.qlthanhvien.BLL.ThietBi;
 import javax.swing.JFrame;
-
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author PC
@@ -15,11 +18,26 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
     /**
      * Creates new form UI_JRF_ChonTB
      */
+    private BLL_ThietBi bLL_ThietBi;
     public UI_JRF_ChonTB() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+         bLL_ThietBi =  new BLL_ThietBi();
+         loadThietBiTable();
     }
+    
+    
+    public void loadThietBiTable () {
+        List<ThietBi> thietBis = bLL_ThietBi.loadThietBi();
+        DefaultTableModel  model = (DefaultTableModel) jTable_TB.getModel();
+         model.setRowCount(0);
+         for (int i = 0; i<thietBis.size(); i ++ ) {
+            Object[] row = {thietBis.get(i).getMaTB(),thietBis.get(i).getTenTB(), thietBis.get(i).getMoTaTB()};
+              model.addRow(row);
+            }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,15 +79,23 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
 
         jTable_TB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã  thiết bị", "Tên thiết bị", "Mô tả"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable_TB);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

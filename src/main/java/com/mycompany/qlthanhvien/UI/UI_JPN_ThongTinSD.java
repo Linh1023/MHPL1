@@ -103,7 +103,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
 
         jTable_muonTra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"5", "3121410129", "Nguyễn Văn C", "55", "Máy quạt", "3/5/24 8:50", "4/7/24 8:50", "Đã trả"}
+
             },
             new String [] {
                 "MaTT", "Mã Thành viên", "Tên thành viên", "Mã Thiết bị", "Tên Thiết bị", "TG Mượn", "TG Trả", "Trạng thái"
@@ -147,7 +147,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
 
         jLabel5.setText("Mã thành viên :");
 
-        jTextField_maTV.setText("3121410129");
+        jTextField_maTV.setEditable(false);
 
         jbutton_maTV.setText("Chọn thành viên");
         jbutton_maTV.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +157,6 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         });
 
         jTextField_hoTen.setEditable(false);
-        jTextField_hoTen.setText("Nguyễn Văn A");
 
         jLabel9.setText("Tên thành viên :");
 
@@ -198,7 +197,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
 
         jLabel6.setText("Mã thiết bị :");
 
-        jTextField_maTB.setText("5");
+        jTextField_maTB.setEditable(false);
 
         jButton1.setText("Chọn thiết bị");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +209,6 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel10.setText("Tên thiết bị :");
 
         jTextField_tenTB.setEditable(false);
-        jTextField_tenTB.setText("Máy quạt");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

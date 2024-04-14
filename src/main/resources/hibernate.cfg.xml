@@ -25,8 +25,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <!--<property name="hibernate.format_sql">true</property>-->
 
 
-<!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThanhVien" />-->
+        <mapping class="com.mycompany.qlthanhvien.BLL.ThanhVien" />
         <mapping class="com.mycompany.qlthanhvien.BLL.ThietBi" />
+        <mapping class="com.mycompany.qlthanhvien.BLL.ThongTinSD" />
 <!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThongKe" />
         <mapping class="com.mycompany.qlthanhvien.BLL.XuLy" />-->
 
