@@ -8,12 +8,12 @@ package com.mycompany.qlthanhvien.UI;
  *
  * @author PC
  */
-public class UI_ThongTinSuDung extends javax.swing.JPanel {
+public class UI_JPN_ThongTinSuDung extends javax.swing.JPanel {
 
     /**
      * Creates new form UI_ThongTinSuDung
      */
-    public UI_ThongTinSuDung() {
+    public UI_JPN_ThongTinSuDung() {
         initComponents();
     }
 

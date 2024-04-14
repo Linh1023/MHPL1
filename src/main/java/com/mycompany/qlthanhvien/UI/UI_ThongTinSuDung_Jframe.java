@@ -20,7 +20,7 @@ public class UI_ThongTinSuDung_Jframe extends javax.swing.JFrame {
         setSize(1000,750);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        UI_ThongTinSuDung uI_ThongTinSuDung = new UI_ThongTinSuDung();
+        UI_JPN_ThongTinSuDung uI_ThongTinSuDung = new UI_JPN_ThongTinSuDung();
         getContentPane().add(uI_ThongTinSuDung);
         setVisible(true);
     }

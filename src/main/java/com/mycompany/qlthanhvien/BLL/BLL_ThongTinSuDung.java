@@ -44,7 +44,7 @@ public class BLL_ThongTinSuDung {
         arrayList = bLL_ThongTinSuDung.listThongTinSuDung();
         for (int i = 0; i<arrayList.size() ; i++)
         {
-            System.out.println(arrayList.get(i).getMatt());
+            System.out.println(arrayList.get(i).getMaTT());
         }
     }
     

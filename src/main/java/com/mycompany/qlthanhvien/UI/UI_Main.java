@@ -51,7 +51,7 @@ public class UI_Main extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel2.setPreferredSize(new java.awt.Dimension(7, 700));
@@ -74,7 +74,7 @@ public class UI_Main extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -88,9 +88,9 @@ public class UI_Main extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -132,10 +132,12 @@ public class UI_Main extends javax.swing.JFrame {
                 UI_JPN_ThietBi jPN_ThietBi = new UI_JPN_ThietBi();
                 UI_JPN_ThongKe jPN_ThongKe = new UI_JPN_ThongKe();
                 UI_JPN_XuLyViPham jPN_XuLyViPham = new UI_JPN_XuLyViPham();
+                UI_JPN_ThongTinSuDung jPN_ThongTinSuDung=new UI_JPN_ThongTinSuDung();
                 jTabbedPane1.addTab("Quản Lý Thành Viên", jPN_ThanhVien);
                 jTabbedPane1.addTab("Quản Lý Thiết Bị", jPN_ThietBi);
                 jTabbedPane1.addTab("Thống Kê", jPN_ThongKe);
                 jTabbedPane1.addTab("Xử Lý Vi Phạm", jPN_XuLyViPham);
+                jTabbedPane1.addTab("Thông Tin Sử Dụng", jPN_ThongTinSuDung);
                 jTabbedPane1.setUI(new BasicTabbedPaneUI() {
                     @Override
                     protected int calculateTabHeight(int tabPlacement, int tabIndex, int fontHeight) {

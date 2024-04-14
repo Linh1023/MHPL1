@@ -27,56 +27,6 @@ public class DAL_ThongTinSuDung {
         this.factory = factory;
     }
 
-    public static void main(String[] args) {
-        SessionFactory factory = null;
-        try {
-            factory = new Configuration().configure().buildSessionFactory();
-        } catch (HibernateException ex) {
-            ex.printStackTrace();
-        }
-        if (factory != null) {
-            DAL_ThongTinSuDung hb = new DAL_ThongTinSuDung(factory);
-//            Date date=new Date();
-//            hb.listThongTinSuDung();
-//            hb.addThongTinSuDung(1120150184, 1000002, date,  date,  date);
-//            hb.updateThongTinSuDung(3, 1000001);
-//            hb.listThongTinSuDung();
-//            hb.deleteThongTinSuDung(3);
-            hb.listThongTinSuDung();
-        } else {
-            System.out.println("Failed to initialize SessionFactory.");
-        }
-    }
-
-//    public boolean listThongTinSuDung() {
-//        Session session = factory.openSession();
-//        Transaction tx = null;
-//        try {
-//            tx = session.beginTransaction();
-//            String queryString = "FROM ThongTinSuDung"; // Đảm bảo sử dụng tên entity chính xác (chữ hoa/chữ thường)
-//            List departments = session.createQuery(queryString).list();
-//            for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
-//                ThongTinSuDung tv = (ThongTinSuDung) iterator.next();
-//                System.out.print(" MaTT:" + tv.getMatt());
-//                System.out.print("MaTV:" + tv.getMatv());
-//                System.out.print(" MaTB:" + tv.getMatb());
-//                System.out.print(" TGM:"+ tv.getTgmuon());
-//                System.out.print(" TGT:" + tv.getTgtra());
-//                System.out.println(" TGV:" + tv.getTgvao());
-//            }
-//            tx.commit();
-//            return true;
-//        } catch (HibernateException e) {
-//            if (tx != null) {
-//                tx.rollback();
-//            }
-//            e.printStackTrace();
-//            return false;
-//        } finally {
-//            session.close();
-//        }
-//    }
-    
      public ArrayList<ThongTinSuDung> listThongTinSuDung() {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -88,13 +38,6 @@ public class DAL_ThongTinSuDung {
             for (Iterator iterator = departments.iterator(); iterator.hasNext();) {
                 ThongTinSuDung thongTinSuDung = (ThongTinSuDung) iterator.next();
                 arrayListTTSD.add(thongTinSuDung);
-                
-//                System.out.print(" MaTT:" + tv.getMatt());
-//                System.out.print("MaTV:" + tv.getMatv());
-//                System.out.print(" MaTB:" + tv.getMatb());
-//                System.out.print(" TGM:"+ tv.getTgmuon());
-//                System.out.print(" TGT:" + tv.getTgtra());
-//                System.out.println(" TGV:" + tv.getTgvao());
             }
             tx.commit();
             return arrayListTTSD;
@@ -135,7 +78,7 @@ public class DAL_ThongTinSuDung {
         try {
             tx = session.beginTransaction();
             ThongTinSuDung d = (ThongTinSuDung) session.get(ThongTinSuDung.class, maTT);
-            d.setMatb(matb);
+            d.setMaTB(matb);
             session.update(d);
             tx.commit();
             return true;
