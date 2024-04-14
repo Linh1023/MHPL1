@@ -19,18 +19,20 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
      * Creates new form UI_JRF_ChonTB
      */
     private BLL_ThietBi bLL_ThietBi;
+    private DefaultTableModel  model;
     public UI_JRF_ChonTB() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
          bLL_ThietBi =  new BLL_ThietBi();
          loadThietBiTable();
+        
     }
     
     
     public void loadThietBiTable () {
         List<ThietBi> thietBis = bLL_ThietBi.loadThietBi();
-        DefaultTableModel  model = (DefaultTableModel) jTable_TB.getModel();
+         model = (DefaultTableModel) jTable_TB.getModel();
          model.setRowCount(0);
          for (int i = 0; i<thietBis.size(); i ++ ) {
             Object[] row = {thietBis.get(i).getMaTB(),thietBis.get(i).getTenTB(), thietBis.get(i).getMoTaTB()};
@@ -96,6 +98,11 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable_TB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_TBMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_TB);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,6 +156,17 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
     private void jTextField_timKiemTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_timKiemTBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_timKiemTBActionPerformed
+
+    private void jTable_TBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_TBMouseClicked
+         
+        
+        int index = jTable_TB.getSelectedRow();
+        model = (DefaultTableModel) jTable_TB.getModel();
+        UI_JPN_ThongTinSD.jTextField_maTB.setText(model.getValueAt(index, 0)+"");
+        UI_JPN_ThongTinSD.jTextField_tenTB.setText(model.getValueAt(index, 1)+"");
+        this.dispose();
+        
+    }//GEN-LAST:event_jTable_TBMouseClicked
 
     /**
      * @param args the command line arguments

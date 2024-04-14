@@ -45,4 +45,24 @@ public class BLL_ThongTinSD {
          return objectses;
     }
     
+    public void addThongTinSD(ThongTinSD thongTinSD)
+    {
+       
+        dAL_ThongTinSD.addThongTinSD(thongTinSD);   
+        
+        
+    }
+    public void updateThongTinSD(ThongTinSD thongTinSD)
+    {
+       
+       dAL_ThongTinSD.updateThongTinSD(thongTinSD);
+       
+    }
+    public void deleteThongTinSD(ThongTinSD thongTinSD)
+    {
+       
+        dAL_ThongTinSD.deleteThongTinSD(thongTinSD);
+   
+    }
+    
 }

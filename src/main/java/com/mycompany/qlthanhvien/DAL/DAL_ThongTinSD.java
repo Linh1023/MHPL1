@@ -34,7 +34,7 @@ public class DAL_ThongTinSD {
     public void updateThongTinSD(ThongTinSD thongTinSD)
     {
        session.beginTransaction();
-       session.update(thongTinSD);
+       session.merge(thongTinSD);
        session.getTransaction().commit();
     }
     public void deleteThongTinSD(ThongTinSD thongTinSD)

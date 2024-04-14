@@ -3,10 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.qlthanhvien.UI;
-
+import com.google.protobuf.Message;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.ParseException;
 import com.mycompany.qlthanhvien.BLL.BLL_ThongTinSD;
 import com.mycompany.qlthanhvien.BLL.ThongTinSD;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +24,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
      * Creates new form UI_ThongTinSuDung
      */
     private BLL_ThongTinSD bLL_ThongTinSD;
+     DefaultTableModel model;
     
     public UI_JPN_ThongTinSD() {
         initComponents();
@@ -27,12 +33,13 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     }
     
     public void  loadThongtinSDTable () {
+          bLL_ThongTinSD = new BLL_ThongTinSD();
           List<ThongTinSD> thongTinSDs = bLL_ThongTinSD.getThongTinSD();
           Object[][] objectses;
           objectses = bLL_ThongTinSD.convertListThongTinSD(thongTinSDs);
           String[] title = {"MaTT", "Mã thành viên", "Tên thành viên", "Mã thiết bị",
               "Tên thiết bị", "Thời gian mượn", "Thời gian trả", "Trạng thái"};
-          DefaultTableModel model = new DefaultTableModel(objectses, title);
+          model = new DefaultTableModel(objectses, title);
           jTable_muonTra.setModel(model);
     }
 
@@ -80,9 +87,8 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jTextField_tGTra = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jButton_capNhat_tra = new javax.swing.JButton();
+        jRadioButton_dangMuon = new javax.swing.JRadioButton();
+        jRadioButton_daTra = new javax.swing.JRadioButton();
         jButton_lamMoi_timKiem = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
@@ -109,6 +115,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
                 "MaTT", "Mã Thành viên", "Tên thành viên", "Mã Thiết bị", "Tên Thiết bị", "TG Mượn", "TG Trả", "Trạng thái"
             }
         ));
+        jTable_muonTra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_muonTraMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_muonTra);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -119,7 +130,6 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel4.setText("Mã thông tin :");
 
         jTextField_maTT_muon.setEditable(false);
-        jTextField_maTT_muon.setText("55");
         jTextField_maTT_muon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_maTT_muonActionPerformed(evt);
@@ -138,10 +148,25 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         });
 
         jButton_capNhat_muon.setText("Cập nhật");
+        jButton_capNhat_muon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_capNhat_muonActionPerformed(evt);
+            }
+        });
 
         jButton_xoa.setText("Xóa");
+        jButton_xoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_xoaActionPerformed(evt);
+            }
+        });
 
         jButton_lamMoi_muonTB.setText("Làm mới");
+        jButton_lamMoi_muonTB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_lamMoi_muonTBActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -317,13 +342,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
 
         jLabel13.setText("Trạng thái :");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Đang mượn");
+        buttonGroup1.add(jRadioButton_dangMuon);
+        jRadioButton_dangMuon.setText("Đang mượn");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Đã trả");
-
-        jButton_capNhat_tra.setText("Cập nhật");
+        buttonGroup1.add(jRadioButton_daTra);
+        jRadioButton_daTra.setText("Đã trả");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -343,17 +366,12 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
-                                .addGap(94, 94, 94))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton_capNhat_tra)
-                                .addContainerGap())))))
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton_dangMuon)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton_daTra)
+                        .addGap(94, 94, 94))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,18 +381,21 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(jRadioButton_dangMuon)
+                    .addComponent(jRadioButton_daTra))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextField_tGTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton_capNhat_tra)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jButton_lamMoi_timKiem.setText("Làm mới");
+        jButton_lamMoi_timKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_lamMoi_timKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -444,30 +465,144 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton_choMuonActionPerformed
 
     private void jbutton_maTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_maTVActionPerformed
-
-        /* Create and display the form */
+       
+            /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UI_JFR_ChonTV().setVisible(true);
             }
         });
+        
+        
     }//GEN-LAST:event_jbutton_maTVActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         /* Create and display the form */
+         
+             /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UI_JRF_ChonTB().setVisible(true);
             }
         });
+          
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable_muonTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_muonTraMouseClicked
+        int index = jTable_muonTra.getSelectedRow();
+        model = (DefaultTableModel) jTable_muonTra.getModel();
+        
+        jTextField_maTT_muon.setText(model.getValueAt(index, 0)+"");
+        jTextField_maTV.setText(model.getValueAt(index, 1)+"");
+        jTextField_hoTen.setText(model.getValueAt(index, 2)+"");
+        jTextField_maTB.setText(model.getValueAt(index, 3)+"");
+        jTextField_tenTB.setText(model.getValueAt(index, 4)+"");
+        jTextField_tGMuon.setText(model.getValueAt(index, 5)+"");
+        jTextField_tGTra.setText(model.getValueAt(index, 6)+"");
+        if (model.getValueAt(index, 6)==null) {
+            System.out.println("Đang mượn");
+            jRadioButton_dangMuon.setSelected(true);
+        } else {
+            System.out.println("Đã trả");
+            jRadioButton_daTra.setSelected(true);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jTable_muonTraMouseClicked
+
+    public void reset () {
+        loadThongtinSDTable();
+        jTextField_maTT_muon.setText("");
+        jTextField_maTV.setText("");
+        jTextField_hoTen.setText("");
+        jTextField_maTB.setText("");
+        jTextField_tenTB.setText("");
+        jTextField_tGTra.setText("");
+        jTextField_tGMuon.setText("");
+        
+    }
+    
+    private void jButton_capNhat_muonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_capNhat_muonActionPerformed
+        
+        try {
+            ThongTinSD thongTinSD = new ThongTinSD();
+            int maTT = Integer.parseInt(jTextField_maTT_muon.getText());
+            int maTV = Integer.parseInt(jTextField_maTV.getText());
+            Integer maTB =  Integer.parseInt(jTextField_maTB.getText());
+        
+            String tGMuonText = jTextField_tGMuon.getText();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+            Date tGMuon = sdf.parse(tGMuonText);
+            
+            Date tGTra;
+            String tGTraText = jTextField_tGTra.getText();
+            if (tGTraText.equals("null") == false)  // trả rồi
+            {
+                if (jRadioButton_dangMuon.isSelected() == true) { // click vào chưa trả
+                     tGTra = null;
+                } else { // không  click vào chưa trả
+                    tGTra = sdf.parse(tGTraText);
+                } 
+            } else // chưa trả 
+            {
+                  if (jRadioButton_daTra.isSelected() == true) // click vao đã trả
+                  {
+                      tGTra = new Date();
+                  }  else { // không click vào đã trả
+                      tGTra = null;
+                  }
+                  
+            }
+            
+            thongTinSD.setMaTT(maTT);
+            thongTinSD.setMaTV(maTV);
+            thongTinSD.setMaTB(maTB);
+            thongTinSD.setTGMuon(tGMuon);
+            thongTinSD.setTGTra(tGTra);
+            
+            bLL_ThongTinSD.updateThongTinSD(thongTinSD);
+            JOptionPane.showMessageDialog(this,"Sửa thành công !");
+
+           
+            reset();
+            
+            
+        } catch (ParseException e) {
+            System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
+        }
+        
+
+        
+    }//GEN-LAST:event_jButton_capNhat_muonActionPerformed
+
+    private void jButton_lamMoi_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_lamMoi_timKiemActionPerformed
+     loadThongtinSDTable();
+    }//GEN-LAST:event_jButton_lamMoi_timKiemActionPerformed
+
+    private void jButton_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_xoaActionPerformed
+        bLL_ThongTinSD = new BLL_ThongTinSD();
+        ThongTinSD thongTinSD = new ThongTinSD();
+        int maTT = Integer.parseInt(jTextField_maTT_muon.getText());
+        thongTinSD.setMaTT(maTT);
+        bLL_ThongTinSD.deleteThongTinSD(thongTinSD);
+         JOptionPane.showMessageDialog(this,"Xóa thành công !");
+
+            reset();
+            
+        
+    }//GEN-LAST:event_jButton_xoaActionPerformed
+
+    private void jButton_lamMoi_muonTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_lamMoi_muonTBActionPerformed
+       reset();
+    }//GEN-LAST:event_jButton_lamMoi_muonTBActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_capNhat_muon;
-    private javax.swing.JButton jButton_capNhat_tra;
     private javax.swing.JButton jButton_choMuon;
     private javax.swing.JButton jButton_lamMoi_muonTB;
     private javax.swing.JButton jButton_lamMoi_timKiem;
@@ -490,17 +625,17 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton_daTra;
+    private javax.swing.JRadioButton jRadioButton_dangMuon;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_muonTra;
     private javax.swing.JTextField jTextField_hoTen;
-    private javax.swing.JTextField jTextField_maTB;
+    public static javax.swing.JTextField jTextField_maTB;
     private javax.swing.JTextField jTextField_maTT_muon;
     private javax.swing.JTextField jTextField_maTV;
     private javax.swing.JTextField jTextField_tGMuon;
     private javax.swing.JTextField jTextField_tGTra;
-    private javax.swing.JTextField jTextField_tenTB;
+    public static javax.swing.JTextField jTextField_tenTB;
     private javax.swing.JTextField jTextField_timKiem;
     private javax.swing.JButton jbutton_maTV;
     // End of variables declaration//GEN-END:variables
