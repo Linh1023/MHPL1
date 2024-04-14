@@ -77,7 +77,12 @@ public class BLL_ThietBi {
         }
         return true;
     }
+
     public boolean deletesThietBi(int i) {
-        return dal_TB.deleteThietBiStartingWith(i+"");
+        return dal_TB.deleteThietBiStartingWith(i + "");
+    }
+
+    public List<ThietBi> findThietBi(int pos,String value) {
+        return dal_TB.findThietBi(pos,value);
     }
 }

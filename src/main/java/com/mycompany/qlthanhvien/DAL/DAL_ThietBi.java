@@ -10,6 +10,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -115,7 +116,7 @@ public class DAL_ThietBi {
             } else {
                 System.out.println("Lỗi xóa DAL ThietBi: " + e.getMessage());
             }
-            if (tx != null ) {
+            if (tx != null) {
                 tx.rollback();
             }
             return false;
@@ -139,6 +140,38 @@ public class DAL_ThietBi {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<ThietBi> findThietBi(int pos, String prefix) {
+        Transaction transaction = null;
+        List<ThietBi> list=null;
+        try {
+            transaction = session.beginTransaction();
+            String hql = "FROM ThietBi WHERE ";
+            if (pos == 1)//tìm kiếm theo ma
+            {
+                hql += "maTB LIKE :prefix ";
+            }
+            if (pos == 2)//tìm kiếm theo ten
+            {
+                hql += "tenTB LIKE  :prefix ";
+            }
+            if (pos == 3)//tìm kiếm theo mota
+            {
+                hql += "moTaTB LIKE :prefix ";
+            }
+            Query query=session.createQuery(hql);
+            query.setParameter("prefix", "%"+prefix+"%");
+            list = query.list();
+            transaction.commit();
+            return list;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

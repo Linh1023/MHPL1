@@ -2,6 +2,7 @@ com\mycompany\qlthanhvien\BLL\ThietBi.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$9.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$4.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$2.class
+com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$11.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeTB.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThanhVien.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKe.class
@@ -9,6 +10,7 @@ com\mycompany\qlthanhvien\UI\UI_Main.class
 com\mycompany\qlthanhvien\DAL\DAL_ThanhVien.class
 com\mycompany\qlthanhvien\UI\UI_Main$1.class
 com\mycompany\qlthanhvien\BLL\BLL_ThongKe.class
+com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$12.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$7.class
 com\mycompany\qlthanhvien\DAL\DAL_ThietBi.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$10.class
