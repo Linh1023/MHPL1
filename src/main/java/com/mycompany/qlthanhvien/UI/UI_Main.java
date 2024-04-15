@@ -143,7 +143,7 @@ public class UI_Main extends javax.swing.JFrame {
                     }
                     @Override
                     protected int calculateTabWidth(int tabPlacement, int tabIndex, FontMetrics metrics) {
-                        return 200;
+                        return 180;
                     }
                 });
             }

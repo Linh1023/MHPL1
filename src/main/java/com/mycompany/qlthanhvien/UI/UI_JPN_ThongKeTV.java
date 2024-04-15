@@ -4,8 +4,9 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import com.mycompany.qlthanhvien.BLL.BLL_ThongTinSuDung;
+import java.util.Date;
+import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -17,41 +18,52 @@ import org.jfree.data.general.DefaultPieDataset;
  *
  * @author quang
  */
-public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
+public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
+
+    private BLL_ThongTinSuDung bll_TTSD;
 
     /**
      * Creates new form ThongKe
      */
     public UI_JPN_ThongKeTV() {
         initComponents();
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(15, "số lượng", "1970");
-        dataset.addValue(30, "số lượng", "1980");
-        dataset.addValue(60, "số lượng", "1990");
-        dataset.addValue(120, "số lượng", "2000");
-        dataset.addValue(240, "số lượng", "2010");
-        dataset.addValue(300, "số lượng", "2014");
-        JFreeChart chart = ChartFactory.createBarChart("Thống kê", "Năm", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
-        ChartPanel chartpanel1 = new ChartPanel(chart);
-        chartpanel1.setBounds(40, 40, 900, 300);
+        bll_TTSD = new BLL_ThongTinSuDung();
+        ChartPanel chartThongKeTheoThoiGian = createBarChart("Thống kê số lượng thành viên vào khu học tập theo thời gian",
+                                                            "Ngày",
+                                                            "Số lượng", bll_TTSD.getThanhVienTheoTG());
+        chartThongKeTheoThoiGian.setBounds(40, 40, 920, 300);
 
-//        pie
-        DefaultPieDataset dataset1 = new DefaultPieDataset();
-        dataset1.setValue("GDTH", Integer.valueOf(20));
-        dataset1.setValue("CNTT", Integer.valueOf(30));
-        dataset1.setValue("QTKD", Integer.valueOf(20));
-        dataset1.setValue("TLH", Integer.valueOf(10));
-        JFreeChart chart1 = ChartFactory.createPieChart("Thống kê theo khoa", dataset1);
-        ChartPanel chartPanel2 = new ChartPanel(chart1);
-        chartPanel2.setBounds(40, 350, 460, 275);
+        ChartPanel chartThongKeTheoKhoa = createPieChart("Thống kê số lượng thành viên vào khu học tập theo khoa", bll_TTSD.getThanhVienTheoKhoa());
+        chartThongKeTheoKhoa.setBounds(40, 350, 460, 275);
 //        
-        JFreeChart chart2 = ChartFactory.createPieChart("Thống kê theo ngành", dataset1);
-        ChartPanel chartPanel3 = new ChartPanel(chart2);
-        chartPanel3.setBounds(500, 350, 460, 275);
+        ChartPanel chartThongKeTheoNganh = createPieChart("Thống kê số lượng thành viên vào khu học tập theo ngành", bll_TTSD.getThanhVienTheoNganh());
+        chartThongKeTheoNganh.setBounds(500, 350, 460, 275);
 
-        this.add(chartpanel1);
-        this.add(chartPanel2);
-        this.add(chartPanel3);
+        this.add(chartThongKeTheoThoiGian);
+        this.add(chartThongKeTheoKhoa);
+        this.add(chartThongKeTheoNganh);
+    }
+
+    public ChartPanel createBarChart(String title, String labelCategory, String labelValue, List<Object[]> results) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (Object[] result : results) {
+            Long soluong = (Long) result[0];
+            Date ngay = (Date) result[1];
+            dataset.addValue(soluong, "số lượng", ngay.toString());
+        }
+        JFreeChart chart = ChartFactory.createBarChart(title, labelCategory, labelValue, dataset, PlotOrientation.VERTICAL, true, true, true);
+        return new ChartPanel(chart);
+    }
+
+    public ChartPanel createPieChart(String title, List<Object[]> results) {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        for (Object[] result : results) {
+            Long soluong = (Long) result[0];
+            String key = (String) result[1];
+            dataset.setValue(key, soluong);
+        }
+        JFreeChart chart = ChartFactory.createPieChart(title, dataset);
+        return new ChartPanel(chart);
     }
 
     /**
@@ -63,32 +75,21 @@ public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox2 = new javax.swing.JComboBox<>();
-
         setMinimumSize(new java.awt.Dimension(1000, 700));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(922, Short.MAX_VALUE))
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(672, Short.MAX_VALUE))
+            .addGap(0, 700, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox2;
     // End of variables declaration//GEN-END:variables
 }
