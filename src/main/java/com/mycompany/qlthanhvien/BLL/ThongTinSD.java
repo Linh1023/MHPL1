@@ -23,35 +23,44 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "thongtinsd")
-public class ThongTinSD   {
+public class ThongTinSD {
 
     @Id
-    @Column(name="MaTT")
+    @Column(name = "MaTT")
     private int maTT;
-    
-    @Column(name="MaTV")
+
+    @Column(name = "MaTV")
     private int maTV;
 
 //    dùng integer tại vì có thể null
-    @Column(name="MaTB")
+    @Column(name = "MaTB")
     private Integer maTB;
 
-    @Column(name="TGVao")
+    @Column(name = "TGVao")
     private Date tGVao;
 
-    @Column(name="TGMuon")
+    @Column(name = "TGMuon")
     private Date tGMuon;
 
-    @Column(name="TGTra")
+    @Column(name = "TGTra")
     private Date tGTra;
-    
+
     @ManyToOne
     @JoinColumn(name = "MaTV", insertable = false, updatable = false)
     private ThanhVien thanhVien;
-    
+
     @ManyToOne
     @JoinColumn(name = "MaTB", insertable = false, updatable = false)
     private ThietBi thietBi;
+
+    public ThongTinSD() {
+    }
     
-    
+    public ThongTinSD(int maTV, Integer maTB, Date tGVao, Date tGMuon, Date tGTra) {
+        this.maTV = maTV;
+        this.maTB = maTB;
+        this.tGVao = tGVao;
+        this.tGMuon = tGMuon;
+        this.tGTra = tGTra;
+    }
 }

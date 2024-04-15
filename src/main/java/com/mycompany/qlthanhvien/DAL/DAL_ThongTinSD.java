@@ -8,7 +8,6 @@ import com.mycompany.qlthanhvien.BLL.ThongTinSD;
 import java.util.List;
 import org.hibernate.Session;
 import com.mycompany.qlthanhvien.BLL.ThanhVien;
-import com.mycompany.qlthanhvien.BLL.ThongTinSuDung;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -64,7 +63,7 @@ public class DAL_ThongTinSD {
      public List getThanhVienTheoTG() {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Object[]> criteriaQuery = builder.createQuery(Object[].class);
-        Root<ThongTinSuDung> root = criteriaQuery.from(ThongTinSuDung.class);
+        Root<ThongTinSD> root = criteriaQuery.from(ThongTinSD.class);
 
         criteriaQuery.multiselect(builder.countDistinct(root.get("maTV")), builder.function("date", Date.class, root.get("tGVao")));
         criteriaQuery.where(builder.isNotNull(root.get("tGVao")));
@@ -82,8 +81,8 @@ public class DAL_ThongTinSD {
     public List getThanhVienTheoKhoa() {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Object[]> criteriaQuery = builder.createQuery(Object[].class);
-        Root<ThongTinSuDung> root = criteriaQuery.from(ThongTinSuDung.class);
-        Join<ThongTinSuDung, ThanhVien> join = root.join("thanhvien", JoinType.INNER);
+        Root<ThongTinSD> root = criteriaQuery.from(ThongTinSD.class);
+        Join<ThongTinSD, ThanhVien> join = root.join("thanhVien", JoinType.INNER);
         
         criteriaQuery.multiselect(builder.countDistinct(join.get("maTV")),join.get("khoa"));
         criteriaQuery.where(builder.isNotNull(root.get("tGVao")));
@@ -101,8 +100,8 @@ public class DAL_ThongTinSD {
     public List getThanhVienTheoNganh() {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Object[]> criteriaQuery = builder.createQuery(Object[].class);
-        Root<ThongTinSuDung> root = criteriaQuery.from(ThongTinSuDung.class);
-        Join<ThongTinSuDung, ThanhVien> join = root.join("thanhvien", JoinType.INNER);
+        Root<ThongTinSD> root = criteriaQuery.from(ThongTinSD.class);
+        Join<ThongTinSD, ThanhVien> join = root.join("thanhVien", JoinType.INNER);
         
         criteriaQuery.multiselect(builder.countDistinct(join.get("maTV")),join.get("nganh"));
         criteriaQuery.where(builder.isNotNull(root.get("tGVao")));
