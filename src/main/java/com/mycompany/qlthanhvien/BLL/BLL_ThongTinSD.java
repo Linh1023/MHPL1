@@ -24,6 +24,11 @@ public class BLL_ThongTinSD {
         return thongTinSDs;
     }
     
+    public List<ThongTinSD> searchThongTinSD_MaTV_MaTB (String col, String value) {
+        List<ThongTinSD> thongTinSDs = dAL_ThongTinSD.searchThongTinSD_MaTV_MaTB(col, value);
+        return thongTinSDs;
+    }
+    
     public Object[][] convertListThongTinSD (List<ThongTinSD> thongTinSDs) {
         int rows = thongTinSDs.size();
         int cols = 8;

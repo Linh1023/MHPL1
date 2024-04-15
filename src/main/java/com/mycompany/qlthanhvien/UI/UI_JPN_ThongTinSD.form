@@ -24,7 +24,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="405" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="441" max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox_timKiemTheo" min="-2" max="-2" attributes="0"/>
@@ -102,8 +102,8 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="M&#xe3; th&#xe0;nh vi&#xea;n"/>
-            <StringItem index="1" value="M&#xe3; thi&#x1ebf;t b&#x1ecb;"/>
+            <StringItem index="0" value="MaTV"/>
+            <StringItem index="1" value="MaTB"/>
             <StringItem index="2" value=" "/>
           </StringArray>
         </Property>
@@ -121,6 +121,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m "/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_timKiemActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>

@@ -42,6 +42,16 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
           model = new DefaultTableModel(objectses, title);
           jTable_muonTra.setModel(model);
     }
+    
+    public void  loadThongtinSDTable_Search (List<ThongTinSD> thongTinSDs) {
+          bLL_ThongTinSD = new BLL_ThongTinSD();
+          Object[][] objectses;
+          objectses = bLL_ThongTinSD.convertListThongTinSD(thongTinSDs);
+          String[] title = {"MaTT", "Mã thành viên", "Tên thành viên", "Mã thiết bị",
+              "Tên thiết bị", "Thời gian mượn", "Thời gian trả", "Trạng thái"};
+          model = new DefaultTableModel(objectses, title);
+          jTable_muonTra.setModel(model);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,7 +107,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel1.setText("Tìm kiếm :");
 
-        jComboBox_timKiemTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã thành viên", "Mã thiết bị", " " }));
+        jComboBox_timKiemTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTV", "MaTB", " " }));
 
         jTextField_timKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +116,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         });
 
         jButton_timKiem.setText("Tìm kiếm ");
+        jButton_timKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_timKiemActionPerformed(evt);
+            }
+        });
 
         jTable_muonTra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -405,7 +420,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 405, Short.MAX_VALUE)
+                        .addGap(0, 441, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox_timKiemTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -579,6 +594,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
 
     private void jButton_lamMoi_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_lamMoi_timKiemActionPerformed
      loadThongtinSDTable();
+     jTextField_timKiem.setText("");
     }//GEN-LAST:event_jButton_lamMoi_timKiemActionPerformed
 
     private void jButton_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_xoaActionPerformed
@@ -597,6 +613,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     private void jButton_lamMoi_muonTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_lamMoi_muonTBActionPerformed
        reset();
     }//GEN-LAST:event_jButton_lamMoi_muonTBActionPerformed
+
+    private void jButton_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_timKiemActionPerformed
+        bLL_ThongTinSD = new BLL_ThongTinSD();
+        loadThongtinSDTable_Search(bLL_ThongTinSD.searchThongTinSD_MaTV_MaTB(jComboBox_timKiemTheo.getSelectedItem().toString(), jTextField_timKiem.getText()));
+    }//GEN-LAST:event_jButton_timKiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
