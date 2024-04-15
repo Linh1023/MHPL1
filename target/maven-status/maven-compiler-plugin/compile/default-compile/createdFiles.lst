@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\mycompany\qlthanhvien\BLL\ThietBi.class
 com\mycompany\qlthanhvien\UI\UI_ThongTinSuDung_Jframe.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$4.class
@@ -38,3 +39,6 @@ com\mycompany\qlthanhvien\DAL\DAL_XuLy.class
 com\mycompany\qlthanhvien\BLL\ThanhVien.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$8.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeTV.class
+=======
+com/mycompany/qlthanhvien/BLL/XuLy.class
+>>>>>>> TheTung

@@ -4,6 +4,14 @@
  */
 package com.mycompany.qlthanhvien.BLL;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
 
 /**
@@ -11,5 +19,84 @@ import lombok.Data;
  * @author Admin
  */
 @Data
-public class XuLy {
+@Entity
+@Table(name = "xuly")
+public class XuLy implements Serializable {
+
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="MaTV")
+    private int maTV;
+    @Id
+    private int maXL;
+
+    @Column(name="HinhThucXL")
+    private String hinhThucSX;
+
+    @Column(name  ="SoTien")
+    private int soTien;
+    @Column(name="NgayXL")
+    private Date NgayXL;
+    @Column(name="TrangThaiXL")
+    private int TrangThaiXL;
+
+    public XuLy() {
+    }
+
+    public XuLy(int maTV, int maXL, String hinhThucSX, int soTien, Date NgayXL, int TrangThaiXL) {
+        this.maTV = maTV;
+        this.maXL = maXL;
+        this.hinhThucSX = hinhThucSX;
+        this.soTien = soTien;
+        this.NgayXL = NgayXL;
+        this.TrangThaiXL = TrangThaiXL;
+    }
+
+    public int getMaTV() {
+        return maTV;
+    }
+
+    public void setMaTV(int maTV) {
+        this.maTV = maTV;
+    }
+
+    public int getMaXL() {
+        return maXL;
+    }
+
+    public void setMaXL(int maXL) {
+        this.maXL = maXL;
+    }
+
+    public String getHinhThucSX() {
+        return hinhThucSX;
+    }
+
+    public void setHinhThucSX(String hinhThucSX) {
+        this.hinhThucSX = hinhThucSX;
+    }
+
+    public int getSoTien() {
+        return soTien;
+    }
+
+    public void setSoTien(int soTien) {
+        this.soTien = soTien;
+    }
+
+    public Date getNgayXL() {
+        return NgayXL;
+    }
+
+    public void setNgayXL(Date NgayXL) {
+        this.NgayXL = NgayXL;
+    }
+
+    public int getTrangThaiXL() {
+        return TrangThaiXL;
+    }
+
+    public void setTrangThaiXL(int TrangThaiXL) {
+        this.TrangThaiXL = TrangThaiXL;
+    }
+
 }

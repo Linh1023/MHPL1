@@ -28,7 +28,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 <!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThanhVien" />-->
         <mapping class="com.mycompany.qlthanhvien.BLL.ThietBi" />
 <!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThongKe" />
-        <mapping class="com.mycompany.qlthanhvien.BLL.XuLy" />-->
+        --><mapping class="com.mycompany.qlthanhvien.BLL.XuLy" />
 
     </session-factory>
 </hibernate-configuration>
