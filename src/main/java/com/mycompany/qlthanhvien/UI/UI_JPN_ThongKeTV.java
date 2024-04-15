@@ -4,7 +4,8 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
-import com.mycompany.qlthanhvien.BLL.BLL_ThongTinSuDung;
+import com.mycompany.qlthanhvien.BLL.BLL_ThongTinSD;
+
 import java.util.Date;
 import java.util.List;
 import org.jfree.chart.ChartFactory;
@@ -20,14 +21,14 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
 
-    private BLL_ThongTinSuDung bll_TTSD;
+    private BLL_ThongTinSD bll_TTSD;
 
     /**
      * Creates new form ThongKe
      */
     public UI_JPN_ThongKeTV() {
         initComponents();
-        bll_TTSD = new BLL_ThongTinSuDung();
+        bll_TTSD = new BLL_ThongTinSD();
         ChartPanel chartThongKeTheoThoiGian = createBarChart("Thống kê số lượng thành viên vào khu học tập theo thời gian",
                                                             "Ngày",
                                                             "Số lượng", bll_TTSD.getThanhVienTheoTG());

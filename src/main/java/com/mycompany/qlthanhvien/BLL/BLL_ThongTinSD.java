@@ -70,4 +70,16 @@ public class BLL_ThongTinSD {
    
     }
     
+    public List getThanhVienTheoTG(){
+        return dAL_ThongTinSD.getThanhVienTheoTG();
+    }
+    
+    public List getThanhVienTheoKhoa() {
+        return dAL_ThongTinSD.getThanhVienTheoKhoa();
+    }
+    
+    public List getThanhVienTheoNganh() {
+        return dAL_ThongTinSD.getThanhVienTheoNganh();
+    }
+    
 }
