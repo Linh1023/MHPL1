@@ -107,7 +107,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel1.setText("Tìm kiếm :");
 
-        jComboBox_timKiemTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTV", "MaTB", " " }));
+        jComboBox_timKiemTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTV", "MaTB" }));
 
         jTextField_timKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -476,7 +476,31 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField_maTT_muonActionPerformed
 
     private void jButton_choMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_choMuonActionPerformed
-        // TODO add your handling code here:
+        
+        if (jTextField_maTT_muon.getText().equals("") == true){
+            if (jTextField_maTV.getText().equals("") == false && jTextField_maTB.getText().equals("") == false) {
+                bLL_ThongTinSD = new BLL_ThongTinSD();
+            int maTV = Integer.parseInt(jTextField_maTV.getText());
+            Integer maTB =  Integer.parseInt(jTextField_maTB.getText());
+            Date tGMuon = new Date();
+            ThongTinSD thongTinSD = new ThongTinSD();
+            thongTinSD.setMaTV(maTV);
+            thongTinSD.setMaTB(maTB);
+            thongTinSD.setTGMuon(tGMuon);
+            
+            bLL_ThongTinSD.addThongTinSD(thongTinSD);
+            JOptionPane.showMessageDialog(this,"Thêm thành công !");
+            loadThongtinSDTable();
+            } else {
+                 JOptionPane.showMessageDialog(this,"Vui lòng chọn thành viên và thiết bị !");
+            }
+            
+       } else {
+           JOptionPane.showMessageDialog(this,"Vui lòng bấm reset để thêm thông tin sử dụng !");
+       }
+            
+       
+
     }//GEN-LAST:event_jButton_choMuonActionPerformed
 
     private void jbutton_maTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_maTVActionPerformed
@@ -540,8 +564,8 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     }
     
     private void jButton_capNhat_muonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_capNhat_muonActionPerformed
-        
-        try {
+     if (jTextField_maTT_muon.getText().equals("") == false) {
+         try {
             ThongTinSD thongTinSD = new ThongTinSD();
             int maTT = Integer.parseInt(jTextField_maTT_muon.getText());
             int maTV = Integer.parseInt(jTextField_maTV.getText());
@@ -587,6 +611,10 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         } catch (ParseException e) {
             System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
         }
+     } else {
+         JOptionPane.showMessageDialog(this,"Vui lòng chọn dữ liệu !");
+     }   
+        
         
 
         
@@ -598,7 +626,8 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton_lamMoi_timKiemActionPerformed
 
     private void jButton_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_xoaActionPerformed
-        bLL_ThongTinSD = new BLL_ThongTinSD();
+     if (jTextField_maTT_muon.getText().equals("") == false) {
+          bLL_ThongTinSD = new BLL_ThongTinSD();
         ThongTinSD thongTinSD = new ThongTinSD();
         int maTT = Integer.parseInt(jTextField_maTT_muon.getText());
         thongTinSD.setMaTT(maTT);
@@ -606,6 +635,10 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
          JOptionPane.showMessageDialog(this,"Xóa thành công !");
 
             reset();
+     } else {
+          JOptionPane.showMessageDialog(this,"Vui lòng chọn thông tin!");
+     }
+       
             
         
     }//GEN-LAST:event_jButton_xoaActionPerformed
@@ -650,10 +683,10 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton_dangMuon;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_muonTra;
-    private javax.swing.JTextField jTextField_hoTen;
+    public static javax.swing.JTextField jTextField_hoTen;
     public static javax.swing.JTextField jTextField_maTB;
     private javax.swing.JTextField jTextField_maTT_muon;
-    private javax.swing.JTextField jTextField_maTV;
+    public static javax.swing.JTextField jTextField_maTV;
     private javax.swing.JTextField jTextField_tGMuon;
     private javax.swing.JTextField jTextField_tGTra;
     public static javax.swing.JTextField jTextField_tenTB;

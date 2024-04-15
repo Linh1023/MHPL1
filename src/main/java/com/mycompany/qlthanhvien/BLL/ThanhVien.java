@@ -19,11 +19,10 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Thanhvien")
-public class ThanhVien implements Serializable{
+@Table(name = "thanhvien")
+public class ThanhVien{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaTV")
     private int maTV;
     
@@ -37,14 +36,15 @@ public class ThanhVien implements Serializable{
     private String nganh;
     
     @Column(name = "SDT")
-    private int sdt;
+    private String sDT;
     
-    public ThanhVien() {}
-
-    public ThanhVien(String hoten, String khoa, String nganh, int sdt) {
-        this.hoten = hoten;
-        this.khoa = khoa;
-        this.nganh = nganh;
-        this.sdt = sdt;
-    }
+    @Column(name = "PassWord")
+    private String password;
+    
+    @Column(name = "Email")
+    private String email;
+    
+   
+    
+    
 }

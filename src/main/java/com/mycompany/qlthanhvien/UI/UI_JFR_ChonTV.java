@@ -4,7 +4,12 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import com.mycompany.qlthanhvien.BLL.BLL_ThanhVien;
+import com.mycompany.qlthanhvien.BLL.ThanhVien;
+import com.mycompany.qlthanhvien.BLL.ThietBi;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,10 +20,26 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
     /**
      * Creates new form UI_JFR_ChonTV
      */
+    private DefaultTableModel model;
+    private BLL_ThanhVien bLL_ThanhVien;
     public UI_JFR_ChonTV() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        bLL_ThanhVien = new BLL_ThanhVien();
+        loadThanhVienTable();
+    }
+    
+    public void loadThanhVienTable () {
+        List<ThanhVien> thanhViens = bLL_ThanhVien.getThanhVien();
+         
+        
+        model = (DefaultTableModel) jTable_TV.getModel();
+         model.setRowCount(0);
+         for (int i = 0; i<thanhViens.size(); i ++ ) {
+            Object[] row = {thanhViens.get(i).getMaTV(),thanhViens.get(i).getHoten(),thanhViens.get(i).getKhoa(),thanhViens.get(i).getNganh(), thanhViens.get(i).getSDT()};
+              model.addRow(row);
+            }
     }
 
     /**
@@ -49,21 +70,34 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
 
         jTable_TV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã thành viên", "Tên thành viên", "Khoa", "Ngành", "SDT"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_TV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_TVMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_TV);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel2.setText("Tìm kiếm :");
 
-        jComboBox_timKiemTheoTV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã thành viên", "Mã thiết bị", " " }));
+        jComboBox_timKiemTheoTV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã thành viên" }));
 
         jTextField_timKiemTV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +162,14 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
     private void jTextField_timKiemTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_timKiemTVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_timKiemTVActionPerformed
+
+    private void jTable_TVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_TVMouseClicked
+       int index = jTable_TV.getSelectedRow();
+        model = (DefaultTableModel) jTable_TV.getModel();
+        UI_JPN_ThongTinSD.jTextField_maTV.setText(model.getValueAt(index, 0)+"");
+        UI_JPN_ThongTinSD.jTextField_hoTen.setText(model.getValueAt(index, 1)+"");
+        this.dispose();
+    }//GEN-LAST:event_jTable_TVMouseClicked
 
     /**
      * @param args the command line arguments

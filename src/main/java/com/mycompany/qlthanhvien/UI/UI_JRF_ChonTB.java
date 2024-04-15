@@ -77,7 +77,7 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
 
         jButton_lamMoi_timKiemTB.setText("Làm mới");
 
-        jComboBox_timKiemTheoTB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã thành viên", "Mã thiết bị", " " }));
+        jComboBox_timKiemTheoTB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã thiết bị", "Tên thiết bị" }));
 
         jTable_TB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
