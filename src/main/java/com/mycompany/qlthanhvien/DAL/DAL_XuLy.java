@@ -4,7 +4,7 @@
  */
 package com.mycompany.qlthanhvien.DAL;
 
-import com.mycompany.qlthanhvien.BLL.ThongTinSuDung;
+//import com.mycompany.qlthanhvien.BLL.ThongTinSuDung;
 import com.mycompany.qlthanhvien.BLL.XuLy;
 import java.util.Iterator;
 import java.util.List;

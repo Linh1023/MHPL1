@@ -24,7 +24,6 @@ com\mycompany\qlthanhvien\DAL\DAL_ThietBi.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$10.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi.class
 com\mycompany\qlthanhvien\BLL\BLL_ImportExcel.class
-com\mycompany\qlthanhvien\BLL\ThongTinSuDung.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$5.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeVP.class
 com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi$1.class
