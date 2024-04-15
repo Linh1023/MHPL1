@@ -41,6 +41,15 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
               model.addRow(row);
             }
     }
+     public void searchThanhVienTable (List<ThanhVien> thanhViens) {
+  
+        model = (DefaultTableModel) jTable_TV.getModel();
+         model.setRowCount(0);
+         for (int i = 0; i<thanhViens.size(); i ++ ) {
+            Object[] row = {thanhViens.get(i).getMaTV(),thanhViens.get(i).getHoten(),thanhViens.get(i).getKhoa(),thanhViens.get(i).getNganh(), thanhViens.get(i).getSdt()};
+              model.addRow(row);
+            }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,7 +106,7 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel2.setText("Tìm kiếm :");
 
-        jComboBox_timKiemTheoTV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã thành viên" }));
+        jComboBox_timKiemTheoTV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTV" }));
 
         jTextField_timKiemTV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,8 +115,18 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
         });
 
         jButton_timKiemTV.setText("Tìm");
+        jButton_timKiemTV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_timKiemTVActionPerformed(evt);
+            }
+        });
 
         jButton_lamMoi_timKiemTV.setText("Làm mới");
+        jButton_lamMoi_timKiemTV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_lamMoi_timKiemTVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,6 +189,16 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
         UI_JPN_ThongTinSD.jTextField_hoTen.setText(model.getValueAt(index, 1)+"");
         this.dispose();
     }//GEN-LAST:event_jTable_TVMouseClicked
+
+    private void jButton_timKiemTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_timKiemTVActionPerformed
+      BLL_ThanhVien bLL_ThanhVien = new BLL_ThanhVien();
+        searchThanhVienTable(bLL_ThanhVien.SearchThanhVien("MaTV", jTextField_timKiemTV.getText()));
+    }//GEN-LAST:event_jButton_timKiemTVActionPerformed
+
+    private void jButton_lamMoi_timKiemTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_lamMoi_timKiemTVActionPerformed
+       loadThanhVienTable();
+       jTextField_timKiemTV.setText("");
+    }//GEN-LAST:event_jButton_lamMoi_timKiemTVActionPerformed
 
     /**
      * @param args the command line arguments

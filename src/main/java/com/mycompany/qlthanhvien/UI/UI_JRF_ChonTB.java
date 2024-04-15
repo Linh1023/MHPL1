@@ -40,6 +40,16 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
             }
     }
     
+    public void searchThietBiTable (List<ThietBi> thietBis) {
+        
+         model = (DefaultTableModel) jTable_TB.getModel();
+         model.setRowCount(0);
+         for (int i = 0; i<thietBis.size(); i ++ ) {
+            Object[] row = {thietBis.get(i).getMaTB(),thietBis.get(i).getTenTB(), thietBis.get(i).getMoTaTB()};
+              model.addRow(row);
+            }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,10 +84,20 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
         });
 
         jButton_timKiemTB.setText("Tìm");
+        jButton_timKiemTB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_timKiemTBActionPerformed(evt);
+            }
+        });
 
         jButton_lamMoi_timKiemTB.setText("Làm mới");
+        jButton_lamMoi_timKiemTB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_lamMoi_timKiemTBActionPerformed(evt);
+            }
+        });
 
-        jComboBox_timKiemTheoTB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã thiết bị", "Tên thiết bị" }));
+        jComboBox_timKiemTheoTB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTB", "TenTB" }));
 
         jTable_TB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,6 +187,17 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jTable_TBMouseClicked
+
+    private void jButton_timKiemTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_timKiemTBActionPerformed
+        BLL_ThietBi bllThietBi = new BLL_ThietBi();
+  
+        searchThietBiTable( bllThietBi.findThietBi(jComboBox_timKiemTheoTB.getSelectedIndex()+1, jTextField_timKiemTB.getText().trim()));
+    }//GEN-LAST:event_jButton_timKiemTBActionPerformed
+
+    private void jButton_lamMoi_timKiemTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_lamMoi_timKiemTBActionPerformed
+       loadThietBiTable();
+       jTextField_timKiemTB.setText("");
+    }//GEN-LAST:event_jButton_lamMoi_timKiemTBActionPerformed
 
     /**
      * @param args the command line arguments
