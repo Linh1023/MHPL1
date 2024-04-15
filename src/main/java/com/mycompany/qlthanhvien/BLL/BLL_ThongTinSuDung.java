@@ -5,35 +5,28 @@
 package com.mycompany.qlthanhvien.BLL;
 
 import com.mycompany.qlthanhvien.DAL.DAL_ThongTinSuDung;
-import java.util.ArrayList;
-import org.hibernate.HibernateException;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import java.util.List;
 
 /**
  *
  * @author PC
  */
 public class BLL_ThongTinSuDung {
-    DAL_ThongTinSuDung dAL_ThongTinSuDung;
-
-    
+    private DAL_ThongTinSuDung dal_TTSD;
     
     public BLL_ThongTinSuDung() {
-    SessionFactory factory = null;
-        try {
-            factory = new Configuration().configure().buildSessionFactory();
-        } catch (HibernateException ex) {
-            ex.printStackTrace();
-        }
-        if (factory!=null) {
-             dAL_ThongTinSuDung = new DAL_ThongTinSuDung(factory);
-        } else {
-            System.out.println("Failed to initialize SessionFactory.");
-        }
+        dal_TTSD = new DAL_ThongTinSuDung();
     }
     
-     public ArrayList<ThongTinSuDung> listThongTinSuDung() {
-         return dAL_ThongTinSuDung.listThongTinSuDung();
-     }
+    public List getThanhVienTheoTG(){
+        return dal_TTSD.getThanhVienTheoTG();
+    }
+    
+    public List getThanhVienTheoKhoa() {
+        return dal_TTSD.getThanhVienTheoKhoa();
+    }
+    
+    public List getThanhVienTheoNganh() {
+        return dal_TTSD.getThanhVienTheoNganh();
+    }
 }

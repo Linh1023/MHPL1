@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <property name="connection.url">jdbc:mysql://localhost:3306/qlthanhvien?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
-      <!-- JDBC connection pool (use the built-in) -->
+        <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">4</property>    
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
@@ -25,10 +25,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <property name="hibernate.format_sql">true</property>
 
 
-<!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThanhVien" />-->
+        <mapping class="com.mycompany.qlthanhvien.BLL.ThanhVien" />
         <mapping class="com.mycompany.qlthanhvien.BLL.ThietBi" />
-<!--        <mapping class="com.mycompany.qlthanhvien.BLL.ThongKe" />
-        --><mapping class="com.mycompany.qlthanhvien.BLL.XuLy" />
+        <mapping class="com.mycompany.qlthanhvien.BLL.ThongTinSuDung" />
+            <!-- <mapping class="com.mycompany.qlthanhvien.BLL.ThongKe" /> -->
+        <mapping class="com.mycompany.qlthanhvien.BLL.XuLy" /> 
 
     </session-factory>
 </hibernate-configuration>
