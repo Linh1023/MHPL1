@@ -60,7 +60,11 @@ public class DAL_XuLy {
 
     public void addXulY(XuLy obj) {
         
-        session.save(obj );
+        
+        session.beginTransaction();
+        session.save(obj);   
+        session.getTransaction().commit();
+        System.out.println("test"+session.save(obj));
         
         
 
