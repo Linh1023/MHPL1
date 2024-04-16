@@ -33,4 +33,8 @@ public class ThietBi {
         this.MaTB = MaTB;
         this.moTaTB = moTaTB;
     }
+    @Override
+    public String toString(){
+        return ""+this.MaTB+";"+this.tenTB+";"+this.moTaTB;
+    }
 }

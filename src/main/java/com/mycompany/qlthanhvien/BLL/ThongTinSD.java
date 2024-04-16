@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -20,32 +22,45 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "ThongTinSuDung")
-public class ThongTinSuDung implements Serializable {
+@Table(name = "thongtinsd")
+public class ThongTinSD {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaTT")
     private int maTT;
-    
+
+    @Column(name = "MaTV")
     private int maTV;
 
+//    dùng integer tại vì có thể null
+    @Column(name = "MaTB")
     private Integer maTB;
 
+    @Column(name = "TGVao")
     private Date tGVao;
 
+    @Column(name = "TGMuon")
     private Date tGMuon;
 
+    @Column(name = "TGTra")
     private Date tGTra;
 
-    public ThongTinSuDung() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "MaTV", insertable = false, updatable = false)
+    private ThanhVien thanhVien;
 
-    public ThongTinSuDung( int maTV, Integer maTB, Date tGVao, Date tGMuon, Date tGTra) {
+    @ManyToOne
+    @JoinColumn(name = "MaTB", insertable = false, updatable = false)
+    private ThietBi thietBi;
+
+    public ThongTinSD() {
+    }
+    
+    public ThongTinSD(int maTV, Integer maTB, Date tGVao, Date tGMuon, Date tGTra) {
         this.maTV = maTV;
         this.maTB = maTB;
         this.tGVao = tGVao;
         this.tGMuon = tGMuon;
         this.tGTra = tGTra;
-    }  
+    }
 }

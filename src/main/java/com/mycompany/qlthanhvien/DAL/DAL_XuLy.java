@@ -4,7 +4,7 @@
  */
 package com.mycompany.qlthanhvien.DAL;
 
-import com.mycompany.qlthanhvien.BLL.ThongTinSuDung;
+//import com.mycompany.qlthanhvien.BLL.ThongTinSuDung;
 import com.mycompany.qlthanhvien.BLL.XuLy;
 import java.util.Iterator;
 import java.util.List;
@@ -23,7 +23,7 @@ public class DAL_XuLy {
     Session session;
 
     public DAL_XuLy() {
-        session = HibernateUtil.getSessionFactory().openSession();
+        session = HibernateUtils.getSessionFactory().openSession();
 
     }
 

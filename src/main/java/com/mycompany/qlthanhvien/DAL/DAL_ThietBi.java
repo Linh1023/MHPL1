@@ -5,14 +5,12 @@
 package com.mycompany.qlthanhvien.DAL;
 
 import com.mycompany.qlthanhvien.BLL.ThietBi;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -20,97 +18,160 @@ import org.hibernate.cfg.Configuration;
  */
 public class DAL_ThietBi {
 
+    Session session;
+
     public DAL_ThietBi() {
-        factory = HibernateUtil.getSessionFactory();
+        session = HibernateUtils.getSessionFactory().openSession();
     }
 
-    private SessionFactory factory;
-
-    public List listThietBi() {
-        Session session = factory.openSession();
-        Transaction tx = null;
-        List list = null;
+    public List<ThietBi> loadThietBi() {
+        List<ThietBi> list = null;
+        Transaction transaction = null;
 
         try {
-            tx = (Transaction) session.beginTransaction();
-            list = session.createQuery("FROM ThietBi").list();
-            tx.commit();
+            transaction = session.beginTransaction();
+            list = session.createQuery("FROM ThietBi", ThietBi.class).list();
+            transaction.commit();
         } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
+            if (transaction != null) {
+                transaction.rollback();
             }
             e.printStackTrace();
-        } finally {
-            session.close();
         }
         return list;
     }
 
-    public boolean addThietBi(int maTB, String tenTB, String moTaTB) {
-        Session session = factory.openSession();
-        Transaction tx = null;
+    public ThietBi getThietBi(int MaTB) {
+        ThietBi tb = null;
+        Transaction transaction = null;
+
         try {
-            ThietBi existingThietBi = session.get(ThietBi.class, maTB);
-            if (existingThietBi != null) {
-                return false;
+            transaction = session.beginTransaction();
+            tb = session.get(ThietBi.class, MaTB);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
             }
-            tx = session.beginTransaction();
-            ThietBi d = new ThietBi(maTB, tenTB, moTaTB);
-            session.save(d);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
+            e.printStackTrace();
+        }
+        return tb;
+    }
+
+    public void addThietBi(ThietBi tb) {
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.save(tb);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public void updateThietBi(ThietBi tb) {
+        Transaction transaction = null;
+        try {
+            session.clear();
+            transaction = session.beginTransaction();
+            session.update(tb);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public boolean mergeThietBi(ThietBi tb) {
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.merge(tb);
+            transaction.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
             }
             e.printStackTrace();
             return false;
-        } finally {
-            session.close();
         }
-        return true;
     }
 
-    public boolean updateThietBi(int maTB, String tenTB, String moTaTB) {
-        Session session = factory.openSession();
+    public boolean deleteThietBi(ThietBi tb) {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            ThietBi d = (ThietBi) session.get(ThietBi.class, maTB);
-            d.setMaTB(maTB);
-            d.setTenTB(tenTB);
-            d.setMoTaTB(moTaTB);
-            session.update(d);
+            session.delete(tb);
             tx.commit();
-        } catch (Exception e) {
+            return true;
+        } catch (HibernateException e) {
+            if (e instanceof ConstraintViolationException) {
+                System.out.println("Không thể xóa ThietBi do có ràng buộc khóa ngoại: " + e.getMessage());
+            } else {
+                System.out.println("Lỗi xóa DAL ThietBi: " + e.getMessage());
+            }
             if (tx != null) {
                 tx.rollback();
             }
-            e.printStackTrace();
             return false;
-        } finally {
-            session.close();
         }
-        return true;
     }
 
-    public boolean deleteThietBi(int maTB) {
-        Session session = factory.openSession();
-        Transaction tx = null;
+    public boolean deleteThietBiStartingWith(String prefix) {
+        Transaction transaction = null;
+
         try {
-            tx = session.beginTransaction();
-            ThietBi d = (ThietBi) session.get(ThietBi.class, maTB);
-            session.delete(d);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-                return false;
+            transaction = session.beginTransaction();
+            session.createQuery("DELETE FROM ThietBi WHERE maTB LIKE :prefix")
+                    .setParameter("prefix", prefix + "%")
+                    .executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
             }
             e.printStackTrace();
-        } finally {
-            session.close();
         }
-        return true;
+        return false;
+    }
+
+    public List<ThietBi> findThietBi(int pos, String prefix) {
+        Transaction transaction = null;
+        List<ThietBi> list=null;
+        try {
+            transaction = session.beginTransaction();
+            String hql = "FROM ThietBi WHERE ";
+            if (pos == 1)//tìm kiếm theo ma
+            {
+                hql += "maTB LIKE :prefix ";
+            }
+            if (pos == 2)//tìm kiếm theo ten
+            {
+                hql += "tenTB LIKE  :prefix ";
+            }
+            if (pos == 3)//tìm kiếm theo mota
+            {
+                hql += "moTaTB LIKE :prefix ";
+            }
+            Query query=session.createQuery(hql);
+            query.setParameter("prefix", "%"+prefix+"%");
+            list = query.list();
+            transaction.commit();
+            return list;
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
