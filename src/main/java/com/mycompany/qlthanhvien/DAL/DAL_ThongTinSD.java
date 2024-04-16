@@ -115,6 +115,16 @@ public class DAL_ThongTinSD {
         }
         return results;
     }
+    
+     public List<ThongTinSD> getListThongTinSD() {
+         
+         List<ThongTinSD> thongTinSDs;
+         session.beginTransaction();
+        thongTinSDs = this.session.createQuery("FROM ThongTinSD WHERE  TGVao is not NULL").list();
+        session.getTransaction().commit();
+        return thongTinSDs;
+    }
+     
      
      public static void main(String[] args) {
         DAL_ThongTinSD dAL_ThongTinSD = new DAL_ThongTinSD();
@@ -125,9 +135,9 @@ public class DAL_ThongTinSD {
 //        
 //        dAL_ThongTinSD.addThongTinSD(thongTinSD);
             
-        List<ThongTinSD> thongTinSDs = dAL_ThongTinSD.searchThongTinSD_MaTV_MaTB("MaTV", "1120150184");
+        List<ThongTinSD> thongTinSDs = dAL_ThongTinSD.getListThongTinSD();
         for (int i =  0; i<thongTinSDs.size(); i++) {
-            System.out.println(thongTinSDs.get(i).getMaTV());
+            System.out.println(thongTinSDs.get(i).getThanhVien().getHoten());
         }
     }
 }
