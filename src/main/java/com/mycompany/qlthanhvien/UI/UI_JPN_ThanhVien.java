@@ -429,7 +429,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         model.setRowCount(0);
         for (int i = 0; i < arraythanhvien.size(); i++) {
             ThanhVien tv = arraythanhvien.get(i);
-            Object[] newrow = new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSDT(), tv.getPassword(), tv.getEmail()};
+            Object[] newrow = new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSdt(), tv.getPassword(), tv.getEmail()};
             model.addRow(newrow);
         }
     }
@@ -593,7 +593,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
                         tb.setNganh(cell.getStringCellValue());
                     }
                     if (cellIndex == 4) {
-                        tb.setSDT(cell.getStringCellValue());
+                        tb.setSdt(cell.getStringCellValue());
                     }
                     if (cellIndex == 5) {
                         double textString = cell.getNumericCellValue();
@@ -641,7 +641,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         thanhVien.setHoten(hoTen);
         thanhVien.setKhoa(khoa);
         thanhVien.setNganh(nganh);
-        thanhVien.setSDT(sdt);
+        thanhVien.setSdt(sdt);
         thanhVien.setPassword(passWord);
         thanhVien.setEmail(email);
         thanhVienBLL.updateThanhVien(thanhVien);
@@ -671,7 +671,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
                 thanhVien.setHoten(hoTen);
                 thanhVien.setKhoa(khoa);
                 thanhVien.setNganh(nganh);
-                thanhVien.setSDT(sdt);
+                thanhVien.setSdt(sdt);
                 thanhVien.setPassword(passwword);
                 thanhVien.setEmail(email);
                 bll_thanhvien.addThanhVien(thanhVien);
@@ -749,7 +749,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable_ThanhVien.getModel();
         model.setRowCount(0); // Xóa dữ liệu cũ
         for (ThanhVien tv : searchResults) {
-            model.addRow(new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSDT(), tv.getPassword(), tv.getEmail()});
+            model.addRow(new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSdt(), tv.getPassword(), tv.getEmail()});
         }
     }
 
