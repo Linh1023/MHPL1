@@ -56,4 +56,18 @@ public class BLL_XuLy {
 
     }
 
+    public void DeleteXuLy(XuLy c)
+    {
+        xulyDal.deleteXuly(c);
+    }
+     
+    
+ 
+    public void UpdateXuLy(XuLy c)
+    {
+        xulyDal.updateXuLy(c);
+    }
+     
+    
+    
 }
