@@ -4,6 +4,11 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import com.mycompany.qlthanhvien.BLL.BLL_XuLy;
+import com.mycompany.qlthanhvien.BLL.XuLy;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author quang
@@ -13,9 +18,30 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     /**
      * Creates new form ThongKe
      */
+    
+        
+    private BLL_XuLy bLL_xuLy;
+     DefaultTableModel model;
+    
     public UI_JPN_XuLyViPham() {
         initComponents();
+       
+        bLL_xuLy = new BLL_XuLy();
+         loadThongtinXuLyTable();
     }
+    
+     public void  loadThongtinXuLyTable () {
+          bLL_xuLy = new BLL_XuLy();
+          
+          List<XuLy> thongTinXuLy = bLL_xuLy.load_xuLy();
+          Object[][] objectses;
+          objectses = bLL_xuLy.convertList(thongTinXuLy);
+          String[] title = {"Ma Xu Ly", "Mã thành viên", "Hinh Thuc Xu Ly", "SO Tien",
+              "Ngay Xu Ly", "Trang Thai"};
+          model = new DefaultTableModel(objectses, title);
+          jtab_xuly.setModel(model);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,32 +52,60 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtab_xuly = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1000, 700));
 
-        jLabel1.setText("jpanel xử lý vi phạm");
+        jtab_xuly.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "MaTT", "Mã Thành viên", "Tên thành viên", "Mã Thiết bị", "Tên Thiết bị", "TG Mượn", "TG Trả", "Trạng thái"
+            }
+        ));
+        jtab_xuly.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtab_xulyMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtab_xuly);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel2.setText("Xử Lý Vi Phạm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(293, 293, 293)
-                .addComponent(jLabel1)
-                .addContainerGap(601, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(298, 298, 298))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jLabel1)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(371, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtab_xulyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtab_xulyMouseClicked
+     
+
+    }//GEN-LAST:event_jtab_xulyMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtab_xuly;
     // End of variables declaration//GEN-END:variables
 }
