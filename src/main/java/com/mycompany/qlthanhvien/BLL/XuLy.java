@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -24,20 +26,28 @@ import lombok.Data;
 public class XuLy implements Serializable {
 
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="MaTV")
+    @Column(name = "MaTV")
     private int maTV;
+    
+    
+    
+    
     @Id
+    @Column(name = "MaXL")
     private int maXL;
 
-    @Column(name="HinhThucXL")
+    @Column(name = "HinhThucXL")
     private String hinhThucSX;
 
-    @Column(name  ="SoTien")
+    @Column(name = "SoTien")
     private int soTien;
-    @Column(name="NgayXL")
+    @Column(name = "NgayXL")
     private Date NgayXL;
-    @Column(name="TrangThaiXL")
+    @Column(name = "TrangThaiXL")
     private int TrangThaiXL;
+    @ManyToOne
+    @JoinColumn(name = "MaTV", insertable = false, updatable = false)
+    private ThanhVien thanhVien;
 
     public XuLy() {
     }

@@ -200,7 +200,7 @@
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="jButton_Them" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton_capNhat" min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="jButton_update" min="-2" pref="89" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButton_xoa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -243,7 +243,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton_xoa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton_lamMoi" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton_capNhat" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_update" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton_Them" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" pref="42" max="32767" attributes="0"/>
@@ -283,12 +283,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_capNhat">
+        <Component class="javax.swing.JButton" name="jButton_update">
           <Properties>
             <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_capNhatActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_updateActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_xoa">

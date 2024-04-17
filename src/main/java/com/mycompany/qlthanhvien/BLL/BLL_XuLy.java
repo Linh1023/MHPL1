@@ -46,6 +46,7 @@ public class BLL_XuLy {
     }
 
     public void newXuLy(XuLy c) {
+
         xulyDal.addXulY(c);
     }
 
@@ -56,18 +57,16 @@ public class BLL_XuLy {
 
     }
 
-    public void DeleteXuLy(XuLy c)
-    {
+    public void DeleteXuLy(XuLy c) {
         xulyDal.deleteXuly(c);
     }
+
+    public void UpdateXuLy(XuLy c) {
+
+        // Call DAL method to perform update (assuming it returns a boolean or throws exception on error)
      
-    
- 
-    public void UpdateXuLy(XuLy c)
-    {
         xulyDal.updateXuLy(c);
+
     }
-     
-    
-    
+
 }
