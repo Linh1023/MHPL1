@@ -9,9 +9,11 @@ import com.mycompany.qlthanhvien.BLL.ThanhVien;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
 import java.util.ArrayList;
 
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -46,6 +48,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         initComponents();
         loadThanhVien();
         loadData();
+        initializeComboBox();
     }
 
     /**
@@ -87,8 +90,9 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         jButton_Refresh = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton7 = new javax.swing.JButton();
+        jComboBox_Year_Value = new javax.swing.JComboBox<>();
+        jButton_DeletedByYear = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jButton_Search = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -103,7 +107,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
             }
         });
 
-        jComboBox_value.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTV", "HoTen", "Khoa", "Nganh", "SDT", "TGVao" }));
+        jComboBox_value.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTV", "HoTen", "Khoa", "Nganh", "SDT" }));
         jComboBox_value.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_valueActionPerformed(evt);
@@ -318,35 +322,52 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Xóa Theo Điều Kiện");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Year_Value.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_Year_ValueActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Xóa");
+        jButton_DeletedByYear.setText("Xóa");
+        jButton_DeletedByYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_DeletedByYearActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setText("Năm: ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(93, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))
+                        .addComponent(jButton_DeletedByYear, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(113, 113, 113))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(113, 113, 113))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox_Year_Value, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(102, 102, 102))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox_Year_Value, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(jButton_DeletedByYear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -377,7 +398,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(27, Short.MAX_VALUE)
+                        .addContainerGap(26, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton_addExcel)
@@ -429,7 +450,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         model.setRowCount(0);
         for (int i = 0; i < arraythanhvien.size(); i++) {
             ThanhVien tv = arraythanhvien.get(i);
-            Object[] newrow = new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSdt(), tv.getPassword(), tv.getEmail()};
+            Object[] newrow = new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSDT(), tv.getPassword(), tv.getEmail()};
             model.addRow(newrow);
         }
     }
@@ -593,7 +614,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
                         tb.setNganh(cell.getStringCellValue());
                     }
                     if (cellIndex == 4) {
-                        tb.setSdt(cell.getStringCellValue());
+                        tb.setSDT(cell.getStringCellValue());
                     }
                     if (cellIndex == 5) {
                         double textString = cell.getNumericCellValue();
@@ -641,7 +662,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         thanhVien.setHoten(hoTen);
         thanhVien.setKhoa(khoa);
         thanhVien.setNganh(nganh);
-        thanhVien.setSdt(sdt);
+        thanhVien.setSDT(sdt);
         thanhVien.setPassword(passWord);
         thanhVien.setEmail(email);
         thanhVienBLL.updateThanhVien(thanhVien);
@@ -671,7 +692,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
                 thanhVien.setHoten(hoTen);
                 thanhVien.setKhoa(khoa);
                 thanhVien.setNganh(nganh);
-                thanhVien.setSdt(sdt);
+                thanhVien.setSDT(sdt);
                 thanhVien.setPassword(passwword);
                 thanhVien.setEmail(email);
                 bll_thanhvien.addThanhVien(thanhVien);
@@ -724,14 +745,30 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         // Lấy giá trị được chọn từ JComboBox
         String selectedColumn = jComboBox_value.getSelectedItem().toString();
         String searchValue = jTextField_Search.getText(); // Giá trị tìm kiếm từ JTextField
-        // Gọi hàm tìm kiếm từ BLL
+        if (searchValue.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị để tìm kiếm.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return; // Dừng hàm nếu searchValue rỗng
+        }
+        if (!isNumeric(searchValue)) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập số cho tìm kiếm.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return; // Dừng hàm nếu searchValue không phải là số
+        }
         BLL_ThanhVien bll_thanhvien = new BLL_ThanhVien();
         List<ThanhVien> searchResults = bll_thanhvien.SearchThanhVien(selectedColumn, searchValue);
-        // Hiển thị kết quả tìm kiếm lên JTable hoặc JTextArea tùy vào cách bạn hiển thị dữ liệu
-        // Ví dụ:
-      displaySearchResults(searchResults);
+        displaySearchResults(searchResults);
     }                                              
-
+    private boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {                                                
 
         loadThanhVien();
@@ -743,30 +780,89 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         jTextField_Email.setText("");
         jTextField_PassWord.setText("");
     }                                               
-    // Hàm hiển thị kết quả tìm kiếm
 
+    private void jComboBox_Year_ValueActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+
+        String selectedYear = (String) jComboBox_Year_Value.getSelectedItem();
+        int year = Integer.parseInt(selectedYear);
+        updateTableByYear(year);
+        
+    }                                                    
+
+    private void jButton_DeletedByYearActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        String selectedYear = (String) jComboBox_Year_Value.getSelectedItem();
+    int year = Integer.parseInt(selectedYear);
+    
+    int confirmed = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa danh sách thành viên năm 20" + selectedYear + " không?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
+    if (confirmed == JOptionPane.YES_OPTION) {
+        BLL_ThanhVien thanhVienBLL = new BLL_ThanhVien();
+        try {
+            thanhVienBLL.deleteThanhVienByYear(year);
+            JOptionPane.showMessageDialog(this, "Đã xóa thành viên cho năm 20" + selectedYear, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            loadThanhVien();
+        }catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi xóa thành viên", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+            // Nếu lỗi có mã số là 1451 (ràng buộc khóa ngoại)
+            // Nếu không phải lỗi ràng buộc khóa ngoại, in ra thông báo lỗi khác
+            
+    }
+    }                                                     
+    private void initializeComboBox() {
+        BLL_ThanhVien thanhVienBLL = new BLL_ThanhVien();
+        List<Integer> years = thanhVienBLL.getDistinctYears();
+
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
+        for (Integer year : years) {
+            comboBoxModel.addElement(String.valueOf(year));
+        }
+        jComboBox_Year_Value.setModel(comboBoxModel);
+    }
+    private void updateTableByYear(int year) {
+    BLL_ThanhVien thanhVienBLL = new BLL_ThanhVien();
+    List<ThanhVien> thanhViens = thanhVienBLL.getThanhVienByYear(year);
+
+    DefaultTableModel model = (DefaultTableModel) jTable_ThanhVien.getModel();
+    model.setRowCount(0); // Xóa dữ liệu cũ
+
+    for (ThanhVien thanhVien : thanhViens) {
+        Object[] row = {
+            thanhVien.getMaTV(),
+            thanhVien.getHoten(),
+            thanhVien.getKhoa(),
+            thanhVien.getNganh(),
+            thanhVien.getSDT(),
+            thanhVien.getPassword(),
+            thanhVien.getEmail()
+        };
+        model.addRow(row);
+    }
+}
+    // Hàm hiển thị kết quả tìm kiếm
     private void displaySearchResults(List<ThanhVien> searchResults) {
         DefaultTableModel model = (DefaultTableModel) jTable_ThanhVien.getModel();
         model.setRowCount(0); // Xóa dữ liệu cũ
         for (ThanhVien tv : searchResults) {
-            model.addRow(new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSdt(), tv.getPassword(), tv.getEmail()});
+            model.addRow(new Object[]{tv.getMaTV(), tv.getHoten(), tv.getKhoa(), tv.getNganh(), tv.getSDT(), tv.getPassword(), tv.getEmail()});
         }
     }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton_Add;
     private javax.swing.JButton jButton_Deleted;
+    private javax.swing.JButton jButton_DeletedByYear;
     private javax.swing.JButton jButton_Refresh;
     private javax.swing.JButton jButton_Search;
     private javax.swing.JButton jButton_Update;
     private javax.swing.JButton jButton_addExcel;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox_Year_Value;
     private javax.swing.JComboBox<String> jComboBox_value;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
