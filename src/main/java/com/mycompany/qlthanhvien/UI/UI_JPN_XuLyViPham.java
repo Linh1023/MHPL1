@@ -341,23 +341,23 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
 
     private void jtab_xulyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtab_xulyMouseClicked
 
-  int index = jTable_XL_Vipham.getSelectedRow();
-        model = (DefaultTableModel) jtab_xuly.getModel();
-        
-        jtx_ma_vi_pham.setText(model.getValueAt(index, 0)+"");
-       jTextField_maTV_XuLy.setText(model.getValueAt(index, 1)+"");
-       txt_hinhThuc.setText(model.getValueAt(index, 2)+"");
-        jTex_maTB.setText(model.getValueAt(index, 3)+"");
-        jTextField_tenTB.setText(model.getValueAt(index, 4)+"");
-        jTextField_tGMuon.setText(model.getValueAt(index, 5)+"");
-        jTextField_tGTra.setText(model.getValueAt(index, 6)+"");
-        if (model.getValueAt(index, 6)==null) {
-            System.out.println("Đang mượn");
-            jRadioButton_dangMuon.setSelected(true);
-        } else {
-            System.out.println("Đã trả");
-            jRadioButton_daTra.setSelected(true);
-        }
+//  int index = jTable_XL_Vipham.getSelectedRow();
+//        model = (DefaultTableModel) jtab_xuly.getModel();
+//        
+//        jtx_ma_vi_pham.setText(model.getValueAt(index, 0)+"");
+//       jTextField_maTV_XuLy.setText(model.getValueAt(index, 1)+"");
+//       txt_hinhThuc.setText(model.getValueAt(index, 2)+"");
+//        jTex_maTB.setText(model.getValueAt(index, 3)+"");
+//        jTextField_tenTB.setText(model.getValueAt(index, 4)+"");
+//        jTextField_tGMuon.setText(model.getValueAt(index, 5)+"");
+//        jTextField_tGTra.setText(model.getValueAt(index, 6)+"");
+//        if (model.getValueAt(index, 6)==null) {
+//            System.out.println("Đang mượn");
+//            jRadioButton_dangMuon.setSelected(true);
+//        } else {
+//            System.out.println("Đã trả");
+//            jRadioButton_daTra.setSelected(true);
+//        }
     }//GEN-LAST:event_jtab_xulyMouseClicked
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
