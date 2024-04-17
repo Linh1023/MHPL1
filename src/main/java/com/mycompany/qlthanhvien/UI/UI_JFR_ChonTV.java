@@ -187,9 +187,14 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
         model = (DefaultTableModel) jTable_TV.getModel();
         UI_JPN_ThongTinSD.jTextField_maTV.setText(model.getValueAt(index, 0)+"");
         UI_JPN_ThongTinSD.jTextField_hoTen.setText(model.getValueAt(index, 1)+"");
+        
+      UI_JPN_XuLyViPham.jTextField_hoTen_XuLy.setText(model.getValueAt(index,1)+"");
+      UI_JPN_XuLyViPham.jTextField_maTV_XuLy.setText(model.getValueAt(index,0)+"");
+        
         this.dispose();
     }//GEN-LAST:event_jTable_TVMouseClicked
 
+    
     private void jButton_timKiemTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_timKiemTVActionPerformed
       BLL_ThanhVien bLL_ThanhVien = new BLL_ThanhVien();
         searchThanhVienTable(bLL_ThanhVien.SearchThanhVien("MaTV", jTextField_timKiemTV.getText()));
