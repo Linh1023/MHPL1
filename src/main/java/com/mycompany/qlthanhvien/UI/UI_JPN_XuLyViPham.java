@@ -6,6 +6,8 @@ package com.mycompany.qlthanhvien.UI;
 
 import com.mycompany.qlthanhvien.BLL.BLL_XuLy;
 import com.mycompany.qlthanhvien.BLL.XuLy;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -74,6 +76,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         jbutton_ma_hinhThucPhat = new javax.swing.JButton();
         jtx_ma_vi_pham = new javax.swing.JTextField();
         jtxt_soTien = new javax.swing.JTextField();
+        txt_hinhThuc = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(1000, 700));
 
@@ -217,6 +220,13 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             }
         });
 
+        txt_hinhThuc.setText("jTextField1");
+        txt_hinhThuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_hinhThucActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -230,7 +240,9 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txt_hinhThuc)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jbutton_ma_hinhThucPhat))))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(178, 178, 178)
@@ -283,7 +295,8 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jbutton_ma_hinhThucPhat))
+                    .addComponent(jbutton_ma_hinhThucPhat)
+                    .addComponent(txt_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -328,7 +341,23 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
 
     private void jtab_xulyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtab_xulyMouseClicked
 
-
+  int index = jTable_XL_Vipham.getSelectedRow();
+        model = (DefaultTableModel) jtab_xuly.getModel();
+        
+        jtx_ma_vi_pham.setText(model.getValueAt(index, 0)+"");
+       jTextField_maTV_XuLy.setText(model.getValueAt(index, 1)+"");
+       txt_hinhThuc.setText(model.getValueAt(index, 2)+"");
+        jTex_maTB.setText(model.getValueAt(index, 3)+"");
+        jTextField_tenTB.setText(model.getValueAt(index, 4)+"");
+        jTextField_tGMuon.setText(model.getValueAt(index, 5)+"");
+        jTextField_tGTra.setText(model.getValueAt(index, 6)+"");
+        if (model.getValueAt(index, 6)==null) {
+            System.out.println("Đang mượn");
+            jRadioButton_dangMuon.setSelected(true);
+        } else {
+            System.out.println("Đã trả");
+            jRadioButton_daTra.setSelected(true);
+        }
     }//GEN-LAST:event_jtab_xulyMouseClicked
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
@@ -366,54 +395,37 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
     private void jButton_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_capNhatActionPerformed
-//        if (jtx_ma_vi_pham.getText().equals("") == false) {
-//            try {
-//                ThongTinSD thongTinSD = new ThongTinSD();
-//                int maTT = Integer.parseInt(jtx_ma_vi_pham.getText());
-//                int maTV = Integer.parseInt(jTextField_maTV.getText());
+//      
+            try {
+                XuLy thongTinXuLy = new XuLy();
+                int maVP = Integer.parseInt(jtx_ma_vi_pham.getText());
+                int maTV = Integer.parseInt(jTextField_maTV_XuLy.getText());
 //                Integer maTB = Integer.parseInt(jTextField_maTB.getText());
-//
-//                String tGMuonText = jTextField_tGMuon.getText();
-//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-//                Date tGMuon = sdf.parse(tGMuonText);
-//
-//                Date tGTra;
-//                String tGTraText = jTextField_tGTra.getText();
-//                if (tGTraText.equals("null") == false) // trả rồi
-//                {
-//                    if (jRadioButton_dangMuon.isSelected() == true) { // click vào chưa trả
-//                        tGTra = null;
-//                    } else { // không  click vào chưa trả
-//                        tGTra = sdf.parse(tGTraText);
-//                    }
-//                } else // chưa trả
-//                {
-//                    if (jRadioButton_daTra.isSelected() == true) // click vao đã trả
-//                    {
-//                        tGTra = new Date();
-//                    } else { // không click vào đã trả
-//                        tGTra = null;
-//                    }
-//
-//                }
-//
-//                thongTinSD.setMaTT(maTT);
-//                thongTinSD.setMaTV(maTV);
-//                thongTinSD.setMaTB(maTB);
-//                thongTinSD.setTGMuon(tGMuon);
-//                thongTinSD.setTGTra(tGTra);
-//
-//                bLL_ThongTinSD.updateThongTinSD(thongTinSD);
-//                JOptionPane.showMessageDialog(this, "Sửa thành công !");
-//
-//                reset();
-//
-//            } catch (ParseException e) {
-//                System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Vui lòng chọn dữ liệu !");
-//        }
+String hinhThuc=  txt_hinhThuc.getText();
+                String tGMuonText = jTextField_tGMuon.getText();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+                Date tGMuon = sdf.parse(tGMuonText);
+
+                float tien = Float.parseFloat(jtxt_soTien.getText());
+                
+                
+                
+                thongTinXuLy.setMaXL(maVP);
+                thongTinXuLy.setMaTV(maTV);
+                thongTinXuLy.setHinhThucSX(hinhThuc);
+                thongTinXuLy.setSoTien((int) tien);
+                thongTinXuLy.setNgayXL(tGMuon);
+                thongTinXuLy.setTrangThaiXL(1);
+
+                bLL_xuLy.UpdateXuLy(thongTinXuLy);
+                JOptionPane.showMessageDialog(this, "Sửa thành công !");
+
+                reset();
+
+            } catch (ParseException e) {
+                System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
+            }
+      
 
     }//GEN-LAST:event_jButton_capNhatActionPerformed
 
@@ -468,6 +480,10 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_hoTen_XuLyActionPerformed
 
+    private void txt_hinhThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_hinhThucActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_hinhThucActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Them;
@@ -493,5 +509,10 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     private javax.swing.JTable jtab_xuly;
     private javax.swing.JTextField jtx_ma_vi_pham;
     private javax.swing.JTextField jtxt_soTien;
+    private javax.swing.JTextField txt_hinhThuc;
     // End of variables declaration//GEN-END:variables
+
+    private void reset() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
