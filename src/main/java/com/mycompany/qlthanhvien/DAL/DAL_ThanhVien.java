@@ -26,7 +26,7 @@ public class DAL_ThanhVien {
          session = HibernateUtils.getSessionFactory().openSession();
     }
    
-     public List<ThanhVien> getThanhvien() {
+    public List<ThanhVien> getThanhvien() {
          
          List<ThanhVien> thanhvien;
          session.beginTransaction();
@@ -63,6 +63,29 @@ public class DAL_ThanhVien {
         session.delete(thanhvien);
         session.getTransaction().commit();
     }
+    public void deleteThanhVienByYear(int year) {
+        session.beginTransaction();
+        List<ThanhVien> thanhViensToDelete = session.createQuery("FROM ThanhVien WHERE SUBSTRING(MaTV, 3, 2) = :year")
+                .setParameter("year", String.valueOf(year))
+                .list();
+        for (ThanhVien thanhVien : thanhViensToDelete) {
+            // Kiểm tra xem MaTV của ThanhVien có tồn tại trong bảng ThongTinsd hay không
+            Long countThongTinsd = (Long) session.createQuery("SELECT COUNT(*) FROM ThongTinSD WHERE MaTV = :maTV")
+                    .setParameter("maTV", thanhVien.getMaTV())
+                    .uniqueResult();
+            // Kiểm tra xem MaTV của ThanhVien có tồn tại trong bảng XuLy hay không
+            Long countXuLy = (Long) session.createQuery("SELECT COUNT(*) FROM XuLy WHERE MaTV = :maTV")
+                    .setParameter("maTV", thanhVien.getMaTV())
+                    .uniqueResult();
+            // Nếu MaTV không tồn tại trong cả 2 bảng ThongTinsd và XuLy, thì mới thực hiện xóa
+            if (countThongTinsd == 0 && countXuLy == 0) {
+                session.delete(thanhVien);
+            }
+        }
+        session.getTransaction().commit();
+    }
+
+
     public boolean mergeThanhVien(ThanhVien tv) {
         Transaction transaction = null;
         try {
@@ -82,36 +105,35 @@ public class DAL_ThanhVien {
         DAL_ThanhVien dAL_ThanhVien = new DAL_ThanhVien();
         
        //  Lấy ds
-        List<ThanhVien> tvs = dAL_ThanhVien.getThanhvien();
+        List<ThanhVien> tvs = dAL_ThanhVien.SearchThanhvien("MaTV", "1124420005");
         for (int i = 0;i< tvs.size(); i++) { 
             System.out.println(tvs.get(i).getMaTV());
             
         }
-        
-
-//        add
-//        ThanhVien thanhVien = new ThanhVien();
-//        thanhVien.setMaTV(1243);
-//        thanhVien.setHoten("abc");
-//        thanhVien.setEmail("emailcom");
-//        thanhVien.setPassword("123123h");
-//        dAL_ThanhVien.addThanhVien(thanhVien);
-        
-// update
-//        ThanhVien thanhVien = new ThanhVien();
-//        thanhVien.setMaTV(1243);
-//        thanhVien.setHoten("loc hoang");
-//        thanhVien.setEmail("emailcom");
-//        thanhVien.setPassword("123123h");
-//        dAL_ThanhVien.updateThanhVien(thanhVien);
-        
-//        delete 
-//        ThanhVien thanhVien = new ThanhVien();
-//        thanhVien.setMaTV(1243);
-//         dAL_ThanhVien.deleteThanhVien(thanhVien);
-        
-          
     }
-    
+    public List<Integer> getDistinctYears() {
+    List<Integer> years = new ArrayList<>();
+    session.beginTransaction();
+    List<ThanhVien> thanhvien = session.createQuery("FROM ThanhVien").list();
+    session.getTransaction().commit();
+    for (ThanhVien tv : thanhvien) {
+        String maTV = String.valueOf(tv.getMaTV());
+        String yearString = maTV.substring(2, 4);
+        int year = Integer.parseInt(yearString);
+        if (!years.contains(year)) {
+            years.add(year);
+        }
+    }
+    return years;
+}
+    public List<ThanhVien> getThanhVienByYear(int year) {
+        List<ThanhVien> thanhViens;
+        session.beginTransaction();
+        thanhViens = session.createQuery("FROM ThanhVien WHERE SUBSTRING(MaTV, 3, 2) = :year")
+                            .setParameter("year", String.valueOf(year))
+                            .list();
+        session.getTransaction().commit();
+        return thanhViens;
+    }
     
 }
