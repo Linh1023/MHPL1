@@ -27,6 +27,20 @@ public class BLL_ThietBi {
         return list;
     }
 
+    // Số lượng thiết bị 
+    public int countThietBi(int MaTB) {
+        List<ThietBi> list = dal_TB.loadThietBi();
+        int count = 0;
+        if (list != null) {
+            for (ThietBi tb : list) {
+                if (tb.getMaTB() / 1000000 == MaTB) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
     public boolean addThietBi(String maTB, String tenTB, String moTaTB) {
         if (isInteger(maTB)) {
             dal_TB.addThietBi(new ThietBi(Integer.parseInt(maTB), tenTB, moTaTB));
@@ -47,9 +61,9 @@ public class BLL_ThietBi {
     public boolean deleteThietBi(String maTB) {
         if (isInteger(maTB)) {
             ThietBi tb = dal_TB.getThietBi(Integer.parseInt(maTB));
-            //đợi Dương làm thông tin sd 
             if (tb != null) {
-                return dal_TB.deleteThietBi(tb);
+                dal_TB.deleteThietBi(tb);
+                return true;
             }
         }
         return false;
@@ -68,7 +82,6 @@ public class BLL_ThietBi {
     }
 
     public boolean importExcel(ArrayList<ThietBi> danhsachThietBi) {
-        System.out.println("tới đây rồi");
         int a = 0;
         for (ThietBi thietBi : danhsachThietBi) {
             dal_TB.mergeThietBi(thietBi);

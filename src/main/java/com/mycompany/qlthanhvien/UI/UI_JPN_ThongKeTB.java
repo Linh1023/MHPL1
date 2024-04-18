@@ -4,17 +4,71 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import com.mycompany.qlthanhvien.BLL.BLL_ThietBi;
+import com.mycompany.qlthanhvien.BLL.ThietBi;
+import java.util.List;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author quang
  */
 public class UI_JPN_ThongKeTB extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ThongKe
-     */
+    private DefaultCategoryDataset dataset;
+    private JFreeChart chart;
+    private BLL_ThietBi bll_TB;
+
     public UI_JPN_ThongKeTB() {
-        initComponents();
+        dataset = new DefaultCategoryDataset();
+        bll_TB = new BLL_ThietBi();
+        List<ThietBi> listItem = bll_TB.loadThietBi();
+
+        for (ThietBi tb : listItem) {
+            int matb = tb.getMaTB();
+            int firstDigit = 0;
+            // Lặp qua từng chữ số của số nguyên cho đến khi tìm được số đầu tiên
+            while (matb != 0) {
+                firstDigit = matb % 10;
+                matb = matb / 10;
+            }
+            String label = "";
+            switch (firstDigit) {
+                case 0 ->
+                    label = "Chưa Phân Loại";
+                case 1 ->
+                    label = "Micro";
+                case 2 ->
+                    label = "Máy chiếu";
+                case 3 ->
+                    label = "Máy ảnh";
+                case 4 ->
+                    label = "Cassette";
+                case 5 ->
+                    label = "Tivi";
+                case 6 ->
+                    label = "Quạt Đứng";
+            }
+            dataset.addValue(firstDigit, "Số Lượng", label);
+        }
+
+        chart = ChartFactory.createBarChart(
+                "THỐNG KÊ SỐ LƯỢNG THIẾT BỊ",
+                "THIẾT BỊ",
+                "SỐ LƯỢNG THIẾT BỊ",
+                dataset, // Dữ liệu của biểu đồ
+                org.jfree.chart.plot.PlotOrientation.VERTICAL, // Hướng của biểu đồ
+                true, // Có hiển thị chú thích không
+                true, // Có hiển thị công cụ đơn giản không
+                true // Có tạo tooltips không
+        );
+
+        ChartPanel chartPanel = new ChartPanel(chart);
+// them vào jpanel
+        this.add(chartPanel);
     }
 
     /**

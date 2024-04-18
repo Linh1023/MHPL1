@@ -19,7 +19,7 @@ import org.jfree.data.general.DefaultPieDataset;
  *
  * @author quang
  */
-public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
+public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
 
     private BLL_ThongTinSD bll_TTSD;
 
@@ -30,8 +30,8 @@ public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
         initComponents();
         bll_TTSD = new BLL_ThongTinSD();
         ChartPanel chartThongKeTheoThoiGian = createBarChart("Thống kê số lượng thành viên vào khu học tập theo thời gian",
-                                                            "Ngày",
-                                                            "Số lượng", bll_TTSD.getThanhVienTheoTG());
+                "Ngày",
+                "Số lượng", bll_TTSD.getThanhVienTheoTG());
         chartThongKeTheoThoiGian.setBounds(40, 40, 920, 300);
 
         ChartPanel chartThongKeTheoKhoa = createPieChart("Thống kê số lượng thành viên vào khu học tập theo khoa", bll_TTSD.getThanhVienTheoKhoa());
