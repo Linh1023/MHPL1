@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /home/dothetung/NetBeansProjects/MHPL_QLTV/src/main/java/com/mycompany/qlthanhvien/BLL/BLL_XuLy.java
 /home/dothetung/NetBeansProjects/MHPL_QLTV/src/main/java/com/mycompany/qlthanhvien/DAL/HibernateUtils.java
 /home/dothetung/NetBeansProjects/MHPL_QLTV/src/main/java/com/mycompany/qlthanhvien/BLL/ThanhVien.java
@@ -25,3 +26,29 @@
 /home/dothetung/NetBeansProjects/MHPL_QLTV/src/main/java/com/mycompany/qlthanhvien/UI/UI_JPN_XuLyViPham.java
 /home/dothetung/NetBeansProjects/MHPL_QLTV/src/main/java/com/mycompany/qlthanhvien/BLL/ThietBi.java
 /home/dothetung/NetBeansProjects/MHPL_QLTV/src/main/java/com/mycompany/qlthanhvien/BLL/BLL_ThongTinSD.java
+=======
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\BLL_ThanhVien.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JFR_KhuVuc.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\BLL_ThongTinSD.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_ThanhVien.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeTV.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JRF_ChonTB.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_ThongKe.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\BLL_ThietBi.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\ThanhVien.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\DAL\DAL_ThongTinSD.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_XuLyViPham.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\DAL\HibernateUtils.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeVP.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\ThietBi.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\BLL_ImportExcel.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_ThongTinSD.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\BLL_ThongKe.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_ThongKeTB.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JPN_ThietBi.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\BLL\ThongTinSD.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\DAL\DAL_ThietBi.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_JFR_ChonTV.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\DAL\DAL_ThanhVien.java
+D:\Mohinhphanlop\MHPL_QLTV\MHPL_QLTV\src\main\java\com\mycompany\qlthanhvien\UI\UI_Main.java
+>>>>>>> 340a1043fe65cedca4939310e1768ed6fc2c41a7
