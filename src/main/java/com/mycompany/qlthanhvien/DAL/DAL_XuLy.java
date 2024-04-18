@@ -68,7 +68,7 @@ SessionFactory sessionFactory = configuration.buildSessionFactory();
     public void updateXuLy(XuLy obj) {
         // Assuming you have a SessionFactory instance obtained during application startup
        
-                Session session = null;
+//                Session session = null;
 
         try {
             // Open a new session
@@ -100,7 +100,9 @@ SessionFactory sessionFactory = configuration.buildSessionFactory();
     }
 
     public void deleteXuly(XuLy obj) {
+          session.beginTransaction();
         session.delete(obj);
+        session.getTransaction().commit();
     }
 
     public XuLy getXuLy(int XuLyId) {
