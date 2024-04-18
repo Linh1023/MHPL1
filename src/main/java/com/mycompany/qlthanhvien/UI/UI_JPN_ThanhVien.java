@@ -791,23 +791,24 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
 
     private void jButton_DeletedByYearActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         String selectedYear = (String) jComboBox_Year_Value.getSelectedItem();
-    int year = Integer.parseInt(selectedYear);
-    
-    int confirmed = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa danh sách thành viên năm 20" + selectedYear + " không?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
-    if (confirmed == JOptionPane.YES_OPTION) {
-        BLL_ThanhVien thanhVienBLL = new BLL_ThanhVien();
-        try {
-            thanhVienBLL.deleteThanhVienByYear(year);
-            JOptionPane.showMessageDialog(this, "Đã xóa thành viên cho năm 20" + selectedYear, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            loadThanhVien();
-        }catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi xóa thành viên", "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
+        int year = Integer.parseInt(selectedYear);
+
+        int confirmed = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa danh sách thành viên năm 20" + selectedYear + " không?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
+        if (confirmed == JOptionPane.YES_OPTION) {
+            BLL_ThanhVien thanhVienBLL = new BLL_ThanhVien();
+            try {
+                thanhVienBLL.deleteThanhVienByYear(year);
+                JOptionPane.showMessageDialog(this, "Vì một số ràng buộc khóa ngoại nên chỉ xóa các Thành Viên không có trong Thông Tin Sử Dụng và Xử Lý", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Đã xóa thành viên cho năm 20" + selectedYear, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                loadThanhVien();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi xóa thành viên", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
             // Nếu lỗi có mã số là 1451 (ràng buộc khóa ngoại)
             // Nếu không phải lỗi ràng buộc khóa ngoại, in ra thông báo lỗi khác
-            
-    }
+
+        }
     }                                                     
     private void initializeComboBox() {
         BLL_ThanhVien thanhVienBLL = new BLL_ThanhVien();
