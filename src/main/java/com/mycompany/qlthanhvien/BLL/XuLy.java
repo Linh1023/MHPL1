@@ -33,7 +33,7 @@ public class XuLy implements Serializable {
     private String hinhThucSX;
 
     @Column(name  ="SoTien")
-    private int soTien;
+    private Integer soTien;
     @Column(name="NgayXL")
     private Date NgayXL;
     @Column(name="TrangThaiXL")
@@ -42,7 +42,7 @@ public class XuLy implements Serializable {
     public XuLy() {
     }
 
-    public XuLy(int maTV, int maXL, String hinhThucSX, int soTien, Date NgayXL, int TrangThaiXL) {
+    public XuLy(int maTV, int maXL, String hinhThucSX, Integer soTien, Date NgayXL, int TrangThaiXL) {
         this.maTV = maTV;
         this.maXL = maXL;
         this.hinhThucSX = hinhThucSX;
@@ -75,7 +75,7 @@ public class XuLy implements Serializable {
         this.hinhThucSX = hinhThucSX;
     }
 
-    public int getSoTien() {
+    public Integer getSoTien() {
         return soTien;
     }
 
