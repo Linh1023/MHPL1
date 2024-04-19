@@ -65,10 +65,14 @@ public class UI_JPN_ThongKeTB extends javax.swing.JPanel {
                 true, // Có hiển thị công cụ đơn giản không
                 true // Có tạo tooltips không
         );
+        this.setLayout(null);
+        ChartPanel chartThongKeTB = new ChartPanel(chart);
+        chartThongKeTB.setBounds(40, 100, 920, 450);
 
-        ChartPanel chartPanel = new ChartPanel(chart);
+
 // them vào jpanel
-        this.add(chartPanel);
+
+        this.add(chartThongKeTB);
     }
 
     /**
@@ -80,32 +84,21 @@ public class UI_JPN_ThongKeTB extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
         setMinimumSize(new java.awt.Dimension(1000, 700));
-
-        jLabel1.setText("jpanel thông kê");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(637, Short.MAX_VALUE))
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1)
-                .addContainerGap(494, Short.MAX_VALUE))
+            .addGap(0, 700, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
