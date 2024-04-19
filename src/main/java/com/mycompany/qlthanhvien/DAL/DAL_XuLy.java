@@ -8,6 +8,9 @@ package com.mycompany.qlthanhvien.DAL;
 import com.mycompany.qlthanhvien.BLL.XuLy;
 import java.util.Iterator;
 import java.util.List;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,9 +32,9 @@ public class DAL_XuLy {
 
     public static void main(String[] args) {
         DAL_XuLy dal = new DAL_XuLy();
-        List list  = dal.loadXuLy();
-          list.forEach(System.out::println);
-        
+        List list = dal.getListDaXuLy();
+        list.forEach(System.out::println);
+//        dal.getThongKeXuLy();
     }
 
     public List<XuLy> loadXuLy() {
@@ -39,51 +42,70 @@ public class DAL_XuLy {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-           list = session.createQuery("From XuLy",XuLy.class).list();
+            list = session.createQuery("From XuLy", XuLy.class).list();
             transaction.commit();
-}
-            catch(HibernateException e)
-                  {
-                  
-                  if (transaction != null) {
+        } catch (HibernateException e) {
+
+            if (transaction != null) {
                 transaction.rollback();
             }
-                  
-                  }
-            finally {
+
+        } finally {
             session.close();
         }
-            return list;
+        return list;
 
-        }
-    
+    }
 
     public void addXulY(XuLy obj) {
-        
-        
+
         session.beginTransaction();
-        session.save(obj);   
+        session.save(obj);
         session.getTransaction().commit();
-        System.out.println("test"+session.save(obj));
-        
-        
+        System.out.println("test" + session.save(obj));
 
     }
-    public void updateXuLy(XuLy obj)
-    {
+
+    public void updateXuLy(XuLy obj) {
         session.update(obj);
     }
-    public void deleteXuly (XuLy obj)
-    {
+
+    public void deleteXuly(XuLy obj) {
         session.delete(obj);
     }
-    
-    public XuLy getXuLy(int XuLyId)
-            
-    {
-    
-        XuLy c =session.get( XuLy.class,XuLyId);
+
+    public XuLy getXuLy(int XuLyId) {
+
+        XuLy c = session.get(XuLy.class, XuLyId);
         return c;
     }
+
+    public List getThongKeXuLy() {
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> criteriaQuery = builder.createQuery(Object[].class);
+        Root<XuLy> root = criteriaQuery.from(XuLy.class);
+
+        criteriaQuery.multiselect(builder.count(root.get("maTV")), root.get("TrangThaiXL"));
+        criteriaQuery.groupBy(root.get("TrangThaiXL"));
+
+        List<Object[]> results = session.createQuery(criteriaQuery).getResultList();
+        for (Object[] result : results) {
+            Long soluong = (Long) result[0];
+            int trangthai = (int) result[1];
+            System.out.println("So luong: " + soluong + ", date: " + trangthai);
+        }
+        return results;
+    }
+
+    public List<XuLy> getListDaXuLy() {
+        
+         List<XuLy> list = null;
+         session.beginTransaction();
     
+        list =  session.createQuery("FROM XuLy WHERE TrangThaiXL = 1 ").list();
+        session.getTransaction().commit();
+        return list;
+    }
+
 }

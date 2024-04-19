@@ -22,7 +22,7 @@ import org.jfree.data.general.DefaultPieDataset;
 public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
 
     private BLL_ThongTinSD bll_TTSD;
-    private ChartPanel chartThongKeTheoThoiGian,chartThongKeTheoKhoa,chartThongKeTheoNganh;
+    private ChartPanel chartThongKeTheoThoiGian, chartThongKeTheoKhoa, chartThongKeTheoNganh;
 
     /**
      * Creates new form ThongKe
@@ -32,11 +32,11 @@ public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
         bll_TTSD = new BLL_ThongTinSD();
         createCharts();
     }
-        
+
     public void createCharts() {
-         chartThongKeTheoThoiGian = createBarChart("Thống kê số lượng thành viên vào khu học tập theo thời gian",
-                                                            "Ngày",
-                                                            "Số lượng", bll_TTSD.getThanhVienTheoTG());
+        chartThongKeTheoThoiGian = createBarChart("Thống kê số lượng thành viên vào khu học tập theo thời gian",
+                "Ngày",
+                "Số lượng", bll_TTSD.getThanhVienTheoTG());
         chartThongKeTheoThoiGian.setBounds(40, 40, 920, 300);
 
         chartThongKeTheoKhoa = createPieChart("Thống kê số lượng thành viên vào khu học tập theo khoa", bll_TTSD.getThanhVienTheoKhoa());
@@ -48,7 +48,7 @@ public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
         this.add(chartThongKeTheoKhoa);
         this.add(chartThongKeTheoNganh);
     }
-    
+
     public ChartPanel createBarChart(String title, String labelCategory, String labelValue, List<Object[]> results) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (Object[] result : results) {
@@ -57,7 +57,7 @@ public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
             dataset.addValue(soluong, "số lượng", ngay.toString());
         }
         JFreeChart chart = ChartFactory.createBarChart(title, labelCategory, labelValue, dataset, PlotOrientation.VERTICAL, true, true, true);
-        
+
         return new ChartPanel(chart);
     }
 
@@ -112,12 +112,11 @@ public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        chartThongKeTheoKhoa.removeAll();
-        chartThongKeTheoNganh.removeAll();
-        chartThongKeTheoThoiGian.removeAll();
-        
+        remove(chartThongKeTheoKhoa);
+        remove(chartThongKeTheoNganh);
+        remove(chartThongKeTheoThoiGian);
         createCharts();
-         chartThongKeTheoKhoa.revalidate();
+        chartThongKeTheoKhoa.revalidate();
         chartThongKeTheoNganh.revalidate();
         chartThongKeTheoThoiGian.revalidate();
         chartThongKeTheoKhoa.repaint();

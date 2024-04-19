@@ -68,6 +68,22 @@ public class BLL_XuLy {
         xulyDal.updateXuLy(c);
     }
      
+    public List getThongKeXuLy() {
+        return xulyDal.getThongKeXuLy();
+    }
     
+    public List getListDaXuLy() {
+        return xulyDal.getListDaXuLy();
+    }
     
+    public long getTongTien(List<XuLy> list) {
+        long s = 0; 
+        for(int i = 0 ; i < list.size(); i++) {
+            XuLy xl = (XuLy) list.get(i);
+            if(xl.getSoTien() != null) {
+                s += xl.getSoTien();
+            }
+        }
+        return s;
+    }
 }
