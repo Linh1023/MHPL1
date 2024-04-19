@@ -64,7 +64,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         jButton_Them = new javax.swing.JButton();
         jButton_capNhat = new javax.swing.JButton();
         jButton_xoa = new javax.swing.JButton();
-        jButton_lamMoi = new javax.swing.JButton();
+        jButton_refresh = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTextField_maTV_XuLy = new javax.swing.JTextField();
@@ -130,10 +130,10 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             }
         });
 
-        jButton_lamMoi.setText("Làm mới");
-        jButton_lamMoi.addActionListener(new java.awt.event.ActionListener() {
+        jButton_refresh.setText("Làm mới");
+        jButton_refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_lamMoiActionPerformed(evt);
+                jButton_refreshActionPerformed(evt);
             }
         });
 
@@ -274,7 +274,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_xoa)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton_lamMoi)))
+                        .addComponent(jButton_refresh)))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -304,7 +304,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_xoa)
-                    .addComponent(jButton_lamMoi)
+                    .addComponent(jButton_refresh)
                     .addComponent(jButton_capNhat)
                     .addComponent(jButton_Them))
                 .addGap(18, 42, Short.MAX_VALUE))
@@ -341,113 +341,102 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
 
     private void jtab_xulyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtab_xulyMouseClicked
 
-//  int index = jTable_XL_Vipham.getSelectedRow();
-//        model = (DefaultTableModel) jtab_xuly.getModel();
-//        
-//        jtx_ma_vi_pham.setText(model.getValueAt(index, 0)+"");
-//       jTextField_maTV_XuLy.setText(model.getValueAt(index, 1)+"");
-//       txt_hinhThuc.setText(model.getValueAt(index, 2)+"");
-//        jTex_maTB.setText(model.getValueAt(index, 3)+"");
-//        jTextField_tenTB.setText(model.getValueAt(index, 4)+"");
+//  
+        int index = jtab_xuly.getSelectedRow();
+        model = (DefaultTableModel) jtab_xuly.getModel();
+
+        jtx_ma_vi_pham.setText(model.getValueAt(index, 0) + "");
+        jTextField_maTV_XuLy.setText(model.getValueAt(index, 1) + "");
+        txt_hinhThuc.setText(model.getValueAt(index, 2) + "");
+        jtxt_soTien.setText(model.getValueAt(index, 3) + "");
+        jTextField_tGMuon.setText(model.getValueAt(index, 4) + "");
 //        jTextField_tGMuon.setText(model.getValueAt(index, 5)+"");
-//        jTextField_tGTra.setText(model.getValueAt(index, 6)+"");
-//        if (model.getValueAt(index, 6)==null) {
-//            System.out.println("Đang mượn");
-//            jRadioButton_dangMuon.setSelected(true);
-//        } else {
-//            System.out.println("Đã trả");
-//            jRadioButton_daTra.setSelected(true);
-//        }
     }//GEN-LAST:event_jtab_xulyMouseClicked
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
 
-       
-            try {
-              bLL_xuLy = new BLL_XuLy();
-                int maThanhVien = Integer.parseInt(jTextField_maTV_XuLy.getText());
+        try {
+            bLL_xuLy = new BLL_XuLy();
+            int maThanhVien = Integer.parseInt(jTextField_maTV_XuLy.getText());
 //                Integer maTB =  Integer.parseInt(jTextField_maTB.getText());
-                int maViPham = Integer.parseInt(jtx_ma_vi_pham.getText());
-                float tien = Float.parseFloat(jtxt_soTien.getText());
-                Date tGMuon = new Date();
-                XuLy thongTinXuLy = new XuLy();
-                
-                thongTinXuLy.setMaXL(maViPham);
-                thongTinXuLy.setMaTV(maThanhVien);
-//                thongTinXuLy.setMaTB(maTB);
-                thongTinXuLy.setNgayXL(tGMuon);
-                thongTinXuLy.setSoTien((int) tien);
-                thongTinXuLy.setHinhThucSX(null);
+            int maViPham = Integer.parseInt(jtx_ma_vi_pham.getText());
+            float tien = Float.parseFloat(jtxt_soTien.getText());
+            Date tGMuon = new Date();
+            XuLy thongTinXuLy = new XuLy();
 
-                thongTinXuLy.setTrangThaiXL(1);
-                
-                System.out.println("----------------"+thongTinXuLy);
-                bLL_xuLy.newXuLy(thongTinXuLy);
-                JOptionPane.showMessageDialog(this, "Thêm thành công !");
-                loadThongtinXuLyTable();
+            thongTinXuLy.setMaXL(maViPham);
+            thongTinXuLy.setMaTV(maThanhVien);
+//                thongTinXuLy.setMaTB(maTB);
+            thongTinXuLy.setNgayXL(tGMuon);
+            thongTinXuLy.setSoTien((int) tien);
+            thongTinXuLy.setHinhThucSX(null);
+
+            thongTinXuLy.setTrangThaiXL(1);
+
+            System.out.println("----------------" + thongTinXuLy);
+            bLL_xuLy.newXuLy(thongTinXuLy);
+            JOptionPane.showMessageDialog(this, "Thêm thành công !");
+            loadThongtinXuLyTable();
         } catch (Exception e) {
-                System.out.println("com.mycompany.qlthanhvien.UI.UI_JPN_XuLyViPham.jButton_ThemActionPerformed()");
+            System.out.println("com.mycompany.qlthanhvien.UI.UI_JPN_XuLyViPham.jButton_ThemActionPerformed()");
         }
-               
-            
+
 
 
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
     private void jButton_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_capNhatActionPerformed
 //      
-            try {
-                XuLy thongTinXuLy = new XuLy();
-                int maVP = Integer.parseInt(jtx_ma_vi_pham.getText());
-                int maTV = Integer.parseInt(jTextField_maTV_XuLy.getText());
+             try {
+            XuLy thongTinXuLy = new XuLy();
+            int maVP = Integer.parseInt(jtx_ma_vi_pham.getText());
+            int maTV = Integer.parseInt(jTextField_maTV_XuLy.getText());
 //                Integer maTB = Integer.parseInt(jTextField_maTB.getText());
-String hinhThuc=  txt_hinhThuc.getText();
-                String tGMuonText = jTextField_tGMuon.getText();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-                Date tGMuon = sdf.parse(tGMuonText);
+            String hinhThuc = txt_hinhThuc.getText();
+            String tGMuonText = jTextField_tGMuon.getText();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+            Date tGMuon = sdf.parse(tGMuonText);
 
-                float tien = Float.parseFloat(jtxt_soTien.getText());
-                
-                
-                
-                thongTinXuLy.setMaXL(maVP);
-                thongTinXuLy.setMaTV(maTV);
-                thongTinXuLy.setHinhThucSX(hinhThuc);
-                thongTinXuLy.setSoTien((int) tien);
-                thongTinXuLy.setNgayXL(tGMuon);
-                thongTinXuLy.setTrangThaiXL(1);
+            float tien = Float.parseFloat(jtxt_soTien.getText());
 
-                bLL_xuLy.UpdateXuLy(thongTinXuLy);
-                JOptionPane.showMessageDialog(this, "Sửa thành công !");
+            thongTinXuLy.setMaXL(maVP);
+            thongTinXuLy.setMaTV(maTV);
+            thongTinXuLy.setHinhThucSX(hinhThuc);
+            thongTinXuLy.setSoTien((int) tien);
+            thongTinXuLy.setNgayXL(tGMuon);
+            thongTinXuLy.setTrangThaiXL(1);
 
-                reset();
+            System.out.println("-----------------------" + thongTinXuLy);
 
-            } catch (ParseException e) {
-                System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
-            }
+            bLL_xuLy.UpdateXuLy(thongTinXuLy);
+
+            JOptionPane.showMessageDialog(this, "Sửa thành công !");
+            loadThongtinXuLyTable();
+
+        } catch (ParseException e) {
+            System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
+        }
+
       
 
     }//GEN-LAST:event_jButton_capNhatActionPerformed
 
     private void jButton_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_xoaActionPerformed
-//        if (jtx_ma_vi_pham.getText().equals("") == false) {
-//            bLL_ThongTinSD = new BLL_ThongTinSD();
-//            ThongTinSD thongTinSD = new ThongTinSD();
-//            int maTT = Integer.parseInt(jtx_ma_vi_pham.getText());
-//            thongTinSD.setMaTT(maTT);
-//            bLL_ThongTinSD.deleteThongTinSD(thongTinSD);
-//            JOptionPane.showMessageDialog(this, "Xóa thành công !");
-//
-//            reset();
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Vui lòng chọn thông tin!");
-//        }
+//        bLL_xuLy = new BLL_XuLy();
 
+        XuLy xl = new XuLy();
+        int maXL = Integer.parseInt(jtx_ma_vi_pham.getText());
+        xl.setMaXL(maXL);
+        bLL_xuLy.DeleteXuLy(xl);
+        JOptionPane.showMessageDialog(this, "Xóa thành công !");
+        loadThongtinXuLyTable();
     }//GEN-LAST:event_jButton_xoaActionPerformed
 
-    private void jButton_lamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_lamMoiActionPerformed
-//        reset();
-    }//GEN-LAST:event_jButton_lamMoiActionPerformed
+    private void jButton_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_refreshActionPerformed
+//      
+  loadThongtinXuLyTable();
+
+    }//GEN-LAST:event_jButton_refreshActionPerformed
 
     private void jbutton_maTV_xuLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_maTV_xuLyActionPerformed
 
@@ -488,7 +477,7 @@ String hinhThuc=  txt_hinhThuc.getText();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Them;
     private javax.swing.JButton jButton_capNhat;
-    private javax.swing.JButton jButton_lamMoi;
+    private javax.swing.JButton jButton_refresh;
     private javax.swing.JButton jButton_xoa;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
