@@ -6,7 +6,6 @@ package com.mycompany.qlthanhvien.UI;
 
 import com.mycompany.qlthanhvien.BLL.BLL_ThanhVien;
 import com.mycompany.qlthanhvien.BLL.ThanhVien;
-import com.mycompany.qlthanhvien.BLL.ThietBi;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;

@@ -18,7 +18,6 @@ public class UI_JPN_ThongKe extends javax.swing.JPanel {
      */
     public UI_JPN_ThongKe() {
         initComponents();
-        UI_JPN_ThanhVien jPN_ThanhVien = new UI_JPN_ThanhVien();
         UI_JPN_ThongKeTB jPN_ThongKeTB = new UI_JPN_ThongKeTB();
         UI_JPN_ThongKeTV jPN_ThongKeTV = new UI_JPN_ThongKeTV();
         UI_JPN_ThongKeVP jPN_ThongKeVP = new UI_JPN_ThongKeVP();

@@ -116,17 +116,6 @@ public class DAL_ThanhVien {
         }
     }
 
-    public static void main(String[] args) {
-        DAL_ThanhVien dAL_ThanhVien = new DAL_ThanhVien();
-
-        // Lấy ds
-        List<ThanhVien> tvs = dAL_ThanhVien.SearchThanhvien("MaTV", "1124420005");
-        for (int i = 0; i < tvs.size(); i++) {
-            System.out.println(tvs.get(i).getMaTV());
-
-        }
-    }
-
     public List<Integer> getDistinctYears() {
         List<Integer> years = new ArrayList<>();
         session.beginTransaction();

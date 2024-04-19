@@ -5,6 +5,7 @@
 package com.mycompany.qlthanhvien.BLL;
 
 import javax.persistence.Entity;
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
@@ -19,10 +20,13 @@ import lombok.Data;
 public class ThietBi {
 
     @Id
-    int MaTB;
+    @Column(name = "MaTB")
+    private int MaTB;
     
+    @Column(name = "TenTB")
     String tenTB;
-    
+
+    @Column(name = "MoTaTB")
     String moTaTB;
 
     public ThietBi() {

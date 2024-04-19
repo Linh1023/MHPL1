@@ -7,11 +7,6 @@ package com.mycompany.qlthanhvien.BLL;
 import com.mycompany.qlthanhvien.DAL.DAL_ThanhVien;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -19,7 +14,6 @@ import org.hibernate.cfg.Configuration;
  */
 public class BLL_ThanhVien {
     private DAL_ThanhVien thanhVienDAL;
-    // private static SessionFactory factory;
 
     public BLL_ThanhVien() {
         thanhVienDAL = new DAL_ThanhVien();
@@ -36,29 +30,21 @@ public class BLL_ThanhVien {
     }
 
     public void addThanhVien(ThanhVien thongTinSD) {
-
         thanhVienDAL.addThanhVien(thongTinSD);
-
     }
 
     public void updateThanhVien(ThanhVien thongTinSD) {
-
         thanhVienDAL.updateThanhVien(thongTinSD);
-
     }
 
     public void deleteThanhVien(ThanhVien thongTinSD) throws Exception {
-
         thanhVienDAL.deleteThanhVien(thongTinSD);
-
     }
 
     public boolean importExcel(ArrayList<ThanhVien> danhsachThanhvien) {
-        // System.out.println("tới đây rồi");
         int a = 0;
         for (ThanhVien thanhVien : danhsachThanhvien) {
             thanhVienDAL.mergeThanhVien(thanhVien);
-            // System.out.println(a);
             a++;
         }
         return true;

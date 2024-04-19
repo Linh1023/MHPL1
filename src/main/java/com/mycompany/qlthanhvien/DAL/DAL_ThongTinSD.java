@@ -9,13 +9,11 @@ import java.util.List;
 import org.hibernate.Session;
 import com.mycompany.qlthanhvien.BLL.ThanhVien;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
-import org.hibernate.Session;
 public class DAL_ThongTinSD {
     private Session session;
     
@@ -123,21 +121,5 @@ public class DAL_ThongTinSD {
         thongTinSDs = this.session.createQuery("FROM ThongTinSD WHERE  TGVao is not NULL").list();
         session.getTransaction().commit();
         return thongTinSDs;
-    }
-     
-     
-     public static void main(String[] args) {
-        DAL_ThongTinSD dAL_ThongTinSD = new DAL_ThongTinSD();
-//        ThongTinSD thongTinSD = new ThongTinSD();
-//        
-//        thongTinSD.setMaTV(1123330257);
-//        
-//        
-//        dAL_ThongTinSD.addThongTinSD(thongTinSD);
-            
-        List<ThongTinSD> thongTinSDs = dAL_ThongTinSD.getListThongTinSD();
-        for (int i =  0; i<thongTinSDs.size(); i++) {
-            System.out.println(thongTinSDs.get(i).getThanhVien().getHoten());
-        }
     }
 }

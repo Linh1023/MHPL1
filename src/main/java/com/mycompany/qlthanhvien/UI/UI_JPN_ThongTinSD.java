@@ -3,13 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.qlthanhvien.UI;
-import com.google.protobuf.Message;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.text.ParseException;
 import com.mycompany.qlthanhvien.BLL.BLL_ThongTinSD;
 import com.mycompany.qlthanhvien.BLL.ThongTinSD;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

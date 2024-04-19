@@ -8,8 +8,6 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
@@ -23,20 +21,24 @@ import lombok.Data;
 @Table(name = "xuly")
 public class XuLy implements Serializable {
 
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="MaTV")
-    private int maTV;
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name="MaXL")
     private int maXL;
 
-    @Column(name="HinhThucXL")
+    @Column(name = "MaTV")
+    private int maTV;
+
+    @Column(name = "HinhThucXL")
     private String hinhThucSX;
 
-  @Column(name = "SoTien")
-public Integer soTien;
-    @Column(name="NgayXL")
+    @Column(name = "SoTien")
+    private Integer soTien;
+
+    @Column(name = "NgayXL")
     private Date NgayXL;
-    @Column(name="TrangThaiXL")
+    
+    @Column(name = "TrangThaiXL")
     private int TrangThaiXL;
 
     public XuLy() {
@@ -50,6 +52,5 @@ public Integer soTien;
         this.NgayXL = NgayXL;
         this.TrangThaiXL = TrangThaiXL;
     }
-
 
 }

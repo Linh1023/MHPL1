@@ -6,7 +6,6 @@ package com.mycompany.qlthanhvien.DAL;
 
 //import com.mycompany.qlthanhvien.BLL.ThongTinSuDung;
 import com.mycompany.qlthanhvien.BLL.XuLy;
-import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -26,13 +25,6 @@ SessionFactory sessionFactory = configuration.buildSessionFactory();
 
     public DAL_XuLy() {
         session = HibernateUtils.getSessionFactory().openSession();
-
-    }
-
-    public static void main(String[] args) {
-        DAL_XuLy dal = new DAL_XuLy();
-        List list = dal.loadXuLy();
-        list.forEach(System.out::println);
 
     }
 

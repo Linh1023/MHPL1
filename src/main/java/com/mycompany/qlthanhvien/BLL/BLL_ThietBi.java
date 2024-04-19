@@ -22,8 +22,8 @@ public class BLL_ThietBi {
         dal_TB = new DAL_ThietBi();
     }
 
-    public List loadThietBi() {
-        List list = dal_TB.loadThietBi();
+    public List<ThietBi> loadThietBi() {
+        List<ThietBi> list = dal_TB.loadThietBi();
         return list;
     }
 

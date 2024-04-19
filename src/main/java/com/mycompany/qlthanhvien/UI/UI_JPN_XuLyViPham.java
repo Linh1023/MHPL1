@@ -500,8 +500,4 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     private javax.swing.JTextField jtxt_soTien;
     private javax.swing.JTextField txt_hinhThuc;
     // End of variables declaration//GEN-END:variables
-
-    private void reset() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
