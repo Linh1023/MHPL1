@@ -24,17 +24,17 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
      */
     private BLL_XuLy bLL_xuLy;
     DefaultTableModel model;
-    
+
     public UI_JPN_XuLyViPham() {
         initComponents();
-        
+
         bLL_xuLy = new BLL_XuLy();
         loadThongtinXuLyTable();
     }
-    
+
     public void loadThongtinXuLyTable() {
         bLL_xuLy = new BLL_XuLy();
-        
+
         List<XuLy> thongTinXuLy = bLL_xuLy.load_xuLy();
         Object[][] objectses;
         objectses = bLL_xuLy.convertList(thongTinXuLy);
@@ -340,10 +340,10 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtab_xulyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtab_xulyMouseClicked
-        
+
         int index = jtab_xuly.getSelectedRow();
         model = (DefaultTableModel) jtab_xuly.getModel();
-        
+
         jtx_ma_vi_pham.setText(model.getValueAt(index, 0) + "");
         jTextField_maTV_XuLy.setText(model.getValueAt(index, 1) + "");
         txt_hinhThuc.setText(model.getValueAt(index, 2) + "");
@@ -354,7 +354,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     }//GEN-LAST:event_jtab_xulyMouseClicked
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
-        
+
         try {
             bLL_xuLy = new BLL_XuLy();
             int maThanhVien = Integer.parseInt(jTextField_maTV_XuLy.getText());
@@ -363,16 +363,16 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             float tien = Float.parseFloat(jtxt_soTien.getText());
             Date tGMuon = new Date();
             XuLy thongTinXuLy = new XuLy();
-            
+
             thongTinXuLy.setMaXL(maViPham);
             thongTinXuLy.setMaTV(maThanhVien);
 //                thongTinXuLy.setMaTB(maTB);
             thongTinXuLy.setNgayXL(tGMuon);
             thongTinXuLy.setSoTien((int) tien);
             thongTinXuLy.setHinhThucSX(null);
-            
+
             thongTinXuLy.setTrangThaiXL(1);
-            
+
             System.out.println("----------------" + thongTinXuLy);
             bLL_xuLy.newXuLy(thongTinXuLy);
             JOptionPane.showMessageDialog(this, "Thêm thành công !");
@@ -380,7 +380,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         } catch (Exception e) {
             System.out.println("com.mycompany.qlthanhvien.UI.UI_JPN_XuLyViPham.jButton_ThemActionPerformed()");
         }
-        
+
 
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
@@ -395,47 +395,47 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             String tGMuonText = jTextField_tGMuon.getText();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
             Date tGMuon = sdf.parse(tGMuonText);
-            
+
             float tien = Float.parseFloat(jtxt_soTien.getText());
-            
+
             thongTinXuLy.setMaXL(maVP);
             thongTinXuLy.setMaTV(maTV);
             thongTinXuLy.setHinhThucSX(hinhThuc);
             thongTinXuLy.setSoTien((int) tien);
             thongTinXuLy.setNgayXL(tGMuon);
             thongTinXuLy.setTrangThaiXL(1);
-            
+
             System.out.println("-----------------------" + thongTinXuLy);
-            
+
             bLL_xuLy.UpdateXuLy(thongTinXuLy);
-            
+
             JOptionPane.showMessageDialog(this, "Sửa thành công !");
             loadThongtinXuLyTable();
-            
+
         } catch (ParseException e) {
             System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
         }
-        
+
 
     }//GEN-LAST:event_jButton_updateActionPerformed
 
     private void jButton_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_xoaActionPerformed
-              bLL_xuLy = new BLL_XuLy();
-            
-            XuLy xl = new XuLy();
-            int maXL = Integer.parseInt(jtx_ma_vi_pham.getText());
-            xl.setMaXL(maXL);
-            bLL_xuLy.DeleteXuLy(xl);
-            JOptionPane.showMessageDialog(this, "Xóa thành công !");
+        bLL_xuLy = new BLL_XuLy();
 
-       
+        XuLy xl = new XuLy();
+        int maXL = Integer.parseInt(jtx_ma_vi_pham.getText());
+        xl.setMaXL(maXL);
+        bLL_xuLy.DeleteXuLy(xl);
+        JOptionPane.showMessageDialog(this, "Xóa thành công !");
+        loadThongtinXuLyTable();
+
 
     }//GEN-LAST:event_jButton_xoaActionPerformed
 
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
 //        reset();
         loadThongtinXuLyTable();
-       
+
 
     }//GEN-LAST:event_btn_refreshActionPerformed
 
