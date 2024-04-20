@@ -8,11 +8,13 @@ package com.mycompany.qlthanhvien.DAL;
 import com.mycompany.qlthanhvien.BLL.XuLy;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -110,5 +112,5 @@ SessionFactory sessionFactory = configuration.buildSessionFactory();
         XuLy c = session.get(XuLy.class, XuLyId);
         return c;
     }
-
+ 
 }

@@ -98,6 +98,11 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
         });
 
         jComboBox_timKiemTheoTB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTB", "TenTB" }));
+        jComboBox_timKiemTheoTB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_timKiemTheoTBActionPerformed(evt);
+            }
+        });
 
         jTable_TB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,6 +203,10 @@ public class UI_JRF_ChonTB extends javax.swing.JFrame {
        loadThietBiTable();
        jTextField_timKiemTB.setText("");
     }//GEN-LAST:event_jButton_lamMoi_timKiemTBActionPerformed
+
+    private void jComboBox_timKiemTheoTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_timKiemTheoTBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_timKiemTheoTBActionPerformed
 
     /**
      * @param args the command line arguments

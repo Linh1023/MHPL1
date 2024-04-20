@@ -108,6 +108,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel1.setText("Tìm kiếm :");
 
         jComboBox_timKiemTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MaTV", "MaTB" }));
+        jComboBox_timKiemTheo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_timKiemTheoActionPerformed(evt);
+            }
+        });
 
         jTextField_timKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -669,6 +674,10 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     private void jTextField_maTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_maTVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_maTVActionPerformed
+
+    private void jComboBox_timKiemTheoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_timKiemTheoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_timKiemTheoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -68,5 +68,7 @@ public class BLL_XuLy {
         xulyDal.updateXuLy(c);
 
     }
+ 
+   
 
 }

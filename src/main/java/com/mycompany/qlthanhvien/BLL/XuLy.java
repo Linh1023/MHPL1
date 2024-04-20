@@ -40,7 +40,7 @@ public class XuLy implements Serializable {
     private String hinhThucSX;
 
     @Column(name = "SoTien")
-    private int soTien;
+    private Integer soTien;
     @Column(name = "NgayXL")
     private Date NgayXL;
     @Column(name = "TrangThaiXL")
@@ -61,52 +61,5 @@ public class XuLy implements Serializable {
         this.TrangThaiXL = TrangThaiXL;
     }
 
-    public int getMaTV() {
-        return maTV;
-    }
-
-    public void setMaTV(int maTV) {
-        this.maTV = maTV;
-    }
-
-    public int getMaXL() {
-        return maXL;
-    }
-
-    public void setMaXL(int maXL) {
-        this.maXL = maXL;
-    }
-
-    public String getHinhThucSX() {
-        return hinhThucSX;
-    }
-
-    public void setHinhThucSX(String hinhThucSX) {
-        this.hinhThucSX = hinhThucSX;
-    }
-
-    public int getSoTien() {
-        return soTien;
-    }
-
-    public void setSoTien(int soTien) {
-        this.soTien = soTien;
-    }
-
-    public Date getNgayXL() {
-        return NgayXL;
-    }
-
-    public void setNgayXL(Date NgayXL) {
-        this.NgayXL = NgayXL;
-    }
-
-    public int getTrangThaiXL() {
-        return TrangThaiXL;
-    }
-
-    public void setTrangThaiXL(int TrangThaiXL) {
-        this.TrangThaiXL = TrangThaiXL;
-    }
-
+    
 }
