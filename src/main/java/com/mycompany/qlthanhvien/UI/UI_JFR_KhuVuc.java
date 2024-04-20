@@ -5,6 +5,7 @@ import com.mycompany.qlthanhvien.BLL.ThanhVien;
 import com.mycompany.qlthanhvien.BLL.ThongTinSD;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.SessionFactory;
@@ -27,7 +28,8 @@ public class UI_JFR_KhuVuc extends javax.swing.JFrame {
     public UI_JFR_KhuVuc() {
         initComponents();
         txtSoLanVao.setEditable(false);
-        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
         loadListThongTin();
     }
 
