@@ -21,8 +21,17 @@ public class UI_JPN_ThongKeTB extends javax.swing.JPanel {
     private DefaultCategoryDataset dataset;
     private JFreeChart chart;
     private BLL_ThietBi bll_TB;
+    ChartPanel chartPanel;
 
     public UI_JPN_ThongKeTB() {
+        initComponents();
+        chartPanel = createChartPanel();
+        chartPanel.setBounds(40, 40, 920, 600);
+// them vào jpanel
+        this.add(chartPanel);
+    }
+
+    private ChartPanel createChartPanel() {
         dataset = new DefaultCategoryDataset();
         bll_TB = new BLL_ThietBi();
         List<ThietBi> listItem = bll_TB.loadThietBi();
@@ -65,10 +74,7 @@ public class UI_JPN_ThongKeTB extends javax.swing.JPanel {
                 true, // Có hiển thị công cụ đơn giản không
                 true // Có tạo tooltips không
         );
-
-        ChartPanel chartPanel = new ChartPanel(chart);
-// them vào jpanel
-        this.add(chartPanel);
+        return new ChartPanel(chart);
     }
 
     /**
@@ -80,32 +86,48 @@ public class UI_JPN_ThongKeTB extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1000, 700));
 
-        jLabel1.setText("jpanel thông kê");
+        btnUpdate.setText("Cập nhật mới nhất");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(637, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnUpdate)
+                .addContainerGap(866, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1)
-                .addContainerGap(494, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnUpdate)
+                .addContainerGap(671, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnUpdate;
     // End of variables declaration//GEN-END:variables
+private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {
+        remove(chartPanel);
+
+        chartPanel = createChartPanel();
+        this.add(chartPanel);
+        chartPanel.setBounds(40, 40, 920, 600);
+        chartPanel.revalidate();
+        chartPanel.repaint();
+
+    }
+
 }
