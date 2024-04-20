@@ -8,6 +8,7 @@ import com.mycompany.qlthanhvien.BLL.ThongTinSD;
 import java.util.List;
 import org.hibernate.Session;
 import com.mycompany.qlthanhvien.BLL.ThanhVien;
+import com.mycompany.qlthanhvien.BLL.XuLy;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,7 +16,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 public class DAL_ThongTinSD {
     private Session session;
     
@@ -125,6 +128,26 @@ public class DAL_ThongTinSD {
         return thongTinSDs;
     }
      
+     public List<XuLy> checkViPham(int maTV) {
+        List<XuLy> list = null;
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            list = session.createQuery("From XuLy WHERE TrangThaiXL = 0 AND MaTV = " + maTV, XuLy.class).list();
+            transaction.commit();
+        } catch (HibernateException e) {
+
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+        } finally {
+            session.close();
+        }
+        return list;
+
+    }
+     
      
      public static void main(String[] args) {
         DAL_ThongTinSD dAL_ThongTinSD = new DAL_ThongTinSD();
@@ -134,10 +157,12 @@ public class DAL_ThongTinSD {
 //        
 //        
 //        dAL_ThongTinSD.addThongTinSD(thongTinSD);
+//1121530087
             
-        List<ThongTinSD> thongTinSDs = dAL_ThongTinSD.getListThongTinSD();
-        for (int i =  0; i<thongTinSDs.size(); i++) {
-            System.out.println(thongTinSDs.get(i).getThanhVien().getHoten());
+        List<XuLy> xuLys = dAL_ThongTinSD.checkViPham(1121530087);
+         System.out.println(xuLys.size());
+        for (int i =  0; i<xuLys.size(); i++) {
+            System.out.println(xuLys.get(i).getMaTV());
         }
     }
 }

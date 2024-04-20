@@ -85,4 +85,8 @@ public class BLL_ThongTinSD {
         return dAL_ThongTinSD.getThanhVienTheoNganh();
     }
     
+    public List<XuLy> checkViPham(int maTV) {
+           return dAL_ThongTinSD.checkViPham(maTV);
+    }
+    
 }
