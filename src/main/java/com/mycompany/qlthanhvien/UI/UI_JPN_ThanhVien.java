@@ -642,11 +642,11 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
     }
 
     private void jButton_addExcelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton_addExcelActionPerformed
-        funcUIAddThietBiExcel();
+        funcUIAddThanhvienExcel();
         refreshTable();
     }// GEN-LAST:event_jButton_addExcelActionPerformed
 
-    private boolean funcUIAddThietBiExcel() {
+    private boolean funcUIAddThanhvienExcel() {
         JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Files", "xls", "xlsx");
         fileChooser.setFileFilter(filter);
@@ -870,6 +870,7 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
         // Lấy giá trị được chọn từ JComboBox
         String selectedColumn = jComboBox_value.getSelectedItem().toString();
         String searchValue = jTextField_Search.getText(); // Giá trị tìm kiếm từ JTextField
+
         if (searchValue.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị để tìm kiếm.", "Thông báo",
                     JOptionPane.WARNING_MESSAGE);
@@ -880,9 +881,16 @@ public final class UI_JPN_ThanhVien extends javax.swing.JPanel {
                     JOptionPane.WARNING_MESSAGE);
             return; // Dừng hàm nếu searchValue không phải là số
         }
+
         BLL_ThanhVien bll_thanhvien = new BLL_ThanhVien();
         List<ThanhVien> searchResults = bll_thanhvien.SearchThanhVien(selectedColumn, searchValue);
-        displaySearchResults(searchResults);
+
+        if (searchResults.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không tìm thấy thành viên phù hợp.", "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            displaySearchResults(searchResults);
+        }
     }// GEN-LAST:event_jButton_SearchActionPerformed
 
     private boolean isNumeric(String str) {
