@@ -19,9 +19,10 @@ import org.jfree.data.general.DefaultPieDataset;
  *
  * @author quang
  */
-public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
+public final class UI_JPN_ThongKeTV extends javax.swing.JPanel {
 
     private BLL_ThongTinSD bll_TTSD;
+    private ChartPanel chartThongKeTheoThoiGian, chartThongKeTheoKhoa, chartThongKeTheoNganh;
 
     /**
      * Creates new form ThongKe
@@ -29,17 +30,20 @@ public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
     public UI_JPN_ThongKeTV() {
         initComponents();
         bll_TTSD = new BLL_ThongTinSD();
-        ChartPanel chartThongKeTheoThoiGian = createBarChart("Thống kê số lượng thành viên vào khu học tập theo thời gian",
+        createCharts();
+    }
+
+    public void createCharts() {
+        chartThongKeTheoThoiGian = createBarChart("Thống kê số lượng thành viên vào khu học tập theo thời gian",
                 "Ngày",
                 "Số lượng", bll_TTSD.getThanhVienTheoTG());
         chartThongKeTheoThoiGian.setBounds(40, 40, 920, 300);
 
-        ChartPanel chartThongKeTheoKhoa = createPieChart("Thống kê số lượng thành viên vào khu học tập theo khoa", bll_TTSD.getThanhVienTheoKhoa());
+        chartThongKeTheoKhoa = createPieChart("Thống kê số lượng thành viên vào khu học tập theo khoa", bll_TTSD.getThanhVienTheoKhoa());
         chartThongKeTheoKhoa.setBounds(40, 350, 460, 275);
 //        
-        ChartPanel chartThongKeTheoNganh = createPieChart("Thống kê số lượng thành viên vào khu học tập theo ngành", bll_TTSD.getThanhVienTheoNganh());
+        chartThongKeTheoNganh = createPieChart("Thống kê số lượng thành viên vào khu học tập theo ngành", bll_TTSD.getThanhVienTheoNganh());
         chartThongKeTheoNganh.setBounds(500, 350, 460, 275);
-
         this.add(chartThongKeTheoThoiGian);
         this.add(chartThongKeTheoKhoa);
         this.add(chartThongKeTheoNganh);
@@ -53,6 +57,7 @@ public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
             dataset.addValue(soluong, "số lượng", ngay.toString());
         }
         JFreeChart chart = ChartFactory.createBarChart(title, labelCategory, labelValue, dataset, PlotOrientation.VERTICAL, true, true, true);
+
         return new ChartPanel(chart);
     }
 
@@ -76,21 +81,51 @@ public class UI_JPN_ThongKeTV extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnUpdate = new javax.swing.JButton();
+
         setMinimumSize(new java.awt.Dimension(1000, 700));
+
+        btnUpdate.setText("Cập nhật mới nhất");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(btnUpdate)
+                .addContainerGap(845, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnUpdate)
+                .addContainerGap(671, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        remove(chartThongKeTheoKhoa);
+        remove(chartThongKeTheoNganh);
+        remove(chartThongKeTheoThoiGian);
+        createCharts();
+        chartThongKeTheoKhoa.revalidate();
+        chartThongKeTheoNganh.revalidate();
+        chartThongKeTheoThoiGian.revalidate();
+        chartThongKeTheoKhoa.repaint();
+        chartThongKeTheoNganh.repaint();
+        chartThongKeTheoThoiGian.repaint();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUpdate;
     // End of variables declaration//GEN-END:variables
 }

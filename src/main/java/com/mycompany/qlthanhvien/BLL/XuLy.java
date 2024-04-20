@@ -44,7 +44,7 @@ public class XuLy implements Serializable {
     public XuLy() {
     }
 
-    public XuLy(int maTV, int maXL, String hinhThucSX, int soTien, Date NgayXL, int TrangThaiXL) {
+    public XuLy(int maTV, int maXL, String hinhThucSX, Integer soTien, Date NgayXL, int TrangThaiXL) {
         this.maTV = maTV;
         this.maXL = maXL;
         this.hinhThucSX = hinhThucSX;

@@ -12,14 +12,14 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI;
  * @author quang
  */
 public class UI_JPN_ThongKe extends javax.swing.JPanel {
-
+UI_JPN_ThongKeTV jPN_ThongKeTV;
     /**
      * Creates new form ThongKe
      */
     public UI_JPN_ThongKe() {
         initComponents();
         UI_JPN_ThongKeTB jPN_ThongKeTB = new UI_JPN_ThongKeTB();
-        UI_JPN_ThongKeTV jPN_ThongKeTV = new UI_JPN_ThongKeTV();
+         jPN_ThongKeTV = new UI_JPN_ThongKeTV();
         UI_JPN_ThongKeVP jPN_ThongKeVP = new UI_JPN_ThongKeVP();
         jTabbedPane1.addTab("Thống Kê Thiết Bị", jPN_ThongKeTB);
         jTabbedPane1.addTab("Thống Kê Thành Viên", jPN_ThongKeTV);
