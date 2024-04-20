@@ -73,8 +73,8 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jbutton_ma_hinhThucPhat = new javax.swing.JButton();
         jtx_ma_vi_pham = new javax.swing.JTextField();
+        jcombox_hinhThuc = new javax.swing.JComboBox<>();
         jtxt_soTien = new javax.swing.JTextField();
         txt_hinhThuc = new javax.swing.JTextField();
 
@@ -201,18 +201,13 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
 
         jLabel10.setText("Hinh Thuc Xu Ly");
 
-        jbutton_ma_hinhThucPhat.setText("Chon Hinh Thuc");
-        jbutton_ma_hinhThucPhat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbutton_ma_hinhThucPhatActionPerformed(evt);
-            }
-        });
-
         jtx_ma_vi_pham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtx_ma_vi_phamActionPerformed(evt);
             }
         });
+
+        jcombox_hinhThuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Khóa Thẻ 1 Tháng", "Khóa Thẻ 2 Tháng", "Khóa Thẻ Vĩnh Viien", "Bồi Thường", "Khóa Thẻ 1 Tháng và Bồi Thường " }));
 
         jtxt_soTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +215,6 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             }
         });
 
-        txt_hinhThuc.setText("jTextField1");
         txt_hinhThuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_hinhThucActionPerformed(evt);
@@ -231,24 +225,8 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(16, 16, 16)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txt_hinhThuc)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jbutton_ma_hinhThucPhat))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(178, 178, 178)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtx_ma_vi_pham, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -263,9 +241,9 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(33, 33, 33)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtxt_soTien, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField_tGMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_tGMuon, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                                    .addComponent(jtxt_soTien)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton_Them)
@@ -274,7 +252,25 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_xoa)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton_refresh)))
+                        .addComponent(jButton_refresh))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtx_ma_vi_pham, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txt_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jcombox_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(178, 178, 178)
+                                    .addComponent(jLabel3))))))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -295,8 +291,8 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jbutton_ma_hinhThucPhat)
-                    .addComponent(txt_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcombox_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -324,7 +320,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,20 +352,36 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
 
         try {
+            XuLy thongTinXuLy = new XuLy();
             bLL_xuLy = new BLL_XuLy();
             int maThanhVien = Integer.parseInt(jTextField_maTV_XuLy.getText());
 //                Integer maTB =  Integer.parseInt(jTextField_maTB.getText());
             int maViPham = Integer.parseInt(jtx_ma_vi_pham.getText());
-            float tien = Float.parseFloat(jtxt_soTien.getText());
+//            float tien = Float.parseFloat(jtxt_soTien.getText());
+            String soTienString = jtxt_soTien.getText().trim(); // Remove leading/trailing whitespaces
+            if (soTienString.isEmpty()) {
+                // Set soTien to 0 if empty
+                thongTinXuLy.setSoTien(null);
+            } else {
+                try {
+                    float tien = Float.parseFloat(soTienString);
+                    thongTinXuLy.setSoTien((int) tien); // Cast to int if needed
+                } catch (NumberFormatException ex) {
+                    // Handle invalid number format
+                    JOptionPane.showMessageDialog(this, "Số tiền không hợp lệ. Vui lòng nhập số!");
+                    return; // Exit the method if input is invalid
+                }
+            }
+            String hinhThuc = jcombox_hinhThuc.getSelectedItem().toString();
             Date tGMuon = new Date();
-            XuLy thongTinXuLy = new XuLy();
+//            XuLy thongTinXuLy = new XuLy();
 
             thongTinXuLy.setMaXL(maViPham);
             thongTinXuLy.setMaTV(maThanhVien);
 //                thongTinXuLy.setMaTB(maTB);
             thongTinXuLy.setNgayXL(tGMuon);
-            thongTinXuLy.setSoTien((int) tien);
-            thongTinXuLy.setHinhThucSX(null);
+//            thongTinXuLy.setSoTien((int) tien);
+            thongTinXuLy.setHinhThucSX(hinhThuc);
 
             thongTinXuLy.setTrangThaiXL(1);
 
@@ -382,27 +394,40 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         }
 
 
-
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
     private void jButton_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_capNhatActionPerformed
 //      
-             try {
+        try {
             XuLy thongTinXuLy = new XuLy();
             int maVP = Integer.parseInt(jtx_ma_vi_pham.getText());
             int maTV = Integer.parseInt(jTextField_maTV_XuLy.getText());
 //                Integer maTB = Integer.parseInt(jTextField_maTB.getText());
-            String hinhThuc = txt_hinhThuc.getText();
+//            String hinhThuc = txt_hinhThuc.getText();
+            String hinhThuc = jcombox_hinhThuc.getSelectedItem().toString();
             String tGMuonText = jTextField_tGMuon.getText();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
             Date tGMuon = sdf.parse(tGMuonText);
 
-            float tien = Float.parseFloat(jtxt_soTien.getText());
+            String soTienString = jtxt_soTien.getText().trim(); // Remove leading/trailing whitespaces
+            if (soTienString.equals("null")) {
+                // Set soTien to 0 if empty
+                thongTinXuLy.setSoTien(null);
+            } else {
+                try {
+                    float tien = Float.parseFloat(soTienString);
+                    thongTinXuLy.setSoTien((int) tien); // Cast to int if needed
+                } catch (NumberFormatException ex) {
+                    // Handle invalid number format
+                    JOptionPane.showMessageDialog(this, "Số tiền không hợp lệ. Vui lòng nhập số!");
+                    return; // Exit the method if input is invalid
+                }
+            }
 
             thongTinXuLy.setMaXL(maVP);
             thongTinXuLy.setMaTV(maTV);
             thongTinXuLy.setHinhThucSX(hinhThuc);
-            thongTinXuLy.setSoTien((int) tien);
+//            thongTinXuLy.setSoTien((int) tien);
             thongTinXuLy.setNgayXL(tGMuon);
             thongTinXuLy.setTrangThaiXL(1);
 
@@ -417,7 +442,6 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             System.out.println("Lỗi phân tích chuỗi ngày tháng: " + e.getMessage());
         }
 
-      
 
     }//GEN-LAST:event_jButton_capNhatActionPerformed
 
@@ -434,7 +458,16 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
 
     private void jButton_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_refreshActionPerformed
 //      
-  loadThongtinXuLyTable();
+  XuLy thongTinXuLy = new XuLy();
+        loadThongtinXuLyTable();
+       jTextField_maTV_XuLy.setText("");
+            jtx_ma_vi_pham.setText("");
+            txt_hinhThuc.setText("");
+            jtxt_soTien.setText("");
+           jTextField_tGMuon.setText("");
+//            thongTinXuLy.setSoTien((int) tien);
+          
+        
 
     }//GEN-LAST:event_jButton_refreshActionPerformed
 
@@ -452,10 +485,6 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     private void jTextField_maTV_XuLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_maTV_XuLyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_maTV_XuLyActionPerformed
-
-    private void jbutton_ma_hinhThucPhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_ma_hinhThucPhatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbutton_ma_hinhThucPhatActionPerformed
 
     private void jtx_ma_vi_phamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtx_ma_vi_phamActionPerformed
         // TODO add your handling code here:
@@ -494,7 +523,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     public static javax.swing.JTextField jTextField_maTV_XuLy;
     private javax.swing.JTextField jTextField_tGMuon;
     private javax.swing.JButton jbutton_maTV_xuLy;
-    private javax.swing.JButton jbutton_ma_hinhThucPhat;
+    private javax.swing.JComboBox<String> jcombox_hinhThuc;
     private javax.swing.JTable jtab_xuly;
     private javax.swing.JTextField jtx_ma_vi_pham;
     private javax.swing.JTextField jtxt_soTien;

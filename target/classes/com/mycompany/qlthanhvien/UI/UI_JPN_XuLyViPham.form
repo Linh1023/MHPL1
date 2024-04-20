@@ -33,7 +33,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -147,30 +147,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel10" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_hinhThuc" max="32767" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jbutton_ma_hinhThucPhat" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jtx_ma_vi_pham" min="-2" pref="231" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -189,9 +167,9 @@
                                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtxt_soTien" min="-2" pref="269" max="-2" attributes="0"/>
-                                      <Component id="jTextField_tGMuon" min="-2" pref="319" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextField_tGMuon" pref="319" max="32767" attributes="0"/>
+                                      <Component id="jtxt_soTien" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -204,7 +182,32 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButton_xoa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jButton_lamMoi" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton_refresh" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jtx_ma_vi_pham" alignment="1" min="-2" pref="298" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel10" min="-2" pref="129" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txt_hinhThuc" min="-2" pref="142" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jcombox_hinhThuc" min="-2" pref="171" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -231,8 +234,8 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbutton_ma_hinhThucPhat" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txt_hinhThuc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcombox_hinhThuc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -242,7 +245,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton_xoa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton_lamMoi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_refresh" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton_capNhat" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton_Them" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -299,12 +302,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_xoaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_lamMoi">
+        <Component class="javax.swing.JButton" name="jButton_refresh">
           <Properties>
             <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_lamMoiActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_refreshActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel3">
@@ -410,18 +413,26 @@
             <Property name="text" type="java.lang.String" value="Hinh Thuc Xu Ly"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbutton_ma_hinhThucPhat">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Chon Hinh Thuc"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutton_ma_hinhThucPhatActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="jtx_ma_vi_pham">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtx_ma_vi_phamActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcombox_hinhThuc">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Kh&#xf3;a Th&#x1ebb; 1 Th&#xe1;ng"/>
+                <StringItem index="1" value="Kh&#xf3;a Th&#x1ebb; 2 Th&#xe1;ng"/>
+                <StringItem index="2" value="Kh&#xf3;a Th&#x1ebb; V&#x129;nh Viien"/>
+                <StringItem index="3" value="B&#x1ed3;i Th&#x1b0;&#x1edd;ng"/>
+                <StringItem index="4" value="Kh&#xf3;a Th&#x1ebb; 1 Th&#xe1;ng v&#xe0; B&#x1ed3;i Th&#x1b0;&#x1edd;ng "/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxt_soTien">
           <Events>
@@ -429,9 +440,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_hinhThuc">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_hinhThucActionPerformed"/>
           </Events>
