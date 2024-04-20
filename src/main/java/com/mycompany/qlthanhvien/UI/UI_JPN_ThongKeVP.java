@@ -4,17 +4,49 @@
  */
 package com.mycompany.qlthanhvien.UI;
 
+import com.mycompany.qlthanhvien.BLL.BLL_XuLy;
+import com.mycompany.qlthanhvien.BLL.XuLy;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 /**
  *
  * @author quang
  */
-public class UI_JPN_ThongKeVP extends javax.swing.JPanel {
+public final class UI_JPN_ThongKeVP extends javax.swing.JPanel {
+
+    BLL_XuLy bll_xuly = new BLL_XuLy();
+
+    private ChartPanel chartXuLy;
+    private JTable tblDaXuLy;
+    private JScrollPane jscrollpane;
+    private JLabel lbTieude, lbTongtien;
 
     /**
      * Creates new form ThongKe
      */
     public UI_JPN_ThongKeVP() {
         initComponents();
+        lbTieude = new JLabel();
+        lbTieude.setFont(new java.awt.Font("Segoe UI", 1, 20));
+        lbTieude.setLocation(350, 350);
+        lbTieude.setSize(400, 50);
+        lbTongtien = new JLabel();
+        lbTongtien.setFont(new java.awt.Font("Segoe UI", 1, 20));
+        lbTongtien.setLocation(700, 600);
+        lbTongtien.setSize(500, 50);
+        add(lbTongtien);
+        add(lbTieude);
+
+        createChart();
+        tableDaXuLy();
     }
 
     /**
@@ -26,32 +58,89 @@ public class UI_JPN_ThongKeVP extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnLamMoi = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1000, 700));
 
-        jLabel1.setText("jpanel thông kê");
+        btnLamMoi.setText("Cập nhật mới nhất");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(637, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(btnLamMoi)
+                .addContainerGap(1250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1)
-                .addContainerGap(494, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnLamMoi)
+                .addContainerGap(671, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        remove(chartXuLy);
+        remove(jscrollpane);
+//        chartXuLy.removeAll();
+//        jscrollpane.removeAll();
+//        tblDaXuLy.removeAll();
+////        remove(lbTieude);
+//        lbTongtien.removeAll();
+        createChart();
+        tableDaXuLy();
+        chartXuLy.revalidate();
+        jscrollpane.revalidate();
+//        lbTongtien.revalidate();
+        chartXuLy.repaint();
+        jscrollpane.repaint();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+    public ChartPanel createChartPanelVP(String title, List<Object[]> results) {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        for (Object[] result : results) {
+            Long soluong = (Long) result[0];
+            int trangthai = (int) result[1];
+            if (trangthai == 1) {
+                dataset.setValue("Đã xử lý", soluong);
 
+            } else {
+                dataset.setValue("Chưa xử lý", soluong);
+            }
+        }
+        JFreeChart chart = ChartFactory.createPieChart(title, dataset);
+        return new ChartPanel(chart);
+    }
+
+    public void createChart() {
+        List<Object[]> rs = bll_xuly.getThongKeXuLy();
+        chartXuLy = createChartPanelVP("Thống kê xử lý vi phạm", rs);
+        chartXuLy.setBounds(40, 40, 920, 300);
+        this.add(chartXuLy);
+    }
+
+    public void tableDaXuLy() {
+        List<XuLy> listDaXuLy = bll_xuly.getListDaXuLy();
+        Object[][] data = bll_xuly.convertList(listDaXuLy);
+        String[] title = {"Mã xử lý", "Mã thành viên", "Hình thức xử lý", "Số tiền",
+            "Ngày xử lý", "Trạng thái"};
+        DefaultTableModel model = new DefaultTableModel(data, title);
+        tblDaXuLy = new JTable(model);
+        jscrollpane = new JScrollPane(tblDaXuLy);
+        jscrollpane.setBounds(40, 400, 920, 200);
+        lbTieude.setText("Bảng thông tin vi phạm đã xử lý");
+        lbTongtien.setText("Tổng tiền: " + bll_xuly.getTongTien(listDaXuLy));
+        add(jscrollpane);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnLamMoi;
     // End of variables declaration//GEN-END:variables
 }

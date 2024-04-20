@@ -13,6 +13,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import com.mycompany.qlthanhvien.BLL.XuLy;
+import java.util.List;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -113,5 +121,31 @@ SessionFactory sessionFactory = configuration.buildSessionFactory();
         XuLy c = session.get(XuLy.class, XuLyId);
         return c;
     }
+    public List getThongKeXuLy() {
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> criteriaQuery = builder.createQuery(Object[].class);
+        Root<XuLy> root = criteriaQuery.from(XuLy.class);
+
+        criteriaQuery.multiselect(builder.count(root.get("maTV")), root.get("TrangThaiXL"));
+        criteriaQuery.groupBy(root.get("TrangThaiXL"));
+
+        List<Object[]> results = session.createQuery(criteriaQuery).getResultList();
+        for (Object[] result : results) {
+            Long soluong = (Long) result[0];
+            int trangthai = (int) result[1];
+            System.out.println("So luong: " + soluong + ", date: " + trangthai);
+        }
+        return results;
+    }
+    public List<XuLy> getListDaXuLy() {
+        
+        List<XuLy> list = null;
+        session.beginTransaction();
+   
+       list =  session.createQuery("FROM XuLy WHERE TrangThaiXL = 1 ").list();
+       session.getTransaction().commit();
+       return list;
+   }
     
 }
