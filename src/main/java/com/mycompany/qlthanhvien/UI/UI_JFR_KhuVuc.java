@@ -332,15 +332,76 @@ public class UI_JFR_KhuVuc extends javax.swing.JFrame {
     }                                                
 
     private void txtNhapTimKiemActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
+            
+                }                                              
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {                                           
+            if(txtNhapTimKiem.getText().isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "VUI LÒNG NHẬP TRƯỚC KHI TÌM KIẾM");
+            }else{
+            ArrayList<ThongTinSD> arrThongTinSuDung= new ArrayList<ThongTinSD>();
+            BLL_ThongTinSD bll= new BLL_ThongTinSD();
+            arrThongTinSuDung=(ArrayList<ThongTinSD>) bll.getListThongTinSD();
             
+            ArrayList<ThanhVien> arrayListThanhVien =  new ArrayList<ThanhVien>();
+            BLL_ThanhVien bllThanhVien= new BLL_ThanhVien();
+            arrayListThanhVien=(ArrayList<ThanhVien>) bllThanhVien.getThanhVien();
+            if(cbbTimKiemTheo.getSelectedIndex()==1){
+                int dem=0;
+                deleteAllListThongTin();
+                for(int i=0;i<arrThongTinSuDung.size();i++){
+                    ThongTinSD tv=arrThongTinSuDung.get(i);
+                    ThanhVien tv1 = new ThanhVien();
+                    if(tv.getMaTV()== Integer.parseInt(txtNhapTimKiem.getText())){
+                        dem++;
+                        for(int j=0;j<arrayListThanhVien.size();j++){
+                         tv1 = arrayListThanhVien.get(j);
+                         if(tv1.getMaTV()==tv.getMaTV()){
+                             Object[] newrow = {tv.getMaTT(),tv.getMaTV(),tv1.getHoten(),tv1.getKhoa(),tv.getTGVao()};
+                             DefaultTableModel model = (DefaultTableModel) tblKhuVucHocTap.getModel();
+                             model.addRow(newrow);
+                         }
+                       }
+                    }
+                }
+                txtSoLanVao.setText(String.valueOf(dem));
+            }
+             if(cbbTimKiemTheo.getSelectedIndex()==0){
+                deleteAllListThongTin();
+                txtSoLanVao.setText("");
+                    for(int j=0;j<arrayListThanhVien.size();j++){
+                         ThanhVien tv1 = new ThanhVien();
+                         tv1 = arrayListThanhVien.get(j);
+                         System.out.println(tv1.getHoten().toLowerCase().contains(txtNhapTimKiem.getText().toLowerCase()));
+                         for(int i=0;i<arrThongTinSuDung.size();i++){
+                             if( tv1.getHoten().toLowerCase().contains(txtNhapTimKiem.getText().toLowerCase())==true&&tv1.getMaTV()==arrThongTinSuDung.get(i).getMaTV()){
+                             Object[] newrow = {arrThongTinSuDung.get(i).getMaTT(),arrThongTinSuDung.get(i).getMaTV(),tv1.getHoten(),tv1.getKhoa(),arrThongTinSuDung.get(i).getTGVao()};
+                             DefaultTableModel model = (DefaultTableModel) tblKhuVucHocTap.getModel();
+                             model.addRow(newrow);
+                            }
+                         }
+                    }
+             }    
+             if(cbbTimKiemTheo.getSelectedIndex()==2){
+                deleteAllListThongTin();
+                txtSoLanVao.setText("");
+                    for(int j=0;j<arrayListThanhVien.size();j++){
+                         ThanhVien tv1 = new ThanhVien();
+                         tv1 = arrayListThanhVien.get(j);
+                         System.out.println(tv1.getHoten().toLowerCase().contains(txtNhapTimKiem.getText().toLowerCase()));
+                         for(int i=0;i<arrThongTinSuDung.size();i++){
+                             if( tv1.getKhoa().toLowerCase().contains(txtNhapTimKiem.getText().toLowerCase())==true&&tv1.getMaTV()==arrThongTinSuDung.get(i).getMaTV()){
+                             Object[] newrow = {arrThongTinSuDung.get(i).getMaTT(),arrThongTinSuDung.get(i).getMaTV(),tv1.getHoten(),tv1.getKhoa(),arrThongTinSuDung.get(i).getTGVao()};
+                             DefaultTableModel model = (DefaultTableModel) tblKhuVucHocTap.getModel();
+                             model.addRow(newrow);
+                            }
+                         }
+                    }
+                 
             
            
-        
-        
+             }
+             }
     }                                          
     
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {                                         

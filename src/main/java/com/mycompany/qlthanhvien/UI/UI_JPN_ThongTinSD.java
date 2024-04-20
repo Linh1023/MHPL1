@@ -40,7 +40,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
           String[] title = {"MaTT", "Mã thành viên", "Tên thành viên", "Mã thiết bị",
               "Tên thiết bị", "Thời gian mượn", "Thời gian trả", "Trạng thái"};
           model = new DefaultTableModel(objectses, title);
-          jTable_muonTra.setModel(model);
+          jTable_XL_Vipham.setModel(model);
     }
     
     public void  loadThongtinSDTable_Search (List<ThongTinSD> thongTinSDs) {
@@ -50,7 +50,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
           String[] title = {"MaTT", "Mã thành viên", "Tên thành viên", "Mã thiết bị",
               "Tên thiết bị", "Thời gian mượn", "Thời gian trả", "Trạng thái"};
           model = new DefaultTableModel(objectses, title);
-          jTable_muonTra.setModel(model);
+          jTable_XL_Vipham.setModel(model);
     }
 
     /**
@@ -69,7 +69,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jTextField_timKiem = new javax.swing.JTextField();
         jButton_timKiem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_muonTra = new javax.swing.JTable();
+        jTable_XL_Vipham = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -122,7 +122,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
             }
         });
 
-        jTable_muonTra.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_XL_Vipham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -130,12 +130,12 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
                 "MaTT", "Mã Thành viên", "Tên thành viên", "Mã Thiết bị", "Tên Thiết bị", "TG Mượn", "TG Trả", "Trạng thái"
             }
         ));
-        jTable_muonTra.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable_XL_Vipham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_muonTraMouseClicked(evt);
+                jTable_XL_ViphamMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable_muonTra);
+        jScrollPane1.setViewportView(jTable_XL_Vipham);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -154,6 +154,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel7.setText("Thời gian mượn :");
 
         jTextField_tGMuon.setEditable(false);
+        jTextField_tGMuon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_tGMuonActionPerformed(evt);
+            }
+        });
 
         jButton_choMuon.setText("Cho mượn");
         jButton_choMuon.addActionListener(new java.awt.event.ActionListener() {
@@ -188,6 +193,11 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         jLabel5.setText("Mã thành viên :");
 
         jTextField_maTV.setEditable(false);
+        jTextField_maTV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_maTVActionPerformed(evt);
+            }
+        });
 
         jbutton_maTV.setText("Chọn thành viên");
         jbutton_maTV.addActionListener(new java.awt.event.ActionListener() {
@@ -527,9 +537,9 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTable_muonTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_muonTraMouseClicked
-        int index = jTable_muonTra.getSelectedRow();
-        model = (DefaultTableModel) jTable_muonTra.getModel();
+    private void jTable_XL_ViphamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_XL_ViphamMouseClicked
+        int index = jTable_XL_Vipham.getSelectedRow();
+        model = (DefaultTableModel) jTable_XL_Vipham.getModel();
         
         jTextField_maTT_muon.setText(model.getValueAt(index, 0)+"");
         jTextField_maTV.setText(model.getValueAt(index, 1)+"");
@@ -549,7 +559,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         
         
         
-    }//GEN-LAST:event_jTable_muonTraMouseClicked
+    }//GEN-LAST:event_jTable_XL_ViphamMouseClicked
 
     public void reset () {
         loadThongtinSDTable();
@@ -652,6 +662,14 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
         loadThongtinSDTable_Search(bLL_ThongTinSD.searchThongTinSD_MaTV_MaTB(jComboBox_timKiemTheo.getSelectedItem().toString(), jTextField_timKiem.getText()));
     }//GEN-LAST:event_jButton_timKiemActionPerformed
 
+    private void jTextField_tGMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_tGMuonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_tGMuonActionPerformed
+
+    private void jTextField_maTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_maTVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_maTVActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -682,7 +700,7 @@ public class UI_JPN_ThongTinSD extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton_daTra;
     private javax.swing.JRadioButton jRadioButton_dangMuon;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_muonTra;
+    private javax.swing.JTable jTable_XL_Vipham;
     public static javax.swing.JTextField jTextField_hoTen;
     public static javax.swing.JTextField jTextField_maTB;
     private javax.swing.JTextField jTextField_maTT_muon;

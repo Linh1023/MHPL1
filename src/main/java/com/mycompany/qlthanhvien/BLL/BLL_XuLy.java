@@ -12,8 +12,7 @@ import java.util.List;
  * @author quang
  */
 public class BLL_XuLy {
-
-    private DAL_XuLy xulyDal;
+  private DAL_XuLy xulyDal;
 
     public BLL_XuLy() {
         xulyDal = new DAL_XuLy();
@@ -46,6 +45,7 @@ public class BLL_XuLy {
     }
 
     public void newXuLy(XuLy c) {
+
         xulyDal.addXulY(c);
     }
 
@@ -56,4 +56,17 @@ public class BLL_XuLy {
 
     }
 
+    public void DeleteXuLy(XuLy c) {
+        xulyDal.deleteXuly(c);
+    }
+
+    public void UpdateXuLy(XuLy c) {
+
+        // Call DAL method to perform update (assuming it returns a boolean or throws exception on error)
+     
+        xulyDal.updateXuLy(c);
+
+    }
+    
+    
 }
