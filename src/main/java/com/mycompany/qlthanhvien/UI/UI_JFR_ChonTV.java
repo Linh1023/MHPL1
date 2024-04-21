@@ -5,10 +5,13 @@
 package com.mycompany.qlthanhvien.UI;
 
 import com.mycompany.qlthanhvien.BLL.BLL_ThanhVien;
+import com.mycompany.qlthanhvien.BLL.BLL_ThongTinSD;
 import com.mycompany.qlthanhvien.BLL.ThanhVien;
 import com.mycompany.qlthanhvien.BLL.ThietBi;
+import com.mycompany.qlthanhvien.BLL.XuLy;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -185,13 +188,20 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
     private void jTable_TVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_TVMouseClicked
        int index = jTable_TV.getSelectedRow();
         model = (DefaultTableModel) jTable_TV.getModel();
+         BLL_ThongTinSD bLL_ThongTinSD = new BLL_ThongTinSD();
+        List<XuLy> xuLys = bLL_ThongTinSD.checkViPham( Integer.parseInt((model.getValueAt(index, 0)+"")));
+        if (xuLys.size()==0) {
         UI_JPN_ThongTinSD.jTextField_maTV.setText(model.getValueAt(index, 0)+"");
-        UI_JPN_ThongTinSD.jTextField_hoTen.setText(model.getValueAt(index, 1)+"");
-        
-      UI_JPN_XuLyViPham.jTextField_hoTen_XuLy.setText(model.getValueAt(index,1)+"");
-      UI_JPN_XuLyViPham.jTextField_maTV_XuLy.setText(model.getValueAt(index,0)+"");
+        UI_JPN_ThongTinSD.jTextField_hoTen.setText(model.getValueAt(index, 1)+""); 
+        UI_JPN_XuLyViPham.jTextField_hoTen_XuLy.setText(model.getValueAt(index,1)+"");
+        UI_JPN_XuLyViPham.jTextField_maTV_XuLy.setText(model.getValueAt(index,0)+"");
         
         this.dispose();
+        } else  {
+            JOptionPane.showMessageDialog(this,"Thành viên đang bị vi phạm !"); 
+        }
+        
+        
     }//GEN-LAST:event_jTable_TVMouseClicked
 
     
