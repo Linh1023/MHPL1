@@ -11,6 +11,7 @@ import com.mycompany.qlthanhvien.BLL.ThietBi;
 import com.mycompany.qlthanhvien.BLL.XuLy;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -197,7 +198,7 @@ public class UI_JFR_ChonTV extends javax.swing.JFrame {
         
         this.dispose();
         } else  {
-             
+            JOptionPane.showMessageDialog(this,"Thành viên đang bị vi phạm !"); 
         }
         
         
