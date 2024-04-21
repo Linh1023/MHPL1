@@ -290,15 +290,22 @@ public class UI_JFR_KhuVuc extends javax.swing.JFrame {
         model.setRowCount(0);
     }
     public boolean checkThemThanhVien(int x ){
-       ArrayList<ThongTinSD> arrThongTinSuDung= new ArrayList<ThongTinSD>();
-           BLL_ThongTinSD bll= new BLL_ThongTinSD();
-           arrThongTinSuDung=(ArrayList<ThongTinSD>) bll.getListThongTinSD();
-        for(int i=0;i<arrThongTinSuDung.size();i++){
-            if(x==arrThongTinSuDung.get(i).getThanhVien().getMaTV()){
+       ArrayList<ThanhVien> arrayListThanhVien= new ArrayList<ThanhVien>();
+           BLL_ThanhVien bll= new BLL_ThanhVien();
+           arrayListThanhVien=(ArrayList<ThanhVien>) bll.getThanhVien();
+        for(int i=0;i<arrayListThanhVien.size();i++){
+            if(x==arrayListThanhVien.get(i).getMaTV()){
                 return true;
             }
         }
         return false;
+    }
+    public boolean checkViPham(int maTV){
+           BLL_ThongTinSD bll= new BLL_ThongTinSD();
+           if(bll.checkViPham(maTV).size()==0){
+                return true;
+           }
+           return false;
     }
     private void btnThemThanhVienActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
@@ -315,17 +322,21 @@ public class UI_JFR_KhuVuc extends javax.swing.JFrame {
         ttSuDungNew.setTGMuon(null);
         
         if(checkThemThanhVien(Integer.parseInt(txtThemThanhVien.getText()))){
-            arrThongTinSuDung.add(ttSuDungNew);
-            deleteAllListThongTin();
-            bll.addThongTinSD(ttSuDungNew);
-            loadListThongTin();
-           
-            for(int j=0;j<arrThongTinSuDung.size();j++){
-                if(arrThongTinSuDung.get(j).getThanhVien().getMaTV()==Integer.parseInt(txtThemThanhVien.getText())){
-                    jlbHoTen.setText(arrThongTinSuDung.get(j).getThanhVien().getHoten());
-                    jlbKhoa.setText(arrThongTinSuDung.get(j).getThanhVien().getKhoa());
-                    jlbMaThanhVien.setText( String. valueOf(arrThongTinSuDung.get(j).getThanhVien().getMaTV()));
+            if(checkViPham(Integer.parseInt(txtThemThanhVien.getText()))){
+                    arrThongTinSuDung.add(ttSuDungNew);
+                deleteAllListThongTin();
+                bll.addThongTinSD(ttSuDungNew);
+                loadListThongTin();
+
+                for(int j=0;j<arrThongTinSuDung.size();j++){
+                    if(arrThongTinSuDung.get(j).getThanhVien().getMaTV()==Integer.parseInt(txtThemThanhVien.getText())){
+                        jlbHoTen.setText(arrThongTinSuDung.get(j).getThanhVien().getHoten());
+                        jlbKhoa.setText(arrThongTinSuDung.get(j).getThanhVien().getKhoa());
+                        jlbMaThanhVien.setText( String. valueOf(arrThongTinSuDung.get(j).getThanhVien().getMaTV()));
+                    }
                 }
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Thành viên nằm trong danh sách vi phạm");
             }
         }else{
             JOptionPane.showMessageDialog(rootPane, "Mã thành viên không hợp lệ");
