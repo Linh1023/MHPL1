@@ -77,6 +77,8 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         jcombox_hinhThuc = new javax.swing.JComboBox<>();
         jtxt_soTien = new javax.swing.JTextField();
         txt_hinhThuc = new javax.swing.JTextField();
+        txt_trangThai = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1000, 700));
 
@@ -221,6 +223,14 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             }
         });
 
+        txt_trangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_trangThaiActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Trạng Thái ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -245,15 +255,6 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                                     .addComponent(jTextField_tGMuon, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                                     .addComponent(jtxt_soTien)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_Them)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_capNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_xoa)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton_refresh))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jtx_ma_vi_pham, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,7 +271,22 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                                             .addComponent(jcombox_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(178, 178, 178)
-                                    .addComponent(jLabel3))))))
+                                    .addComponent(jLabel3))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txt_trangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton_Them)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_capNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_xoa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_refresh)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -293,17 +309,21 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                     .addComponent(jLabel10)
                     .addComponent(txt_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcombox_hinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_trangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField_tGMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_xoa)
                     .addComponent(jButton_refresh)
+                    .addComponent(jButton_xoa)
                     .addComponent(jButton_capNhat)
                     .addComponent(jButton_Them))
-                .addGap(18, 42, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -331,7 +351,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -346,6 +366,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         txt_hinhThuc.setText(model.getValueAt(index, 2) + "");
         jtxt_soTien.setText(model.getValueAt(index, 3) + "");
         jTextField_tGMuon.setText(model.getValueAt(index, 4) + "");
+        txt_trangThai.setText(model.getValueAt(index, 5) + "");
 //        jTextField_tGMuon.setText(model.getValueAt(index, 5)+"");
     }//GEN-LAST:event_jtab_xulyMouseClicked
 
@@ -383,7 +404,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
 //            thongTinXuLy.setSoTien((int) tien);
             thongTinXuLy.setHinhThucSX(hinhThuc);
 
-            thongTinXuLy.setTrangThaiXL(1);
+            thongTinXuLy.setTrangThaiXL(0);
 
             System.out.println("----------------" + thongTinXuLy);
             bLL_xuLy.newXuLy(thongTinXuLy);
@@ -408,7 +429,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             String tGMuonText = jTextField_tGMuon.getText();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
             Date tGMuon = sdf.parse(tGMuonText);
-
+            String trangThai = txt_trangThai.getText();
             String soTienString = jtxt_soTien.getText().trim(); // Remove leading/trailing whitespaces
             if (soTienString.equals("null")) {
                 // Set soTien to 0 if empty
@@ -429,7 +450,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
             thongTinXuLy.setHinhThucSX(hinhThuc);
 //            thongTinXuLy.setSoTien((int) tien);
             thongTinXuLy.setNgayXL(tGMuon);
-            thongTinXuLy.setTrangThaiXL(1);
+            thongTinXuLy.setTrangThaiXL(Integer.parseInt(trangThai));
 
             System.out.println("-----------------------" + thongTinXuLy);
 
@@ -458,16 +479,15 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
 
     private void jButton_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_refreshActionPerformed
 //      
-  XuLy thongTinXuLy = new XuLy();
+        XuLy thongTinXuLy = new XuLy();
         loadThongtinXuLyTable();
-       jTextField_maTV_XuLy.setText("");
-            jtx_ma_vi_pham.setText("");
-            txt_hinhThuc.setText("");
-            jtxt_soTien.setText("");
-           jTextField_tGMuon.setText("");
+        jTextField_maTV_XuLy.setText("");
+        jtx_ma_vi_pham.setText("");
+        txt_hinhThuc.setText("");
+        jtxt_soTien.setText("");
+        jTextField_tGMuon.setText("");
 //            thongTinXuLy.setSoTien((int) tien);
-          
-        
+
 
     }//GEN-LAST:event_jButton_refreshActionPerformed
 
@@ -502,6 +522,10 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_hinhThucActionPerformed
 
+    private void txt_trangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_trangThaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_trangThaiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Them;
@@ -509,6 +533,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     private javax.swing.JButton jButton_refresh;
     private javax.swing.JButton jButton_xoa;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -528,6 +553,7 @@ public class UI_JPN_XuLyViPham extends javax.swing.JPanel {
     private javax.swing.JTextField jtx_ma_vi_pham;
     private javax.swing.JTextField jtxt_soTien;
     private javax.swing.JTextField txt_hinhThuc;
+    private javax.swing.JTextField txt_trangThai;
     // End of variables declaration//GEN-END:variables
 
     private void reset() {
