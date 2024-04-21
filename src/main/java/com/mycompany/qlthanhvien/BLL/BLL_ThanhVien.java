@@ -26,30 +26,30 @@ public class BLL_ThanhVien {
     }
 
     public List<ThanhVien> getThanhVien() {
-        List<ThanhVien> thongTinSDs = thanhVienDAL.getThanhvien();
-        return thongTinSDs;
+        List<ThanhVien> ThanhViens = thanhVienDAL.getThanhvien();
+        return ThanhViens;
     }
 
     public List<ThanhVien> SearchThanhVien(String column, String value) {
-        List<ThanhVien> thongTinSDs = thanhVienDAL.SearchThanhvien(column, value);
-        return thongTinSDs;
+        List<ThanhVien> ThanhViens = thanhVienDAL.SearchThanhvien(column, value);
+        return ThanhViens;
     }
 
-    public void addThanhVien(ThanhVien thongTinSD) {
+    public void addThanhVien(ThanhVien ThanhVien) {
 
-        thanhVienDAL.addThanhVien(thongTinSD);
-
-    }
-
-    public void updateThanhVien(ThanhVien thongTinSD) {
-
-        thanhVienDAL.updateThanhVien(thongTinSD);
+        thanhVienDAL.addThanhVien(ThanhVien);
 
     }
 
-    public void deleteThanhVien(ThanhVien thongTinSD) throws Exception {
+    public void updateThanhVien(ThanhVien ThanhVien) {
 
-        thanhVienDAL.deleteThanhVien(thongTinSD);
+        thanhVienDAL.updateThanhVien(ThanhVien);
+
+    }
+
+    public void deleteThanhVien(ThanhVien ThanhVien) throws Exception {
+
+        thanhVienDAL.deleteThanhVien(ThanhVien);
 
     }
 
